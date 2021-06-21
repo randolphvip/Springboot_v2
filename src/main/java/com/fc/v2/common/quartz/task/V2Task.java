@@ -39,4 +39,10 @@ public class V2Task {
     	System.err.println("用户查询num："+list.size());
         System.out.println("正在执行定时任务，带多个参数的方法"+a+"   "+b+" "+c+"  "+d+" "+e+"执行时间:"+DateUtil.now());
     }
+    
+    public void runTask3(String source)
+    {
+    	 
+         System.out.println("正在执行定时任务，source："+  source+" --  "+DateUtil.now());
+    }
 }

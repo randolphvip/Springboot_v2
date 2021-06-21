@@ -106,18 +106,18 @@ public class AdminController extends BaseController {
 	public AjaxResult login(TsysUser user, String captcha, RedirectAttributes redirectAttributes, boolean rememberMe,
 			HttpServletRequest request) {
 		// ModelAndView view =new ModelAndView();
-		Boolean yz = false;
+//		Boolean yz = false;
 		// 获取session中的验证码
 		String verCode = (String) request.getSession().getAttribute("captcha");
-		 // 判断验证码
-		if (captcha!=null && captcha.toLowerCase().equals(verCode.trim().toLowerCase())) {
-			//清除验证码
-			CaptchaUtil.clear(request);  // 清除session中的验证码
-			yz=true;
-		}
+//		 // 判断验证码
+//		if (captcha!=null && captcha.toLowerCase().equals(verCode.trim().toLowerCase())) {
+//			//清除验证码
+//			CaptchaUtil.clear(request);  // 清除session中的验证码
+//			yz=true;
+//		}
 		
 		// 判断验证码
-		if (yz) {
+//		if (yz) {
 			String userName = user.getUsername();
 			Subject currentUser = SecurityUtils.getSubject();
 			// 是否验证通过
@@ -164,9 +164,9 @@ public class AdminController extends BaseController {
 					return AjaxResult.error(500, "未知账户");
 				}
 			}
-		} else {
-			return AjaxResult.error(500, "验证码不正确!");
-		}
+//		} else {
+//			return AjaxResult.error(500, "验证码不正确!");
+//		}
 
 	}
 	
