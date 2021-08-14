@@ -14,6 +14,6 @@ public class V2WebInitializer  extends SpringBootServletInitializer{
 	@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application)
     {
-        return application.sources(V2Application.class);
+        return application.sources(Application.class);
     }
 }
