@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>v2</name>
 	<packaging>war</packaging>
-    <description>springboot-v2-pear</description>
+    <description>MyPrice</description>
 
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
