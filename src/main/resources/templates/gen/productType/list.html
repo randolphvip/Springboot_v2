@@ -8,17 +8,17 @@
     <div class="layui-card-body">
         <form class="layui-form" action="">
             <div class="layui-form-item">
-                <label class="layui-form-label">名称</label>
+                <label class="layui-form-label">Product Type Name</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="searchText" placeholder="" class="layui-input">
+                    <input type="text" name="productTypeName" placeholder="" class="layui-input">
                 </div>
                 <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="productType-query">
                     <i class="layui-icon layui-icon-search"></i>
-                   	 查询
+                   	 search
                 </button>
                 <button type="reset" class="pear-btn pear-btn-md">
                     <i class="layui-icon layui-icon-refresh"></i>
-					重置
+					reset
                 </button>
             </div>
         </form>
@@ -41,28 +41,28 @@
 <script type="text/html" id="productType-toolbar">
     <button shiro:hasPermission="gen:productType:add" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="layui-icon layui-icon-add-1"></i>
-		 新增
+		 Add
     </button>
     <button shiro:hasPermission="gen:productType:remove" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
-		删除
+		Delete
     </button>
 </script>
 
 <script type="text/html" id="productType-bar">
-    <button shiro:hasPermission="gen:productType:edit" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit" title="修改"><i class="layui-icon layui-icon-edit"></i>
+    <button shiro:hasPermission="gen:productType:edit" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit" title="Update"><i class="layui-icon layui-icon-edit"></i>
     </button>
 
-    <button shiro:hasPermission="gen:productType:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="删除"><i class="layui-icon layui-icon-delete"></i>
+    <button shiro:hasPermission="gen:productType:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="Delete"><i class="layui-icon layui-icon-delete"></i>
     </button>
 </script>
 
 
 <script type="text/html" id="productType-type">
     {{#if (d.dataState == '0') { }}
-    <span class="layui-badge layui-bg-orange">开启</span>
+    <span class="layui-badge layui-bg-orange">on</span>
     {{# }else if(d.dataState == '-1'){ }}
-    <span class="layui-badge layui-bg-blue">关闭</span>
+    <span class="layui-badge layui-bg-blue">off</span>
     {{# } }}
 </script>
 
@@ -93,10 +93,10 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
             cols: [
                 [
                     {type: 'checkbox'},
-                    {field: 'productTypeName', minWidth: 200, title: '分类名称'},
-                    {field: 'status', title: '状态',templet: '#productType-enable'},
-                    {field: 'orderNum', title: '排序'},
-                    {title: '操作', templet: '#productType-bar', width: 150, align: 'center'}
+                    {field: 'productTypeName', minWidth: 200, title: 'productType'},
+                    {field: 'status', title: 'status',templet: '#productType-enable'},
+                    {field: 'orderNum', title: 'order'},
+                    {title: 'operation', templet: '#productType-bar', width: 150, align: 'center'}
                 ]
             ]
         });
@@ -105,11 +105,11 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
     render();
 
     form.on('submit(productType-query)', function (data) {
-        var keyword = data.field.powerName;
+        var keyword = data.field.productTypeName;
         var $tds = $('#productType-table').next('.treeTable').find('.layui-table-body tbody tr td');
         if (!keyword) {
             $tds.css('background-color', 'transparent');
-            layer.msg("请输入关键字", {icon: 5});
+            layer.msg("Please entry something", {icon: 5});
             return;
         }
         var searchCount = 0;
@@ -125,7 +125,7 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
             }
         });
         if (searchCount == 0) {
-            layer.msg("没有匹配结果", {icon: 5});
+            layer.msg("Can not match anything", {icon: 5});
         } else {
             treetable.expandAll('#productType-table');
         }
@@ -184,7 +184,7 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
     window.add = function () {
         layer.open({
             type: 2,
-            title: '新增',
+            title: 'Add',
             shade: 0.1,
             area: ['450px', '500px'],
             content: MODULE_PATH + 'add'
@@ -194,7 +194,7 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
     window.edit = function (obj) {
         layer.open({
             type: 2,
-            title: '修改',
+            title: 'Update',
             shade: 0.1,
             area: ['450px', '500px'],
             content: MODULE_PATH + 'edit/' + obj.data['id']
@@ -202,7 +202,7 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
     }
 
     window.remove = function (obj) {
-        layer.confirm('确定要删除该部门', {icon: 3, title: '提示'}, function (index) {
+        layer.confirm('confirm to delete the selected', {icon: 3, title: 'warning'}, function (index) {
             layer.close(index);
             let loading = layer.load();
             $.ajax({
@@ -228,7 +228,7 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
     window.batchRemove = function (obj) {
         let data = table.checkStatus(obj.config.id).data;
         if (data.length === 0) {
-            layer.msg("未选中数据", {icon: 3, time: 1000});
+            layer.msg("You did not select any item.", {icon: 3, time: 1000});
             return false;
         }
         let ids = "";
@@ -236,7 +236,7 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
             ids += data[i].id + ",";
         }
         ids = ids.substr(0, ids.length - 1);
-        layer.confirm('确定要删除这些部门', {icon: 3, title: '提示'}, function (index) {
+        layer.confirm('Confirm to delete the selected', {icon: 3, title: 'warning'}, function (index) {
             layer.close(index);
             let loading = layer.load();
             $.ajax({
