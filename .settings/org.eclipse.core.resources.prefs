@@ -1,9 +1,2 @@
 eclipse.preferences.version=1
-encoding//src/main/java=UTF-8
-encoding//src/main/resources=UTF-8
-encoding//src/main/resources/templates=UTF-8
-encoding//src/main/resources/templates/admin/index.html=UTF-8
-encoding//src/main/resources/templates/admin/service/list.html=UTF-8
-encoding//src/main/resources/templates/admin/sysQuartzJob/add.html=UTF-8
-encoding//src/main/resources/templates/login.html=UTF-8
 encoding/<project>=UTF-8
