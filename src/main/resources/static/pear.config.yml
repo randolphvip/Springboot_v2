@@ -54,7 +54,7 @@ colors:
 ## 主题面板的链接列表配置
 links: 
 - icon: "layui-icon layui-icon-website"
-  title: "官方网站"
+  title: "Offical Website"
   href: "http://www.pearadmin.com"
 - icon: "layui-icon layui-icon-read"
   title: "开发文档"

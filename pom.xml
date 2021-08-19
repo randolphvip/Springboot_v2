@@ -9,10 +9,10 @@
         <relativePath/>
     </parent>
     <groupId>com.fc</groupId>
-    <artifactId>v2</artifactId>
+    <artifactId>MyPrice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>v2</name>
-	<packaging>war</packaging>
+    <name>MyPrice</name>
+	<packaging>jar</packaging>
     <description>MyPrice</description>
 
     <properties>

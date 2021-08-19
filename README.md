@@ -1,4 +1,4 @@
-### 公告
+公告
 
 - 
 
@@ -14,16 +14,24 @@
 
 
 ### STEP 
-1. inport springbootv2.sql into MYSQL
+1. inport /resource/sql/myPrice.sql into MYSQL
 2. check MYSQL version. in pom.xml line 73-84
 3. check application-dev.yml DB version and jdbc connection
-4. run SpringbootSwagger2Application.java
+4. run Application.java  or WebInitializer.java
 ### packing to war
 - maven  compile pom.xml to war
 
-### Login
-- http://localhost:8080   userName/Password: admin/admin
-- swagger  http://localhost:8080/swagger-ui.html
+## Applications URLs
+
+- 
+-   userName/Password: admin/admin
+- 
+
+| Application | URL                            |                                   |
+| :---------- | ------------------------------ | --------------------------------- |
+| movie-api   | http://localhost:8080          | Username:admin    Password: admin |
+| swagger     | http://localhost:8080/doc.html |                                   |
+|             |                                |                                   |
 
 
 ###  Database Model
@@ -31,5 +39,5 @@
 
 ### 
 
-
+## Demo
 

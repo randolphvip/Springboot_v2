@@ -10,7 +10,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 * @date 2018年8月18日
 *
 */
-public class V2WebInitializer  extends SpringBootServletInitializer{
+public class WebInitializer  extends SpringBootServletInitializer{
 	@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application)
     {
