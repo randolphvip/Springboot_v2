@@ -8,7 +8,7 @@
     <div class="layui-card-body">
         <form class="layui-form" action="">
             <div class="layui-form-item">
-                <label class="layui-form-label">Product Type Name</label>
+                <label class="layui-form-label">Name</label>
                 <div class="layui-input-inline">
                     <input type="text" name="productTypeName" placeholder="" class="layui-input">
                 </div>
@@ -93,7 +93,7 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
             cols: [
                 [
                     {type: 'checkbox'},
-                    {field: 'productTypeName', minWidth: 200, title: 'productType'},
+                    {field: 'productTypeName', minWidth: 200, title: 'Categories'},
                     {field: 'status', title: 'status',templet: '#productType-enable'},
                     {field: 'orderNum', title: 'order'},
                     {title: 'operation', templet: '#productType-bar', width: 150, align: 'center'}

@@ -15,7 +15,7 @@ public class ProductType implements Serializable {
 	private Integer id;
 	
 	@ApiModelProperty(value = "parent_id")
-	private String parentId;
+	private Integer parentId;
 	
 	@ApiModelProperty(value = "产品分类名称")
 	private String productTypeName;
@@ -35,11 +35,11 @@ public class ProductType implements Serializable {
 		this.id =  id;
 	}
 	@JsonProperty("parentId")
-	public String getParentId() {
+	public Integer getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(String parentId) {
+	public void setParentId(Integer parentId) {
 		this.parentId =  parentId;
 	}
 	@JsonProperty("productTypeName")
@@ -68,7 +68,7 @@ public class ProductType implements Serializable {
 	}
 
 										
-	public ProductType(Integer id,String parentId,String productTypeName,Integer status,Integer orderNum) {
+	public ProductType(Integer id,Integer parentId,String productTypeName,Integer status,Integer orderNum) {
 				
 		this.id = id;
 				

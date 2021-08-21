@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fc.v2.common.base.BaseController;
+import com.fc.v2.common.conf.redis.RedisService;
 import com.fc.v2.common.domain.AjaxResult;
 import com.fc.v2.common.domain.ResuTree;
 import com.fc.v2.common.domain.ResultTable;
@@ -43,7 +44,8 @@ public class ProductTypeController extends BaseController{
 	
 	@Autowired
 	private ProductTypeService productTypeService;
-	
+	@Autowired
+	private RedisService redis;
 	
 	/**
 	 * 产品分类页面展示
@@ -85,6 +87,7 @@ public class ProductTypeController extends BaseController{
     @GetMapping("/add")
     public String add(ModelMap modelMap)
     {
+//	System.out.println(redis.getCacheObject("sss")+"-----------------------------------------------------------------------Redis:");
         return prefix + "/add";
     }
 	
