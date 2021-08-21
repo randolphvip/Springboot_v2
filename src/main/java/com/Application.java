@@ -1,10 +1,10 @@
-package com.fc;
+package com;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class,scanBasePackages = "com.fc.v2")
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class,scanBasePackages = "com")
 public class Application {
 
     public static void main(String[] args) {
