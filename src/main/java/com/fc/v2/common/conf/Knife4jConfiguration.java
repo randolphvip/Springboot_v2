@@ -19,13 +19,13 @@ public class Knife4jConfiguration {
 
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
-    	Contact contact=new Contact("v2","https://gitee.com/bdj/SpringBoot_v2", "87766867@qq.com"); 
+    	Contact contact=new Contact("v2","https://github.com/randolphvip/myPriceV2", "ShangCong.nz@gmail.com"); 
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(new ApiInfoBuilder()
                         //.title("swagger-bootstrap-ui-demo RESTful APIs")
-                        .description("SpringBoot_v2项目是努力打造springboot框架的极致细腻的脚手架")
+                        .description("Price Monitoring and Analysising  System")
                         //服务条款Url
-                        .termsOfServiceUrl("https://gitee.com/bdj/SpringBoot_v2/blob/master/LICENSE")
+                        .termsOfServiceUrl("")
                         .contact(contact)
                         .version(v2Config.getVersion())
                         .build())

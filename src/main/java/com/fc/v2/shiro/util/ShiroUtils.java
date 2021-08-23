@@ -15,7 +15,7 @@ import com.fc.v2.util.StringUtils;
 /**
  * shiro 工具类
  *	
- * @author fuce
+ * @author Cong
  */
 public class ShiroUtils {
 
@@ -24,7 +24,7 @@ public class ShiroUtils {
     /**
      * 获取shiro subject
      * @return
-     * @author fuce
+     * @author Cong
      * @Date 2019年11月21日 上午10:00:55
      */
     public static Subject getSubjct()
@@ -35,7 +35,7 @@ public class ShiroUtils {
     /**
      * 获取登录session
      * @return
-     * @author fuce
+     * @author Cong
      * @Date 2019年11月21日 上午10:00:41
      */
     public static Session getSession()
@@ -45,7 +45,7 @@ public class ShiroUtils {
 
     /**
      * 退出登录
-     * @author fuce
+     * @author Cong
      * @Date 2019年11月21日 上午10:00:24
      */
     public static void logout()
@@ -56,7 +56,7 @@ public class ShiroUtils {
     /**
      * 获取登录用户model
      * @return
-     * @author fuce
+     * @author Cong
      * @Date 2019年11月21日 上午10:00:10
      */
     public static TsysUser getUser()
@@ -74,7 +74,7 @@ public class ShiroUtils {
     /**
      * set用户
      * @param user
-     * @author fuce
+     * @author Cong
      * @Date 2019年11月21日 上午9:59:52
      */
     public static void setUser(TsysUser user)
@@ -89,7 +89,7 @@ public class ShiroUtils {
     
     /**
      * 清除授权信息
-     * @author fuce
+     * @author Cong
      * @Date 2019年11月21日 上午9:59:37
      */
     public static void clearCachedAuthorizationInfo()
@@ -102,7 +102,7 @@ public class ShiroUtils {
     /**
      * 获取登录用户id
      * @return
-     * @author fuce
+     * @author Cong
      * @Date 2019年11月21日 上午9:58:55
      */
     public static String getUserId()
@@ -117,7 +117,7 @@ public class ShiroUtils {
     /**
      * 获取登录用户name
      * @return
-     * @author fuce
+     * @author Cong
      * @Date 2019年11月21日 上午9:58:48
      */
     public static String getLoginName()
@@ -132,7 +132,7 @@ public class ShiroUtils {
     /**
      * 获取登录用户ip
      * @return
-     * @author fuce
+     * @author Cong
      * @Date 2019年11月21日 上午9:58:26
      */
     public static String getIp()
@@ -143,7 +143,7 @@ public class ShiroUtils {
     /**
      * 获取登录用户sessionid
      * @return
-     * @author fuce
+     * @author Cong
      * @Date 2019年11月21日 上午9:58:37
      */
     public static String getSessionId()
