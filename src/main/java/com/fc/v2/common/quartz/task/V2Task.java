@@ -1,48 +1,70 @@
 package com.fc.v2.common.quartz.task;
-import cn.hutool.core.date.DateUtil;
-import com.fc.v2.mapper.auto.TsysUserMapper;
-import com.fc.v2.model.auto.TsysUser;
-import com.fc.v2.model.auto.TsysUserExample;
+
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import com.fc.v2.mapper.auto.TsysUserMapper;
+import com.fc.v2.model.auto.TsysUser;
+import com.fc.v2.model.auto.TsysUserExample;
+
+import cn.hutool.core.date.DateUtil;
 
 /**
- *测试类
- * @CLASSNAME   V2Task
+ * 测试类
+ * 
+ * @CLASSNAME V2Task
  * @Description 定时调度具体工作类
- * @Auther Jan  橙寂
+ * @Auther Jan 橙寂
  * @DATE 2019/9/2 0002 15:33
  */
 @Component("v2Task")
 public class V2Task {
 	@Autowired
 	private TsysUserMapper tsysUserMapper;
-    /**
-     * 无参的任务
-     */
-    public void runTask1()
-    {
-        System.out.println("正在执行定时任务，无参方法");
-    }
 
-    /**
-     * 有参任务
-     * 目前仅执行常见的数据类型  Integer Long  带L  string  带 ''  bool Double 带 d
-     * @param a
-     * @param b
-     */
-    public void runTask2(Integer a,Long b,String c,Boolean d,Double e)
-    {
-    	List<TsysUser> list=  tsysUserMapper.selectByExample(new TsysUserExample());
-    	System.err.println("用户查询num："+list.size());
-        System.out.println("正在执行定时任务，带多个参数的方法"+a+"   "+b+" "+c+"  "+d+" "+e+"执行时间:"+DateUtil.now());
-    }
-    
-    public void runTask3(String source)
-    {
-    	 
-         System.out.println("正在执行定时任务，source："+  source+" --  "+DateUtil.now());
-    }
+	/**
+	 * 无参的任务
+	 */
+	public void runTask1() {
+		System.out.println("正在执行定时任务，无参方法");
+	}
+
+	/**
+	 * 有参任务 目前仅执行常见的数据类型 Integer Long 带L string 带 '' bool Double 带 d
+	 * 
+	 * @param a
+	 * @param b
+	 */
+	public void runTask2(Integer a, Long b, String c, Boolean d, Double e) {
+		List<TsysUser> list = tsysUserMapper.selectByExample(new TsysUserExample());
+		System.err.println("用户查询num：" + list.size());
+		System.out
+				.println("正在执行定时任务，带多个参数的方法" + a + "   " + b + " " + c + "  " + d + " " + e + "执行时间:" + DateUtil.now());
+	}
+
+	public void runTask3(String source) {
+
+		System.out.println("正在执行定时任务，source：" + source + " --  " + DateUtil.now());
+	}
+
+	public void runTradeMeCrawlerByDay(String source) {
+		
+		//从数据库中把所有的商品信息拉取出来，然后循环抓取价格信息
+
+		
+	}
+	
+	public void runTradeMeCrawlerByHour(String source) {
+		
+		//从数据库中把所有的商品信息拉取出来，然后循环抓取价格信息
+		ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+
+		
+	}
+	
+	
 }

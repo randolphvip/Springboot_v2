@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myprice.mapper.auto.CommodityMapper">
+  <resultMap id="BaseResultMap2" type="com.myprice.model.auto.Commodity">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+     <result column="creator_name" jdbcType="VARCHAR" property="creatorName" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="category_name" jdbcType="INTEGER" property="categoryName" />
+    <result column="templet_id" jdbcType="INTEGER" property="templetId" />
+     <result column="templet_name" jdbcType="VARCHAR" property="templetName" />
+    <result column="frequence" jdbcType="VARCHAR" property="frequence" />
+    <result column="closeDate" jdbcType="TIMESTAMP" property="closeDate" />
+  </resultMap>
+   
+  <sql id="Base_Column_List2">
+  
+	  	  	      	id,
+       	  	      	url,
+       	  	      	creator,
+       	  	      	create_date,
+       	  	      	status,
+       	  	      	category_id,
+       	  	      	templet_id,
+       	  	      	frequence,
+       	  	    	closeDate,
+       	  	    	(select username  from t_sys_user u where u.id=c.creator) as creator_name,
+       	  	    	( select name  from u_template t where t.id=c.templet_id  ) as templet_name,
+       	  	    	( select product_type_name  from t_product_type t where t.id=c.category_id   ) as category_name
+       	  	
+  </sql>
+  
+  <select id="queryCommodityList" parameterType="com.myprice.model.auto.CommodityExample" resultMap="BaseResultMap2">
+    select
+    <include refid="Base_Column_List2" />
+    from u_commodity c
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+   
+  
+                                                 
+</mapper>
