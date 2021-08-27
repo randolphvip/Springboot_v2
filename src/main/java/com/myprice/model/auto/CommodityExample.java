@@ -681,75 +681,6 @@ public class CommodityExample {
         }
         
 				
-        public Criteria andCloseDateIsNull() {
-            addCriterion("closeDate is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateIsNotNull() {
-            addCriterion("closeDate is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateEqualTo(Date value) {
-            addCriterion("closeDate =", value, "closeDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateNotEqualTo(Date value) {
-            addCriterion("closeDate <>", value, "closeDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateGreaterThan(Date value) {
-            addCriterion("closeDate >", value, "closeDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateGreaterThanOrEqualTo(Date value) {
-            addCriterion("closeDate >=", value, "closeDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateLessThan(Date value) {
-            addCriterion("closeDate <", value, "closeDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateLessThanOrEqualTo(Date value) {
-            addCriterion("closeDate <=", value, "closeDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateLike(Date value) {
-            addCriterion("closeDate like", value, "closeDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateNotLike(Date value) {
-            addCriterion("closeDate not like", value, "closeDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateIn(List<Date> values) {
-            addCriterion("closeDate in", values, "closeDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateNotIn(List<Date> values) {
-            addCriterion("closeDate not in", values, "closeDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateBetween(Date value1, Date value2) {
-            addCriterion("closeDate between", value1, value2, "closeDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCloseDateNotBetween(Date value1, Date value2) {
-            addCriterion("closeDate not between", value1, value2, "closeDate");
-            return (Criteria) this;
-        }
         
 			
 		 public Criteria andLikeQuery(Commodity record) {
@@ -780,9 +711,7 @@ public class CommodityExample {
 			if(record.getFrequence()!=null&&StrUtil.isNotEmpty(record.getFrequence().toString())) {
     			 list.add("ifnull(frequence,'')");
     		}
-			if(record.getCloseDate()!=null&&StrUtil.isNotEmpty(record.getCloseDate().toString())) {
-    			 list.add("ifnull(closeDate,'')");
-    		}
+		 
 			if(record.getId()!=null&&StrUtil.isNotEmpty(record.getId().toString())) {
     			list2.add("'%"+record.getId()+"%'");
     		}
@@ -807,9 +736,7 @@ public class CommodityExample {
 			if(record.getFrequence()!=null&&StrUtil.isNotEmpty(record.getFrequence().toString())) {
     			list2.add("'%"+record.getFrequence()+"%'");
     		}
-			if(record.getCloseDate()!=null&&StrUtil.isNotEmpty(record.getCloseDate().toString())) {
-    			list2.add("'%"+record.getCloseDate()+"%'");
-    		}
+		 
         	buffer.append(" CONCAT(");
 	        buffer.append(StrUtil.join(",",list));
         	buffer.append(")");
@@ -833,8 +760,7 @@ public class CommodityExample {
     		list.add("ifnull(category_id,'')");
     		list.add("ifnull(templet_id,'')");
     		list.add("ifnull(frequence,'')");
-    		list.add("ifnull(closeDate,'')");
-        	buffer.append(" CONCAT(");
+         	buffer.append(" CONCAT(");
 	        buffer.append(StrUtil.join(",",list));
         	buffer.append(")");
         	buffer.append("like '%");

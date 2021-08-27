@@ -10,8 +10,7 @@
     <result column="category_id" jdbcType="INTEGER" property="categoryId" />
     <result column="templet_id" jdbcType="INTEGER" property="templetId" />
     <result column="frequence" jdbcType="VARCHAR" property="frequence" />
-    <result column="closeDate" jdbcType="TIMESTAMP" property="closeDate" />
-  </resultMap>
+   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -79,8 +78,7 @@
        	  	      	status,
        	  	      	category_id,
        	  	      	templet_id,
-       	  	      	frequence,
-       	  	    	  	closeDate
+       	  	      	frequence 
        	  	
   </sql>
   
@@ -116,7 +114,7 @@
     </if>
   </delete>
   
-  <insert id="insert" parameterType="com.myprice.model.auto.Commodity">
+  <insert id="insert" parameterType="com.myprice.model.auto.Commodity" >
     insert into u_commodity (
       	  	       id,
        	  	       url,
@@ -125,8 +123,7 @@
        	  	       status,
        	  	       category_id,
        	  	       templet_id,
-       	  	       frequence,
-       	  	    	  closeDate
+       	  	       frequence 
        	    )
     values (
 	  	  	      	#{id,jdbcType=INTEGER},
@@ -136,12 +133,12 @@
        	  	      	#{status,jdbcType=INTEGER},
        	  	      	#{categoryId,jdbcType=INTEGER},
        	  	      	#{templetId,jdbcType=INTEGER},
-       	  	      	#{frequence,jdbcType=VARCHAR},
-       	  	    	  #{closeDate,jdbcType=TIMESTAMP}
+       	  	      	#{frequence,jdbcType=VARCHAR} 
+       	  	    	  
        	    )
   </insert>
   
-  <insert id="insertSelective" parameterType="com.myprice.model.auto.Commodity">
+  <insert id="insertSelective" parameterType="com.myprice.model.auto.Commodity"  useGeneratedKeys="true" keyProperty="id">
     insert into u_commodity
     <trim prefix="(" suffix=")" suffixOverrides=",">
           
@@ -177,9 +174,7 @@
         frequence,
       </if>
          
-      <if test="closeDate != null">
-        closeDate,
-      </if>
+    
          </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
           <if test="id != null">
@@ -206,9 +201,7 @@
           <if test="frequence != null">
         #{frequence,jdbcType=VARCHAR},
       </if>
-          <if test="closeDate != null">
-        #{closeDate,jdbcType=TIMESTAMP},
-      </if>
+          
         </trim>
   </insert>
   
@@ -246,9 +239,7 @@
           <if test="record.frequence != null">
         frequence = #{record.frequence,jdbcType=VARCHAR},
       </if>
-          <if test="record.closeDate != null">
-        closeDate = #{record.closeDate,jdbcType=TIMESTAMP},
-      </if>
+        
          
     </set>
     <if test="_parameter != null">
@@ -275,9 +266,7 @@
     	         	     	 
     	 templet_id = #{record.templetId,jdbcType=INTEGER},
     	         	     	 
-    	 frequence = #{record.frequence,jdbcType=VARCHAR},
-    	         	     	 
-    	 closeDate = #{record.closeDate,jdbcType=TIMESTAMP}
+    	 frequence = #{record.frequence,jdbcType=VARCHAR} 
     	         
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -317,9 +306,7 @@
         frequence = #{frequence,jdbcType=VARCHAR},
       </if>
                       
-      <if test="closeDate != null">
-        closeDate = #{closeDate,jdbcType=TIMESTAMP},
-      </if>
+   
               </set>
     
     where 
@@ -346,9 +333,9 @@
 	  	 		 	  	  
 		templet_id = #{templetId,jdbcType=INTEGER},
 	  	 		 	  	  
-		frequence = #{frequence,jdbcType=VARCHAR},
+		frequence = #{frequence,jdbcType=VARCHAR} 
 	  	 		 	  		
-		closeDate = #{closeDate,jdbcType=TIMESTAMP}
+		 
 	  	 		
     where 
             

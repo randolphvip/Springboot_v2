@@ -1,13 +1,15 @@
 package com.myprice.model.auto;
 
 import java.io.Serializable;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-import cn.hutool.core.date.DateUtil;
 import java.util.Date;
 
-public class Commodity implements Serializable {
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import cn.hutool.core.date.DateUtil;
+import io.swagger.annotations.ApiModelProperty;
+
+public class Commodity   extends CommodityTrademeDetail implements Serializable{
     private static final long serialVersionUID = 1L;
 
 	
@@ -34,9 +36,7 @@ public class Commodity implements Serializable {
 	
 	@ApiModelProperty(value = "frequence")
 	private String frequence;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-	@ApiModelProperty(value = "closeDate")
-	private Date closeDate;
+ 
 	
 	@ApiModelProperty(value = "creatorName")
 	private String creatorName;
@@ -112,17 +112,10 @@ public class Commodity implements Serializable {
 	public void setFrequence(String frequence) {
 		this.frequence =  frequence;
 	}
-	@JsonProperty("closeDate")
-	public Date getCloseDate() {
-		return closeDate;
-	}
-
-	public void setCloseDate(Date closeDate) {
-		this.closeDate =  closeDate;
-	}
+ 
 
 																		
-	public Commodity(Integer id,String url,String creator,Date createDate,Integer status,Integer categoryId,Integer templetId,String frequence,Date closeDate) {
+	public Commodity(Integer id,String url,String creator,Date createDate,Integer status,Integer categoryId,Integer templetId,String frequence) {
 				
 		this.id = id;
 				
@@ -139,9 +132,7 @@ public class Commodity implements Serializable {
 		this.templetId = templetId;
 				
 		this.frequence = frequence;
-				
-		this.closeDate = closeDate;
-				
+ 				
 	}
 
 	public Commodity() {

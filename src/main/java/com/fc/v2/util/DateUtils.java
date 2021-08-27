@@ -3,6 +3,7 @@ package com.fc.v2.util;
 import java.lang.management.ManagementFactory;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
@@ -176,6 +177,64 @@ public class DateUtils  extends org.apache.commons.lang3.time.DateUtils{
         long min = diff % nd % nh / nm;
         // 计算差多少秒//输出结果
         // long sec = diff % nd % nh % nm / ns;
-        return day + " Days " + hour + " Hours " + min + " Mins";
+        return day + " D " + hour + " H " + min + " M";
     }
+    public static Date parseTradeMeDate(String tradeMeString) {
+    	Date tradeMeDate=null;
+    	if (tradeMeString!=null&& (tradeMeString.endsWith("am")||tradeMeString.endsWith("pm"))) {
+    		/*input Demo
+    		 * Tue 31st Aug, 8:00pm
+    		//2:4 days, 23 hours, 19 minutes
+    		//Thu 26th Aug, 10:35am
+    		//Thu 2nd Sep, 8:00pm
+    		//6 days, 23 hours, 19 minutes
+    		*/
+    		//1.去除掉日期的后缀。
+    		tradeMeString =tradeMeString.substring(tradeMeString.indexOf(" ")+1);
+    		tradeMeString=tradeMeString.replace("nd", "").replace("st", "").replace("th", "");
+//    		tradeMeString=tradeMeString.replace("st", "");
+//    		tradeMeString=tradeMeString.replace("th", "");
+    		String APM="";
+    		if(tradeMeString.endsWith("am")) {
+    			tradeMeString=tradeMeString.replace("am", "");
+    			APM="am";
+    		}else if(tradeMeString.endsWith("pm")) {
+    			tradeMeString=tradeMeString.replace("pm", "");
+    			APM="pm";
+    		}
+    		
+    		
+    		System.out.println(tradeMeString);
+    		
+    		
+    		
+    		
+    		tradeMeDate=  DateUtils.dateTime("dd MMM, HH:mm", tradeMeString);
+    		
+    		Calendar calender = Calendar.getInstance();
+    		calender.setTime(tradeMeDate);
+    		calender.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
+    		 
+    		 
+    		
+    		if(APM.equals("pm")) {    		 
+    			calender.add(Calendar.HOUR, 12);
+    		}
+    		
+    		
+    		if (calender.before(Calendar.getInstance())&&calender.get(Calendar.MONTH)==0&&Calendar.getInstance().get(Calendar.MONTH)==11) {
+    			calender.add(Calendar.YEAR,1);
+			}
+    		
+    	 System.out.println(calender.get(Calendar.MONTH));
+    		
+    		tradeMeDate= calender.getTime();
+    		System.out.println("-------"+format(tradeMeDate,DATE_TIME_PATTERN));
+    		
+    	}
+     
+    	return tradeMeDate;
+    	
+    }
+    
 }

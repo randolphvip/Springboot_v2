@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fc.v2.common.base.BaseController;
 import com.fc.v2.common.domain.AjaxResult;
 import com.fc.v2.common.domain.ResultTable;
-import com.fc.v2.model.auto.SysPosition;
-import com.fc.v2.model.auto.SysPositionExample;
 import com.fc.v2.model.custom.Tablepar;
 import com.github.pagehelper.PageInfo;
 import com.myprice.model.auto.Commodity;

@@ -13,32 +13,73 @@
     <result column="templet_id" jdbcType="INTEGER" property="templetId" />
      <result column="templet_name" jdbcType="VARCHAR" property="templetName" />
     <result column="frequence" jdbcType="VARCHAR" property="frequence" />
-    <result column="closeDate" jdbcType="TIMESTAMP" property="closeDate" />
-  </resultMap>
+    
+   	<result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="buy_now_price" jdbcType="DECIMAL" property="buyNowPrice" />
+    <result column="starting_price" jdbcType="DECIMAL" property="startingPrice" />
+     <result column="close_datetime" jdbcType="TIMESTAMP" property="closeDatetime" />
+   </resultMap>
    
+   
+<sql id="Example_Where_Clause2">
+   
+  
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    
+  </sql>
+  
+  
+  
   <sql id="Base_Column_List2">
   
-	  	  	      	id,
-       	  	      	url,
-       	  	      	creator,
-       	  	      	create_date,
-       	  	      	status,
-       	  	      	category_id,
-       	  	      	templet_id,
-       	  	      	frequence,
-       	  	    	closeDate,
-       	  	    	(select username  from t_sys_user u where u.id=c.creator) as creator_name,
+	  	  	      	c.id as id,
+       	  	      	c.url as url,
+       	  	      	c.creator as creator,
+       	  	      	c.create_date as create_date,
+       	  	      	c.status as status,
+       	  	      	c.category_id as category_id,
+       	  	      	c.templet_id as category_id,
+       	  	      	c.frequence as category_id,
+       	  	     	(select username  from t_sys_user u where u.id=c.creator) as creator_name,
        	  	    	( select name  from u_template t where t.id=c.templet_id  ) as templet_name,
-       	  	    	( select product_type_name  from t_product_type t where t.id=c.category_id   ) as category_name
+       	  	    	( select product_type_name  from t_product_type p where p.id=c.category_id   ) as category_name,
+       	  	    	d.title as title,
+       	  	    	d.close_datetime as close_datetime,
+       	  	    	d.buy_now_price as buy_now_price,
+       	  	    	d.starting_price as starting_price
        	  	
   </sql>
   
   <select id="queryCommodityList" parameterType="com.myprice.model.auto.CommodityExample" resultMap="BaseResultMap2">
     select
     <include refid="Base_Column_List2" />
-    from u_commodity c
+    from u_commodity c, u_commodity_trademe_detail d where  c.id =d.id
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
+      <include refid="Example_Where_Clause2" />
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
