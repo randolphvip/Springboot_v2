@@ -48,12 +48,11 @@ public class CommodityService implements BaseService<Commodity, CommodityExample
 	 */
 	 public PageInfo<Commodity> list(Tablepar tablepar,Commodity commodity){
  	        CommodityExample testExample=new CommodityExample();
- 	       testExample.createCriteria().andCreatorEqualTo(ShiroUtils.getUserId());
 			//搜索
 			if(StrUtil.isNotEmpty(tablepar.getSearchText())) {//小窗体
-	        	testExample.createCriteria().andLikeQuery2(tablepar.getSearchText());
+	        	testExample.createCriteria().andLikeQuery2(tablepar.getSearchText()).andCreatorEqualTo(ShiroUtils.getUserId());
 	        }else {//大搜索
-	        	testExample.createCriteria().andLikeQuery(commodity);
+	        	testExample.createCriteria().andLikeQuery(commodity).andCreatorEqualTo(ShiroUtils.getUserId());
 	        }
 			//表格排序
 			//if(StrUtil.isNotEmpty(tablepar.getOrderByColumn())) {

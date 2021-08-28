@@ -8,17 +8,25 @@
     <div class="layui-card-body">
         <form class="layui-form" action="">
             <div class="layui-form-item">
-                <label class="layui-form-label">名称</label>
+                <label class="layui-form-label">search</label>
                 <div class="layui-input-inline">
                     <input type="text" name="searchText" placeholder="" class="layui-input">
                 </div>
+                <label class="layui-form-label">Status</label>
+                <div class="layui-input-inline">
+                   <select name="status" id="status"   lay-filter="commodity-status" >
+                  		  <option value="">All</option>
+                          <option value="1">ON</option>
+                          <option value="0">OFF</option>
+                      </select>
+                </div>
                 <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="commodity-query">
                     <i class="layui-icon layui-icon-search"></i>
-                   	 查询
+                   	 search
                 </button>
                 <button type="reset" class="pear-btn pear-btn-md">
                     <i class="layui-icon layui-icon-refresh"></i>
-					重置
+					reset
                 </button>
             </div>
         </form>
@@ -34,27 +42,27 @@
 <script type="text/html" id="commodity-toolbar">
     <button shiro:hasPermission="gen:commodity:add" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="layui-icon layui-icon-add-1"></i>
-		 新增
+		 New
     </button>
     <button shiro:hasPermission="gen:commodity:remove" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
-		删除
+		Delete
     </button>
 </script>
 
 <script type="text/html" id="commodity-bar">
-    <button shiro:hasPermission="gen:commodity:edit" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit" title="修改"><i class="layui-icon layui-icon-edit"></i>
+    <button shiro:hasPermission="gen:commodity:edit" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit" title="Edit"><i class="layui-icon layui-icon-edit"></i>
     </button>
 
-    <button shiro:hasPermission="gen:commodity:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="删除"><i class="layui-icon  layui-icon-delete"></i>
+    <button shiro:hasPermission="gen:commodity:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="Delete"><i class="layui-icon  layui-icon-delete"></i>
     </button>
 
-    <button shiro:hasPermission="gen:commodity:view"  class="pear-btn pear-btn-warming pear-btn-md" lay-event="view" title="查看"><i class="layui-icon layui-icon-template"></i>
+    <button shiro:hasPermission="gen:commodity:view"  class="pear-btn pear-btn-warming pear-btn-md" lay-event="view" title="view"><i class="layui-icon layui-icon-template"></i>
     </button>
 </script>
 
 <script type="text/html" id="commodity-enable">
-    <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="commodity-enable" {{d.status== 1 ? 'checked' : '' }} >
+    <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="ON|OFF" lay-filter="commodity-enable" {{d.status== 1 ? 'checked' : '' }} >
 </script>
 
 <script type="text/html" id="commodity-type">
@@ -78,16 +86,16 @@
                 {type: 'checkbox'},
           
     		{title: 'ID', field: 'id', align: 'center'},
-    		{title: 'Title', field: 'title', align: 'center'},
+ //   		{title: 'Title', field: 'title', align: 'center'},
 			//{title: 'url', field: 'url', align: 'center'},
 			{title: 'creator', field: 'creatorName', align: 'center'},
 			{title: 'create date', field: 'createDate', align: 'center'},
-			{title: 'close date', field: 'closeDatetime', align: 'center'},
+//			{title: 'close date', field: 'closeDatetime', align: 'center'},
 	        {title: 'status', field: 'status', align: 'center',templet: '#commodity-enable'},
 			{title: 'category', field: 'categoryName', align: 'center'},
 			{title: 'templet', field: 'templetName', align: 'center'},
-			{title: 'Buy Now Price', field: 'buyNowPrice', align: 'center'},
-			{title: 'Starting price', field: 'startingPrice', align: 'center'},
+//			{title: 'Buy Now Price', field: 'buyNowPrice', align: 'center'},
+//			{title: 'Starting price', field: 'startingPrice', align: 'center'},
             {title: 'operation', toolbar: '#commodity-bar', align: 'center'}
             ]
         ]
@@ -133,6 +141,13 @@
         form.on('submit(commodity-query)', function (data) {
             table.reload('commodity-table', {where: data.field})
             return false;
+        });
+        
+        //查询按钮绑定
+        form.on('select(commodity-status)', function (data) {
+        	console.log(data);
+      //      table.reload('commodity-table', {where: data.field})
+      //      return false;
         });
 
         

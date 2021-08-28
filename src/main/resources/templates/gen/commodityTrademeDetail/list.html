@@ -59,6 +59,10 @@
     {{# } }}
 </script>
 
+<script type="text/html" id="commodity-enable">
+    <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="ON|OFF" lay-filter="commodity-enable" {{d.status== 1 ? 'checked' : '' }} >
+</script>
+
 <th:block th:include="include :: footer"/>
 <script>
     layui.use(['table', 'form', 'jquery'], function () {
@@ -73,26 +77,63 @@
                 
                 					{title: 'ID', field: 'id', align: 'center'},
 					
-									{title: 'CloseDate', field: 'closeDatetime', align: 'center'},
-					
 									{title: 'Title', field: 'title', align: 'center'},
 					
-									{title: 'Buy Now Price', field: 'buyNowPrice', align: 'center'},
-					
 									{title: 'Condition', field: 'conditionLevel', align: 'center'},
-					
-									{title: 'Description', field: 'description', align: 'center'},
-					
-									{title: 'Shipping ', field: 'shipping', align: 'center'},
-					
+									
 									{title: 'Starting price', field: 'startingPrice', align: 'center'},
+									
+									{title: 'Buy Now Price', field: 'buyNowPrice', align: 'center'},
+									
+									{title: 'create date', field: 'createDate', align: 'center'},
+									
+									{title: 'CloseDate', field: 'closeDatetime', align: 'center'},
+									
+									{title: 'category', field: 'categoryName', align: 'center'},
+									
+									{title: 'status', field: 'status', align: 'center',templet: '#commodity-enable'},
+									 
 					
-									{title: 'Reserve Status', field: 'reserveStatus', align: 'center'},
+								//	{title: 'Reserve Status', field: 'reserveStatus', align: 'center'},
+									
+									
 					
 				                
                 {title: '操作', toolbar: '#commodityTrademeDetail-bar', align: 'center'}
             ]
         ]
+        
+        
+        
+        //状态切换绑定
+        form.on('switch(commodity-enable)', function (obj) {
+            let operate;
+
+            if (obj.elem.checked) {
+                operate = 1;
+            } else {
+                operate = 0;
+            }
+
+            let loading = layer.load()
+
+            $.ajax({
+                url: rootPath+'/CommodityController/updateVisible',
+                data: JSON.stringify({id: this.value,status:operate}),
+                dataType: 'json',
+                contentType: 'application/json',
+                type: 'put',
+                success: function (result) {
+                    layer.close(loading);
+                    if (result.code==200) {
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2, time: 1000});
+                    }
+                }
+            })
+        });
 
         //table表单列表
         table.render({

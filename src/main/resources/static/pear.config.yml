@@ -63,7 +63,8 @@ links:
   title: "GitHub"
   href: "https://github.com/randolphvip/myPriceV2/"
 - icon: "layui-icon layui-icon-survey"
-  
+  title: "layUI"
+  href: "https://www.layui.com/doc/"
 ## 其他配置
 other: 
   ## 主页动画时长

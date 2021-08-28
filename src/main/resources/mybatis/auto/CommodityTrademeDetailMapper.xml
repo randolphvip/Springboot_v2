@@ -11,6 +11,10 @@
     <result column="shipping" jdbcType="VARCHAR" property="shipping" />
     <result column="starting_price" jdbcType="DECIMAL" property="startingPrice" />
     <result column="reserve_status" jdbcType="VARCHAR" property="reserveStatus" />
+    
+    <result column="category_name" jdbcType="INTEGER" property="categoryName" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -80,7 +84,24 @@
        	  	      	description,
        	  	      	shipping,
        	  	      	starting_price,
-       	  	    	  	reserve_status
+       	  	    	reserve_status
+       	  	
+  </sql>
+  
+    <sql id="Base_Column_List_extend_commondity">
+  
+	  	  	      	c.id,
+       	  	      	close_datetime,
+       	  	      	title,
+       	  	      	buy_now_price,
+       	  	      	condition_level,
+       	  	      	description,
+       	  	      	shipping,
+       	  	      	starting_price,
+       	  	    	reserve_status,
+       	  	    	create_date,
+       	  	    	status,
+       	  	    	( select product_type_name  from t_product_type p where p.id=c.category_id   ) as category_name
        	  	
   </sql>
   
@@ -89,8 +110,8 @@
     <if test="distinct">
       distinct
     </if>
-    <include refid="Base_Column_List" />
-    from u_commodity_trademe_detail
+    <include refid="Base_Column_List_extend_commondity" />
+    from u_commodity_trademe_detail d inner join u_commodity c on d.id= c.id 
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

@@ -14,10 +14,10 @@
      <result column="templet_name" jdbcType="VARCHAR" property="templetName" />
     <result column="frequence" jdbcType="VARCHAR" property="frequence" />
     
-   	<result column="title" jdbcType="VARCHAR" property="title" />
+   	<!--result column="title" jdbcType="VARCHAR" property="title" />
     <result column="buy_now_price" jdbcType="DECIMAL" property="buyNowPrice" />
     <result column="starting_price" jdbcType="DECIMAL" property="startingPrice" />
-     <result column="close_datetime" jdbcType="TIMESTAMP" property="closeDatetime" />
+     <result column="close_datetime" jdbcType="TIMESTAMP" property="closeDatetime" /-->
    </resultMap>
    
    
@@ -66,18 +66,20 @@
        	  	      	c.frequence as category_id,
        	  	     	(select username  from t_sys_user u where u.id=c.creator) as creator_name,
        	  	    	( select name  from u_template t where t.id=c.templet_id  ) as templet_name,
-       	  	    	( select product_type_name  from t_product_type p where p.id=c.category_id   ) as category_name,
+       	  	    	( select product_type_name  from t_product_type p where p.id=c.category_id   ) as category_name
+       	  	    	
+       	  	    	<!-- ,
        	  	    	d.title as title,
        	  	    	d.close_datetime as close_datetime,
        	  	    	d.buy_now_price as buy_now_price,
-       	  	    	d.starting_price as starting_price
+       	  	    	d.starting_price as starting_price -->
        	  	
   </sql>
   
   <select id="queryCommodityList" parameterType="com.myprice.model.auto.CommodityExample" resultMap="BaseResultMap2">
     select
     <include refid="Base_Column_List2" />
-    from u_commodity c left join u_commodity_trademe_detail d  on c.id =d.id 
+    from u_commodity c  
     <if test="_parameter != null">
       <include refid="Example_Where_Clause2" />
     </if>

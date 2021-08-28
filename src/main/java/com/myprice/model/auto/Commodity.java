@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import cn.hutool.core.date.DateUtil;
 import io.swagger.annotations.ApiModelProperty;
 
-public class Commodity   extends CommodityTrademeDetail implements Serializable{
+public class Commodity  implements Serializable{
     private static final long serialVersionUID = 1L;
 
 	

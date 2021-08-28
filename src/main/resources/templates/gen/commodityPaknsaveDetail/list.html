@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.pollix.at/thymeleaf/shiro">
 <head>
-    <th:block th:include="include :: header('${tableInfo.tableComment}列表')"/>
+    <th:block th:include="include :: header('paknsave列表')"/>
 </head>
 <body class="pear-container">
 <div class="layui-card">
@@ -12,13 +12,13 @@
                 <div class="layui-input-inline">
                     <input type="text" name="searchText" placeholder="" class="layui-input">
                 </div>
-                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="${tableInfo.javaTableName_a}-query">
+                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="commodityPaknsaveDetail-query">
                     <i class="layui-icon layui-icon-search"></i>
-                   	 search
+                   	 查询
                 </button>
                 <button type="reset" class="pear-btn pear-btn-md">
                     <i class="layui-icon layui-icon-refresh"></i>
-					reset
+					重置
                 </button>
             </div>
         </form>
@@ -26,37 +26,41 @@
 </div>
 <div class="layui-card">
     <div class="layui-card-body">
-        <table id="${tableInfo.javaTableName_a}-table" lay-filter="${tableInfo.javaTableName_a}-table"></table>
+        <table id="commodityPaknsaveDetail-table" lay-filter="commodityPaknsaveDetail-table"></table>
     </div>
 </div>
 </body>
 
-<script type="text/html" id="${tableInfo.javaTableName_a}-toolbar">
-    <button shiro:hasPermission="gen:${tableInfo.javaTableName_a}:add" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+<script type="text/html" id="commodityPaknsaveDetail-toolbar">
+    <button shiro:hasPermission="gen:commodityPaknsaveDetail:add" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="layui-icon layui-icon-add-1"></i>
-		 New
+		 新增
     </button>
-    <button shiro:hasPermission="gen:${tableInfo.javaTableName_a}:remove" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+    <button shiro:hasPermission="gen:commodityPaknsaveDetail:remove" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
-		Delete
+		删除
     </button>
 </script>
 
-<script type="text/html" id="${tableInfo.javaTableName_a}-bar">
-    <button shiro:hasPermission="gen:${tableInfo.javaTableName_a}:edit" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit" title="Edit"><i class="layui-icon layui-icon-edit"></i>
+<script type="text/html" id="commodityPaknsaveDetail-bar">
+    <button shiro:hasPermission="gen:commodityPaknsaveDetail:edit" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit" title="修改"><i class="layui-icon layui-icon-edit"></i>
     </button>
 
-    <button shiro:hasPermission="gen:${tableInfo.javaTableName_a}:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="Delete"><i class="layui-icon layui-icon-delete"></i>
+    <button shiro:hasPermission="gen:commodityPaknsaveDetail:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="删除"><i class="layui-icon layui-icon-delete"></i>
     </button>
+</script>
+<script type="text/html" id="commodity-enable">
+    <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="ON|OFF" lay-filter="commodity-enable" {{d.status== 1 ? 'checked' : '' }} >
 </script>
 
 
-<script type="text/html" id="${tableInfo.javaTableName_a}-type">
-    {{\#if (d.dataState == '0') { }}
+<script type="text/html" id="commodityPaknsaveDetail-type">
+  /*  {{#if (d.dataState == '0') { }}
     <span class="layui-badge layui-bg-orange">开启</span>
     {{# }else if(d.dataState == '-1'){ }}
     <span class="layui-badge layui-bg-blue">关闭</span>
     {{# } }}
+*/
 </script>
 
 <th:block th:include="include :: footer"/>
@@ -66,37 +70,81 @@
         let form = layui.form;
         let $ = layui.jquery;
 
-        let MODULE_PATH = rootPath+"/${tableInfo.javaTableName}Controller/";
+        let MODULE_PATH = rootPath+"/CommodityPaknsaveDetailController/";
         let cols = [
             [
-                {type: 'checkbox'},
-                
-                #foreach ($column in $beanColumns)
-					{title: '${column.column_comment}', field: '${column.beanName}', align: 'center'},
-					
-				#end
-                
-                {title: '操作', toolbar: '#${tableInfo.javaTableName_a}-bar', align: 'center'}
+							{type: 'checkbox'},
+							                
+							{title: 'ID', field: 'id', align: 'center'},
+							
+							{title: 'Title', field: 'title', align: 'center'},
+							
+							{title: 'Description', field: 'description', align: 'center'},
+							
+							{title: 'Starting price', field: 'price', align: 'center'},
+							
+							{title: 'iamge', field: 'img', align: 'center'},
+							
+							{title: 'unit', field: 'unit', align: 'center'},
+							
+							{title: 'create date', field: 'createDate', align: 'center'},
+							
+							{title: 'category', field: 'categoryName', align: 'center'},
+							
+							{title: 'status', field: 'status', align: 'center',templet: '#commodity-enable'},
+							           
+							{title: '操作', toolbar: '#commodityPaknsaveDetail-bar', align: 'center'}
             ]
         ]
 
         //table表单列表
         table.render({
-            elem: '#${tableInfo.javaTableName_a}-table',
+            elem: '#commodityPaknsaveDetail-table',
             url: MODULE_PATH + 'list',
             page: true,
             method: 'get',
             cols: cols,
             skin: 'line',
-            toolbar: '#${tableInfo.javaTableName_a}-toolbar',
+            toolbar: '#commodityPaknsaveDetail-toolbar',
             defaultToolbar: [{
                 layEvent: 'refresh',
                 icon: 'layui-icon-refresh',
             }, 'filter', 'print', 'exports']
         });
+        
+        
+        //状态切换绑定
+        form.on('switch(commodity-enable)', function (obj) {
+            let operate;
+
+            if (obj.elem.checked) {
+                operate = 1;
+            } else {
+                operate = 0;
+            }
+
+            let loading = layer.load()
+
+            $.ajax({
+                url: rootPath+'/CommodityController/updateVisible',
+                data: JSON.stringify({id: this.value,status:operate}),
+                dataType: 'json',
+                contentType: 'application/json',
+                type: 'put',
+                success: function (result) {
+                    layer.close(loading);
+                    if (result.code==200) {
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2, time: 1000});
+                    }
+                }
+            })
+        });
 
         //table图标事件绑定
-        table.on('tool(${tableInfo.javaTableName_a}-table)', function (obj) {
+        table.on('tool(commodityPaknsaveDetail-table)', function (obj) {
             if (obj.event === 'remove') {
                 window.remove(obj);
             } else if (obj.event === 'edit') {
@@ -105,7 +153,7 @@
         });
 
         //table工具栏绑定
-        table.on('toolbar(${tableInfo.javaTableName_a}-table)', function (obj) {
+        table.on('toolbar(commodityPaknsaveDetail-table)', function (obj) {
             if (obj.event === 'add') {
                 window.add();
             } else if (obj.event === 'refresh') {
@@ -116,8 +164,8 @@
         });
 
         //查询按钮绑定
-        form.on('submit(${tableInfo.javaTableName_a}-query)', function (data) {
-            table.reload('${tableInfo.javaTableName_a}-table', {where: data.field})
+        form.on('submit(commodityPaknsaveDetail-query)', function (data) {
+            table.reload('commodityPaknsaveDetail-table', {where: data.field})
             return false;
         });
 
@@ -188,7 +236,7 @@
                         layer.close(loading);
                         if (result.code==200) {
                             layer.msg(result.msg, {icon: 1, time: 1000}, function () {
-                                table.reload('${tableInfo.javaTableName_a}-table');
+                                table.reload('commodityPaknsaveDetail-table');
                             });
                         } else {
                             layer.msg(result.msg, {icon: 2, time: 1000});
@@ -199,7 +247,7 @@
         }
         //刷新按钮
         window.refresh = function () {
-            table.reload('${tableInfo.javaTableName_a}-table');
+            table.reload('commodityPaknsaveDetail-table');
         }
     })
 </script>
