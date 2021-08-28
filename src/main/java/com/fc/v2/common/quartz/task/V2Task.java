@@ -64,8 +64,7 @@ public class V2Task {
 		CommodityExample commodity =new CommodityExample();
 		commodity.createCriteria().andTempletIdEqualTo(1);
 		List<Commodity> list  =commodityService.selectByExample(commodity);
-		
-//2.创建线程池
+		//2.创建线程池
 		ExecutorService exec= Executors.newFixedThreadPool(3);
 		
 		for (Commodity commodity2 : list) {
@@ -77,10 +76,7 @@ public class V2Task {
 	}
 	
 	public void runTradeMeCrawlerByHour(String source) {
-		
 		//ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
-
-		
 	}
 	
 	
@@ -95,7 +91,7 @@ class CrawlerTask implements Runnable  {
 	 public void run() {
 		System.out.println("当前线程："+Thread.currentThread().getName()+":"+url);
 		//抓取数据：
-		TradeMeCrawler.doCrawler(url);
+		//TradeMeCrawler.doCrawler(url);
 		 
 		
 	}

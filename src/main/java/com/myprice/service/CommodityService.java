@@ -48,6 +48,7 @@ public class CommodityService implements BaseService<Commodity, CommodityExample
 	 */
 	 public PageInfo<Commodity> list(Tablepar tablepar,Commodity commodity){
  	        CommodityExample testExample=new CommodityExample();
+ 	       testExample.createCriteria().andCreatorEqualTo(ShiroUtils.getUserId());
 			//搜索
 			if(StrUtil.isNotEmpty(tablepar.getSearchText())) {//小窗体
 	        	testExample.createCriteria().andLikeQuery2(tablepar.getSearchText());
@@ -61,9 +62,9 @@ public class CommodityService implements BaseService<Commodity, CommodityExample
 	        //	testExample.setOrderByClause("id ASC");
 	        //}
 	        PageHelper.startPage(tablepar.getPage(), tablepar.getLimit());
-	        List<Commodity> list= commodityMapper.queryCommodityList(tablepar.getSearchText());
+	       List<Commodity> list= commodityMapper.queryCommodityList(testExample);
 	        
-//	        List<Commodity> list= commodityMapper.selectByExample(testExample);
+	           //     List<Commodity> list= commodityMapper.selectByExample(testExample);
 	        PageInfo<Commodity> pageInfo = new PageInfo<Commodity>(list);
 	        return  pageInfo;
 	 }

@@ -752,7 +752,7 @@ public class CommodityExample {
         public Criteria andLikeQuery2(String searchText) {
 		 	List<String> list= new ArrayList<String>();
         	StringBuffer buffer=new StringBuffer();
-    		list.add("ifnull(id,'')");
+    		list.add("ifnull(c.id,'')");
     		list.add("ifnull(url,'')");
     		list.add("ifnull(creator,'')");
     		list.add("ifnull(create_date,'')");
@@ -766,6 +766,7 @@ public class CommodityExample {
         	buffer.append("like '%");
         	buffer.append(searchText);
         	buffer.append("%'");
+        	System.out.println("--->buffer："+buffer.toString());
         	addCriterion(buffer.toString());
         	return (Criteria) this;
         }

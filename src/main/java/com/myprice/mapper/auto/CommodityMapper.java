@@ -36,5 +36,7 @@ public interface CommodityMapper {
     int updateByPrimaryKey(Commodity record);
 
  	List<Commodity> queryCommodityList(String searchText);
+ 	
+	List<Commodity> queryCommodityList(CommodityExample example);
   	  	
 }
