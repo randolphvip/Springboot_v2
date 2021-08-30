@@ -1,22 +1,21 @@
 package com.fc.v2.service;
 
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import cn.hutool.core.util.StrUtil;
+
 import com.fc.v2.common.base.BaseService;
 import com.fc.v2.common.support.ConvertUtil;
 import com.fc.v2.mapper.auto.ProductTypeMapper;
 import com.fc.v2.model.auto.ProductType;
 import com.fc.v2.model.auto.ProductTypeExample;
-import com.fc.v2.model.auto.SysDepartment;
-import com.fc.v2.model.auto.SysDepartmentExample;
 import com.fc.v2.model.custom.Tablepar;
-import com.fc.v2.util.SnowflakeIdWorker;
-import com.fc.v2.util.StringUtils;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
+import cn.hutool.core.util.StrUtil;
 
 /**
  * 产品分类 ProductTypeService
@@ -130,7 +129,7 @@ public class ProductTypeService implements BaseService<ProductType, ProductTypeE
 
 	@Override
 	public List<ProductType> selectByExample(ProductTypeExample example) {
-		
+		example.createCriteria().andStatusEqualTo(1);
 		return productTypeMapper.selectByExample(example);
 	}
 

@@ -82,7 +82,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_product_type
+    from u_product_type
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,23 +93,23 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_product_type
+    from u_product_type
     where id = #{id,jdbcType=INTEGER}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_product_type
+    delete from u_product_type
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.fc.v2.model.auto.ProductTypeExample">
-    delete from t_product_type
+    delete from u_product_type
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   
   <insert id="insert" parameterType="com.fc.v2.model.auto.ProductType">
-    insert into t_product_type (
+    insert into u_product_type (
       	  	       id,
        	  	       parent_id,
        	  	       product_type_name,
@@ -126,7 +126,7 @@
   </insert>
   
   <insert id="insertSelective" parameterType="com.fc.v2.model.auto.ProductType">
-    insert into t_product_type
+    insert into u_product_type
     <trim prefix="(" suffix=")" suffixOverrides=",">
           
       <if test="id != null">
@@ -169,14 +169,14 @@
   </insert>
   
   <select id="countByExample" parameterType="com.fc.v2.model.auto.ProductTypeExample" resultType="java.lang.Long">
-    select count(*) from t_product_type
+    select count(*) from u_product_type
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   
   <update id="updateByExampleSelective" parameterType="map">
-    update t_product_type
+    update u_product_type
     <set>
           <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -202,7 +202,7 @@
   
   
   <update id="updateByExample" parameterType="map">
-    update t_product_type
+    update u_product_type
     set
             	     	 
     	 id = #{record.id,jdbcType=INTEGER},
@@ -222,7 +222,7 @@
   
   
       <update id="updateByPrimaryKeySelective" parameterType="com.fc.v2.model.auto.ProductType">
-    update t_product_type
+    update u_product_type
     <set>
                           
       <if test="parentId != null">
@@ -251,7 +251,7 @@
       	      	   	      	   	      	   	      	   	      	
 
   <update id="updateByPrimaryKey" parameterType="com.fc.v2.model.auto.ProductType">
-    update t_product_type
+    update u_product_type
     set 
     		 		 	  	  
 		parent_id = #{parentId,jdbcType=VARCHAR},

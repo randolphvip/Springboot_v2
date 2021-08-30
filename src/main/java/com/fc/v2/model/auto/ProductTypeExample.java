@@ -1,8 +1,8 @@
 package com.fc.v2.model.auto;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
 import cn.hutool.core.util.StrUtil;
 
 /**
@@ -12,7 +12,7 @@ import cn.hutool.core.util.StrUtil;
  */
 public class ProductTypeExample {
 
-    protected String orderByClause;
+    protected String orderByClause = " order_num ASC ";
 
     protected boolean distinct;
 

@@ -91,7 +91,7 @@
        	  	    	unit,
        	  	    	create_date,
        	  	    	status,
-       	  	    	( select product_type_name  from t_product_type p where p.id=c.category_id   ) as category_name
+       	  	    	( select product_type_name  from u_product_type p where p.id=c.category_id   ) as category_name
        	  	
   </sql>
   <select id="selectByExample" parameterType="com.myprice.model.auto.CommodityPaknsaveDetailExample" resultMap="BaseResultMap">

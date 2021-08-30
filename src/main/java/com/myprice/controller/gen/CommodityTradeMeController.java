@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,38 +18,38 @@ import com.fc.v2.common.domain.AjaxResult;
 import com.fc.v2.common.domain.ResultTable;
 import com.fc.v2.model.custom.Tablepar;
 import com.github.pagehelper.PageInfo;
-import com.myprice.model.auto.Product;
-import com.myprice.service.ProductService;
+import com.myprice.model.auto.CommodityTradeMe;
+import com.myprice.service.CommodityTradeMeService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 /**
- * Controller
- * @ClassName: ProductController
+ * Trade MeController
+ * @ClassName: CommodityTradeMeController
  * @author Cong
- * @date 2021-08-22 01:33:35
+ * @date 2021-08-29 16:56:02
  */
-@Api(value = "")
+@Api(value = "Trade Me")
 @Controller
-@RequestMapping("/ProductController")
-public class ProductController extends BaseController{
+@RequestMapping("/CommodityTradeMeController")
+public class CommodityTradeMeController extends BaseController{
 	
-	private String prefix = "gen/product";
+	private String prefix = "gen/commodityTradeMe";
 	
 	@Autowired
-	private ProductService productService;
+	private CommodityTradeMeService commodityTradeMeService;
 	
 	
 	/**
-	 * 页面展示
+	 * Trade Me页面展示
 	 * @param model
 	 * @return String
 	 * @author Cong
 	 */
 	@ApiOperation(value = "分页跳转", notes = "分页跳转")
 	@GetMapping("/view")
-	@RequiresPermissions("gen:product:view")
+	@RequiresPermissions("gen:CommodityTradeMe:view")
     public String view(ModelMap model)
     {
         return prefix + "/list";
@@ -59,13 +61,13 @@ public class ProductController extends BaseController{
 	 * @param searchText
 	 * @return
 	 */
-	//@Log(title = "", action = "111")
+	//@Log(title = "Trade Me", action = "111")
 	@ApiOperation(value = "分页跳转", notes = "分页跳转")
 	@GetMapping("/list")
-	@RequiresPermissions("gen:product:list")
+	@RequiresPermissions("gen:CommodityTradeMe:list")
 	@ResponseBody
-	public ResultTable list(Tablepar tablepar,Product product){
-		PageInfo<Product> page=productService.list(tablepar,product) ; 
+	public ResultTable list(Tablepar tablepar,CommodityTradeMe commodityTradeMe){
+		PageInfo<CommodityTradeMe> page=commodityTradeMeService.list(tablepar,commodityTradeMe) ; 
 		return pageTable(page.getList(),page.getTotal());
 	}
 	
@@ -84,13 +86,13 @@ public class ProductController extends BaseController{
      * @param 
      * @return
      */
-	//@Log(title = "新增", action = "111")
+	//@Log(title = "Trade Me新增", action = "111")
 	@ApiOperation(value = "新增", notes = "新增")
 	@PostMapping("/add")
-	@RequiresPermissions("gen:product:add")
+	@RequiresPermissions("gen:CommodityTradeMe:add")
 	@ResponseBody
-	public AjaxResult add(Product product){
-		int b=productService.insertSelective(product);
+	public AjaxResult add(CommodityTradeMe commodityTradeMe){
+		int b=commodityTradeMeService.insertSelective(commodityTradeMe);
 		if(b>0){
 			return success();
 		}else{
@@ -99,17 +101,17 @@ public class ProductController extends BaseController{
 	}
 	
 	/**
-	 * 删除
+	 * Trade Me删除
 	 * @param ids
 	 * @return
 	 */
-	//@Log(title = "删除", action = "111")
+	//@Log(title = "Trade Me删除", action = "111")
 	@ApiOperation(value = "删除", notes = "删除")
 	@DeleteMapping("/remove")
-	@RequiresPermissions("gen:product:remove")
+	@RequiresPermissions("gen:CommodityTradeMe:remove")
 	@ResponseBody
 	public AjaxResult remove(String ids){
-		int b=productService.deleteByPrimaryKey(ids);
+		int b=commodityTradeMeService.deleteByPrimaryKey(ids);
 		if(b>0){
 			return success();
 		}else{
@@ -128,26 +130,40 @@ public class ProductController extends BaseController{
 	@GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") String id, ModelMap map)
     {
-        map.put("Product", productService.selectByPrimaryKey(id));
+        map.put("CommodityTradeMe", commodityTradeMeService.selectByPrimaryKey(id));
 
         return prefix + "/edit";
     }
 	
+	
+	
 	/**
      * 修改保存
      */
-    //@Log(title = "修改", action = "111")
+    //@Log(title = "Trade Me修改", action = "111")
 	@ApiOperation(value = "修改保存", notes = "修改保存")
-    @RequiresPermissions("gen:product:edit")
+    @RequiresPermissions("gen:CommodityTradeMe:edit")
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(Product product)
+    public AjaxResult editSave(CommodityTradeMe commodityTradeMe)
     {
-        return toAjax(productService.updateByPrimaryKeySelective(product));
+        return toAjax(commodityTradeMeService.updateByPrimaryKeySelective(commodityTradeMe));
     }
+	
+    
+	/**
+	 * 修改状态
+	 * @param record
+	 * @return
+	 */
+    @PutMapping("/updateVisible")
+	@ResponseBody
+    public AjaxResult updateVisible(@RequestBody CommodityTradeMe commodityTradeMe){
+		int i=commodityTradeMeService.updateByPrimaryKeySelective(commodityTradeMe);
+		 return toAjax(i);
+	}
 
-    
-    
+
 
 	
 }

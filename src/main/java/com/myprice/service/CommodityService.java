@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fc.v2.common.base.BaseService;
 import com.fc.v2.common.support.ConvertUtil;
@@ -15,12 +17,10 @@ import com.fc.v2.model.custom.Tablepar;
 import com.fc.v2.shiro.util.ShiroUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.myprice.crawler.TradeMeCrawler;
 import com.myprice.mapper.auto.CommodityMapper;
 import com.myprice.model.auto.Commodity;
 import com.myprice.model.auto.CommodityExample;
-import com.myprice.model.auto.CommodityTrademeDetail;
-
+ 
 import cn.hutool.core.util.StrUtil;
 
 /**
@@ -36,8 +36,7 @@ public class CommodityService implements BaseService<Commodity, CommodityExample
 	@Autowired
 	private CommodityMapper commodityMapper;
 	
-	@Autowired
-	private CommodityTrademeDetailService commodityTrademeDetailService;
+	 
 	private static final Logger log = LoggerFactory.getLogger(CommodityService.class);
       	   	      	      	      	      	      	      	      	      	      	
 	/**
@@ -100,6 +99,7 @@ public class CommodityService implements BaseService<Commodity, CommodityExample
 	 * 添加
 	 */
 	@Override
+	@Transactional(propagation =Propagation.REQUIRED)
 	public int insertSelective(Commodity record) {
 		int status =0;
 		record.setId(null);
@@ -108,16 +108,16 @@ public class CommodityService implements BaseService<Commodity, CommodityExample
 		status=commodityMapper.insertSelective(record);
 		if(status>0) {
 			System.out.println("commondityID:"+ record.getId());
-			CommodityTrademeDetail tradeMeDetail =new CommodityTrademeDetail();
+//			CommodityTradeMeDetail tradeMeDetail =new CommodityTradeMeDetail();
 //					tradeMeDetail.setId(record.getId()-1);
 //			commodityTrademeDetailService.insertSelective(tradeMeDetail);
 //			
 			
-			tradeMeDetail =TradeMeCrawler.doCrawlerDetail(record.getId(),record.getUrl());
-			log.debug("begin to save the detail of the commodity.");
-			System.out.println(tradeMeDetail.toString());
-			 
-			commodityTrademeDetailService.insertSelective(tradeMeDetail);
+//		//	tradeMeDetail =TradeMeCrawler.doCrawlerDetail(record.getId(),record.getUrl());
+//			log.debug("begin to save the detail of the commodity.");
+//			System.out.println(tradeMeDetail.toString());
+//			 
+//			commodityTrademeDetailService.insertSelective(tradeMeDetail);
 			
 		}else {
 			System.out.println("fail to save :"+status);

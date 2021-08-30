@@ -191,7 +191,7 @@ public class DateUtils  extends org.apache.commons.lang3.time.DateUtils{
     		*/
     		//1.去除掉日期的后缀。
     		tradeMeString =tradeMeString.substring(tradeMeString.indexOf(" ")+1);
-    		tradeMeString=tradeMeString.replace("nd", "").replace("st", "").replace("th", "");
+    		tradeMeString=tradeMeString.replace("nd", "").replace("st", "").replace("th", "").replace("rd", "");
 //    		tradeMeString=tradeMeString.replace("st", "");
 //    		tradeMeString=tradeMeString.replace("th", "");
     		String APM="";

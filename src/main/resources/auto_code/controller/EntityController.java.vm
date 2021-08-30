@@ -1,9 +1,9 @@
 package ${parentPack}.controller.gen;
 
-import ${parentPack}.common.base.BaseController;
-import ${parentPack}.common.domain.AjaxResult;
-import ${parentPack}.common.domain.ResultTable;
-import ${parentPack}.model.custom.Tablepar;
+import com.fc.v2..common.base.BaseController;
+import com.fc.v2..common.domain.AjaxResult;
+import com.fc.v2..common.domain.ResultTable;
+import com.fc.v2..model.custom.Tablepar;
 import ${parentPack}.model.auto.${tableInfo.javaTableName};
 import ${parentPack}.service.${tableInfo.javaTableName}Service;
 import com.github.pagehelper.PageInfo;

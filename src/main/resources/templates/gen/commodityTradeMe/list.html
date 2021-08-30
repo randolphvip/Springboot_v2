@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.pollix.at/thymeleaf/shiro">
 <head>
-    <th:block th:include="include :: header('列表')"/>
+    <th:block th:include="include :: header('Trade Me列表')"/>
 </head>
 <body class="pear-container">
 <div class="layui-card">
@@ -12,13 +12,13 @@
                 <div class="layui-input-inline">
                     <input type="text" name="searchText" placeholder="" class="layui-input">
                 </div>
-                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="product-query">
+                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="CommodityTradeMe-query">
                     <i class="layui-icon layui-icon-search"></i>
-                   	 查询
+                   	 search
                 </button>
                 <button type="reset" class="pear-btn pear-btn-md">
                     <i class="layui-icon layui-icon-refresh"></i>
-					重置
+					reset
                 </button>
             </div>
         </form>
@@ -26,32 +26,40 @@
 </div>
 <div class="layui-card">
     <div class="layui-card-body">
-        <table id="product-table" lay-filter="product-table"></table>
+        <table id="CommodityTradeMe-table" lay-filter="CommodityTradeMe-table"></table>
     </div>
 </div>
 </body>
 
-<script type="text/html" id="product-toolbar">
-    <button shiro:hasPermission="gen:product:add" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+<script type="text/html" id="CommodityTradeMe-toolbar">
+    <button shiro:hasPermission="gen:CommodityTradeMe:add" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="layui-icon layui-icon-add-1"></i>
-		 新增
+		 New
     </button>
-    <button shiro:hasPermission="gen:product:remove" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+    <button shiro:hasPermission="gen:CommodityTradeMe:remove" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
-		删除
+		Delete
     </button>
 </script>
 
-<script type="text/html" id="product-bar">
-    <button shiro:hasPermission="gen:product:edit" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit" title="修改"><i class="layui-icon layui-icon-edit"></i>
+<script type="text/html" id="CommodityTradeMe-bar">
+    <button shiro:hasPermission="gen:CommodityTradeMe:edit" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit" title="Edit"><i class="layui-icon layui-icon-edit"></i>
     </button>
 
-    <button shiro:hasPermission="gen:product:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="删除"><i class="layui-icon layui-icon-delete"></i>
+    <button shiro:hasPermission="gen:CommodityTradeMe:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="Delete"><i class="layui-icon layui-icon-delete"></i>
+    </button>
+
+  <button shiro:hasPermission="gen:commodity:view"  class="pear-btn pear-btn-warming pear-btn-md" lay-event="view" title="view"><i class="layui-icon layui-icon-template"></i>
     </button>
 </script>
 
+<script type="text/html" id="commodity-enable">
+    <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="ON|OFF" lay-filter="commodity-enable" {{d.status== 1 ? 'checked' : '' }} >
+</script>
 
-<script type="text/html" id="product-type">
+
+
+<script type="text/html" id="CommodityTradeMe-type">
     {{#if (d.dataState == '0') { }}
     <span class="layui-badge layui-bg-orange">开启</span>
     {{# }else if(d.dataState == '-1'){ }}
@@ -66,35 +74,45 @@
         let form = layui.form;
         let $ = layui.jquery;
 
-        let MODULE_PATH = rootPath+"/ProductController/";
+        let MODULE_PATH = rootPath+"/CommodityTradeMeController/";
         let cols = [
             [
                 {type: 'checkbox'},
                 
-                					{title: 'ProductID', field: 'productId', align: 'center'},
+                					{title: 'ID', field: 'id', align: 'center',width: 70},
+                					
+                					{title: 'Title ', field: 'title', align: 'center'},
 					
-									{title: 'ProductName', field: 'productName', align: 'center'},
+//									{title: 'URL', field: 'url', align: 'center'},
+									{title: 'Condition', field: 'conditionLevel', align: 'center',width: 90},
+									
+									{title: 'Category', field: 'categoryName', align: 'center',width: 150},
 					
-									{title: 'Description', field: 'productDesc', align: 'center'},
+									{title: 'Starting Price', field: 'startingPrice', align: 'center',width: 120},
+									
+									{title: 'Buy Now Price', field: 'buyNowPrice', align: 'center',width: 120},
+									
+									{title: 'Create Date', field: 'createDate', align: 'center',width: 155},
+									
+									{title: 'Close Date', field: 'closeDatetime', align: 'center',width: 155},
 					
-									{title: 'Status', field: 'status', align: 'center'},
-					
-									{title: 'Categrory', field: 'categroryId', align: 'center'},
+									{title: 'status', field: 'status', align: 'center',templet: '#commodity-enable' ,width: 100},
+//									{title: 'Reserve Status', field: 'reserveStatus', align: 'center'},
 					
 				                
-                {title: '操作', toolbar: '#product-bar', align: 'center'}
+                {title: 'operation', toolbar: '#CommodityTradeMe-bar', align: 'center',width: 150}
             ]
         ]
 
         //table表单列表
         table.render({
-            elem: '#product-table',
+            elem: '#CommodityTradeMe-table',
             url: MODULE_PATH + 'list',
             page: true,
             method: 'get',
             cols: cols,
             skin: 'line',
-            toolbar: '#product-toolbar',
+            toolbar: '#CommodityTradeMe-toolbar',
             defaultToolbar: [{
                 layEvent: 'refresh',
                 icon: 'layui-icon-refresh',
@@ -102,16 +120,18 @@
         });
 
         //table图标事件绑定
-        table.on('tool(product-table)', function (obj) {
+        table.on('tool(CommodityTradeMe-table)', function (obj) {
             if (obj.event === 'remove') {
                 window.remove(obj);
             } else if (obj.event === 'edit') {
                 window.edit(obj);
+            }else if (obj.event === 'view') {
+                window.view(obj);
             }
         });
 
         //table工具栏绑定
-        table.on('toolbar(product-table)', function (obj) {
+        table.on('toolbar(CommodityTradeMe-table)', function (obj) {
             if (obj.event === 'add') {
                 window.add();
             } else if (obj.event === 'refresh') {
@@ -122,11 +142,17 @@
         });
 
         //查询按钮绑定
-        form.on('submit(product-query)', function (data) {
-            table.reload('product-table', {where: data.field})
+        form.on('submit(CommodityTradeMe-query)', function (data) {
+            table.reload('CommodityTradeMe-table', {where: data.field})
             return false;
         });
+       
+            
 
+          //查看原始页面
+         window.view = function (obj) {
+             window.open(obj.data['url']);
+         }
 
         //添加
         window.add = function () {
@@ -170,6 +196,38 @@
                 })
             });
         }
+        
+        
+        //状态切换绑定
+        form.on('switch(commodity-enable)', function (obj) {
+            let operate;
+
+            if (obj.elem.checked) {
+                operate = 1;
+            } else {
+                operate = 0;
+            }
+
+            let loading = layer.load()
+
+            $.ajax({
+                url: MODULE_PATH+'updateVisible',
+                data: JSON.stringify({id: this.value,status:operate}),
+                dataType: 'json',
+                contentType: 'application/json',
+                type: 'put',
+                success: function (result) {
+                    layer.close(loading);
+                    if (result.code==200) {
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2, time: 1000});
+                    }
+                }
+            })
+        });
+
 
         //批量删除
         window.batchRemove = function (obj) {
@@ -194,7 +252,7 @@
                         layer.close(loading);
                         if (result.code==200) {
                             layer.msg(result.msg, {icon: 1, time: 1000}, function () {
-                                table.reload('product-table');
+                                table.reload('CommodityTradeMe-table');
                             });
                         } else {
                             layer.msg(result.msg, {icon: 2, time: 1000});
@@ -205,7 +263,7 @@
         }
         //刷新按钮
         window.refresh = function () {
-            table.reload('product-table');
+            table.reload('CommodityTradeMe-table');
         }
     })
 </script>

@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import cn.hutool.core.util.StrUtil;
-import ${parentPack}.common.base.BaseService;
-import ${parentPack}.common.support.ConvertUtil;
+import com.fc.v2.common.base.BaseService;
+import com.fc.v2.common.support.ConvertUtil;
 import ${parentPack}.mapper.auto.${tableInfo.javaTableName}Mapper;
 import ${parentPack}.model.auto.${tableInfo.javaTableName};
 import ${parentPack}.model.auto.${tableInfo.javaTableName}Example;
-import ${parentPack}.model.custom.Tablepar;
-import ${parentPack}.util.SnowflakeIdWorker;
-import ${parentPack}.util.StringUtils;
+import com.fc.v2.model.custom.Tablepar;
+import com.fc.v2.util.SnowflakeIdWorker;
+import com.fc.v2.util.StringUtils;
 
 /**
  * ${tableInfo.tableComment} ${tableInfo.javaTableName}Service
@@ -28,6 +28,8 @@ import ${parentPack}.util.StringUtils;
 public class ${tableInfo.javaTableName}Service implements BaseService<${tableInfo.javaTableName}, ${tableInfo.javaTableName}Example>{
 	@Autowired
 	private ${tableInfo.javaTableName}Mapper ${tableInfo.javaTableName_a}Mapper;
+	
+	private static final Logger log = LoggerFactory.getLogger(${tableInfo.javaTableName}Service.class);
 	
    #set( $pklag = false)
    #set( $pkfield = '' )

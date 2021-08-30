@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myprice.mapper.auto.CommodityTradeMeMapper">
+  <resultMap id="BaseResultMap" type="com.myprice.model.auto.CommodityTradeMe">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="templet_id" jdbcType="INTEGER" property="templetId" />
+    <result column="frequency" jdbcType="VARCHAR" property="frequency" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="starting_price" jdbcType="DECIMAL" property="startingPrice" />
+    <result column="close_datetime" jdbcType="TIMESTAMP" property="closeDatetime" />
+    <result column="buy_now_price" jdbcType="DECIMAL" property="buyNowPrice" />
+    <result column="condition_level" jdbcType="VARCHAR" property="conditionLevel" />
+    <result column="shipping" jdbcType="VARCHAR" property="shipping" />
+    <result column="reserve_status" jdbcType="INTEGER" property="reserveStatus" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+  
+	  	  	      	id,
+       	  	      	url,
+       	  	      	creator,
+       	  	      	create_date,
+       	  	      	status,
+       	  	      	category_id,
+       	  	      	templet_id,
+       	  	      	frequency,
+       	  	      	title,
+       	  	      	description,
+       	  	      	starting_price,
+       	  	      	close_datetime,
+       	  	      	buy_now_price,
+       	  	      	condition_level,
+       	  	      	shipping,
+       	  	    	reserve_status,
+       	  	    	( select product_type_name  from u_product_type p where p.id=category_id   ) as category_name
+       	  	
+  </sql>
+  
+  <select id="selectByExample" parameterType="com.myprice.model.auto.CommodityTradeMeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from u_commodity_trademe
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from u_commodity_trademe
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from u_commodity_trademe
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.myprice.model.auto.CommodityTradeMeExample">
+    delete from u_commodity_trademe
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  <insert id="insert" parameterType="com.myprice.model.auto.CommodityTradeMe">
+    insert into u_commodity_trademe (
+      	  	       id,
+       	  	       url,
+       	  	       creator,
+       	  	       create_date,
+       	  	       status,
+       	  	       category_id,
+       	  	       templet_id,
+       	  	       frequency,
+       	  	       title,
+       	  	       description,
+       	  	       starting_price,
+       	  	       close_datetime,
+       	  	       buy_now_price,
+       	  	       condition_level,
+       	  	       shipping,
+       	  	    	  reserve_status
+       	    )
+    values (
+	  	  	      	#{id,jdbcType=INTEGER},
+       	  	      	#{url,jdbcType=VARCHAR},
+       	  	      	#{creator,jdbcType=VARCHAR},
+       	  	      	#{createDate,jdbcType=TIMESTAMP},
+       	  	      	#{status,jdbcType=INTEGER},
+       	  	      	#{categoryId,jdbcType=INTEGER},
+       	  	      	#{templetId,jdbcType=INTEGER},
+       	  	      	#{frequency,jdbcType=VARCHAR},
+       	  	      	#{title,jdbcType=VARCHAR},
+       	  	      	#{description,jdbcType=VARCHAR},
+       	  	      	#{startingPrice,jdbcType=DECIMAL},
+       	  	      	#{closeDatetime,jdbcType=TIMESTAMP},
+       	  	      	#{buyNowPrice,jdbcType=DECIMAL},
+       	  	      	#{conditionLevel,jdbcType=VARCHAR},
+       	  	      	#{shipping,jdbcType=VARCHAR},
+       	  	    	  #{reserveStatus,jdbcType=INTEGER}
+       	    )
+  </insert>
+   <insert id="insertSelective" parameterType="com.myprice.model.auto.CommodityTradeMe" useGeneratedKeys="true" keyProperty="id">
+    insert into u_commodity_trademe
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+          
+      <if test="id != null">
+        id,
+      </if>
+         
+      <if test="url != null">
+        url,
+      </if>
+         
+      <if test="creator != null">
+        creator,
+      </if>
+         
+      <if test="createDate != null">
+        create_date,
+      </if>
+         
+      <if test="status != null">
+        status,
+      </if>
+         
+      <if test="categoryId != null">
+        category_id,
+      </if>
+         
+      <if test="templetId != null">
+        templet_id,
+      </if>
+         
+      <if test="frequency != null">
+        frequency,
+      </if>
+         
+      <if test="title != null">
+        title,
+      </if>
+         
+      <if test="description != null">
+        description,
+      </if>
+         
+      <if test="startingPrice != null">
+        starting_price,
+      </if>
+         
+      <if test="closeDatetime != null">
+        close_datetime,
+      </if>
+         
+      <if test="buyNowPrice != null">
+        buy_now_price,
+      </if>
+         
+      <if test="conditionLevel != null">
+        condition_level,
+      </if>
+         
+      <if test="shipping != null">
+        shipping,
+      </if>
+         
+      <if test="reserveStatus != null">
+        reserve_status,
+      </if>
+         </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+          <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+          <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+          <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+          <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+          <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+          <if test="templetId != null">
+        #{templetId,jdbcType=INTEGER},
+      </if>
+          <if test="frequency != null">
+        #{frequency,jdbcType=VARCHAR},
+      </if>
+          <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+          <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+          <if test="startingPrice != null">
+        #{startingPrice,jdbcType=DECIMAL},
+      </if>
+          <if test="closeDatetime != null">
+        #{closeDatetime,jdbcType=TIMESTAMP},
+      </if>
+          <if test="buyNowPrice != null">
+        #{buyNowPrice,jdbcType=DECIMAL},
+      </if>
+          <if test="conditionLevel != null">
+        #{conditionLevel,jdbcType=VARCHAR},
+      </if>
+          <if test="shipping != null">
+        #{shipping,jdbcType=VARCHAR},
+      </if>
+          <if test="reserveStatus != null">
+        #{reserveStatus,jdbcType=INTEGER},
+      </if>
+        </trim>
+  </insert>
+  
+  <select id="countByExample" parameterType="com.myprice.model.auto.CommodityTradeMeExample" resultType="java.lang.Long">
+    select count(*) from u_commodity_trademe
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <update id="updateByExampleSelective" parameterType="map">
+    update u_commodity_trademe
+    <set>
+          <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+          <if test="record.url != null">
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+          <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+          <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+          <if test="record.categoryId != null">
+        category_id = #{record.categoryId,jdbcType=INTEGER},
+      </if>
+          <if test="record.templetId != null">
+        templet_id = #{record.templetId,jdbcType=INTEGER},
+      </if>
+          <if test="record.frequency != null">
+        frequency = #{record.frequency,jdbcType=VARCHAR},
+      </if>
+          <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+          <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+          <if test="record.startingPrice != null">
+        starting_price = #{record.startingPrice,jdbcType=DECIMAL},
+      </if>
+          <if test="record.closeDatetime != null">
+        close_datetime = #{record.closeDatetime,jdbcType=TIMESTAMP},
+      </if>
+          <if test="record.buyNowPrice != null">
+        buy_now_price = #{record.buyNowPrice,jdbcType=DECIMAL},
+      </if>
+          <if test="record.conditionLevel != null">
+        condition_level = #{record.conditionLevel,jdbcType=VARCHAR},
+      </if>
+          <if test="record.shipping != null">
+        shipping = #{record.shipping,jdbcType=VARCHAR},
+      </if>
+          <if test="record.reserveStatus != null">
+        reserve_status = #{record.reserveStatus,jdbcType=INTEGER},
+      </if>
+         
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+  <update id="updateByExample" parameterType="map">
+    update u_commodity_trademe
+    set
+            	     	 
+    	 id = #{record.id,jdbcType=INTEGER},
+    	         	     	 
+    	 url = #{record.url,jdbcType=VARCHAR},
+    	         	     	 
+    	 creator = #{record.creator,jdbcType=VARCHAR},
+    	         	     	 
+    	 create_date = #{record.createDate,jdbcType=TIMESTAMP},
+    	         	     	 
+    	 status = #{record.status,jdbcType=INTEGER},
+    	         	     	 
+    	 category_id = #{record.categoryId,jdbcType=INTEGER},
+    	         	     	 
+    	 templet_id = #{record.templetId,jdbcType=INTEGER},
+    	         	     	 
+    	 frequency = #{record.frequency,jdbcType=VARCHAR},
+    	         	     	 
+    	 title = #{record.title,jdbcType=VARCHAR},
+    	         	     	 
+    	 description = #{record.description,jdbcType=VARCHAR},
+    	         	     	 
+    	 starting_price = #{record.startingPrice,jdbcType=DECIMAL},
+    	         	     	 
+    	 close_datetime = #{record.closeDatetime,jdbcType=TIMESTAMP},
+    	         	     	 
+    	 buy_now_price = #{record.buyNowPrice,jdbcType=DECIMAL},
+    	         	     	 
+    	 condition_level = #{record.conditionLevel,jdbcType=VARCHAR},
+    	         	     	 
+    	 shipping = #{record.shipping,jdbcType=VARCHAR},
+    	         	     	 
+    	 reserve_status = #{record.reserveStatus,jdbcType=INTEGER}
+    	         
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  
+      <update id="updateByPrimaryKeySelective" parameterType="com.myprice.model.auto.CommodityTradeMe">
+    update u_commodity_trademe
+    <set>
+                          
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+                      
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+                      
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+                      
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+                      
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+                      
+      <if test="templetId != null">
+        templet_id = #{templetId,jdbcType=INTEGER},
+      </if>
+                      
+      <if test="frequency != null">
+        frequency = #{frequency,jdbcType=VARCHAR},
+      </if>
+                      
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+                      
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+                      
+      <if test="startingPrice != null">
+        starting_price = #{startingPrice,jdbcType=DECIMAL},
+      </if>
+                      
+      <if test="closeDatetime != null">
+        close_datetime = #{closeDatetime,jdbcType=TIMESTAMP},
+      </if>
+                      
+      <if test="buyNowPrice != null">
+        buy_now_price = #{buyNowPrice,jdbcType=DECIMAL},
+      </if>
+                      
+      <if test="conditionLevel != null">
+        condition_level = #{conditionLevel,jdbcType=VARCHAR},
+      </if>
+                      
+      <if test="shipping != null">
+        shipping = #{shipping,jdbcType=VARCHAR},
+      </if>
+                      
+      <if test="reserveStatus != null">
+        reserve_status = #{reserveStatus,jdbcType=INTEGER},
+      </if>
+              </set>
+    
+    where 
+            
+    id = #{id,jdbcType=INTEGER}
+                                                                                                                                  
+  </update>
+
+      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
+
+  <update id="updateByPrimaryKey" parameterType="com.myprice.model.auto.CommodityTradeMe">
+    update u_commodity_trademe
+    set 
+    		 		 	  	  
+		url = #{url,jdbcType=VARCHAR},
+	  	 		 	  	  
+		creator = #{creator,jdbcType=VARCHAR},
+	  	 		 	  	  
+		create_date = #{createDate,jdbcType=TIMESTAMP},
+	  	 		 	  	  
+		status = #{status,jdbcType=INTEGER},
+	  	 		 	  	  
+		category_id = #{categoryId,jdbcType=INTEGER},
+	  	 		 	  	  
+		templet_id = #{templetId,jdbcType=INTEGER},
+	  	 		 	  	  
+		frequency = #{frequency,jdbcType=VARCHAR},
+	  	 		 	  	  
+		title = #{title,jdbcType=VARCHAR},
+	  	 		 	  	  
+		description = #{description,jdbcType=VARCHAR},
+	  	 		 	  	  
+		starting_price = #{startingPrice,jdbcType=DECIMAL},
+	  	 		 	  	  
+		close_datetime = #{closeDatetime,jdbcType=TIMESTAMP},
+	  	 		 	  	  
+		buy_now_price = #{buyNowPrice,jdbcType=DECIMAL},
+	  	 		 	  	  
+		condition_level = #{conditionLevel,jdbcType=VARCHAR},
+	  	 		 	  	  
+		shipping = #{shipping,jdbcType=VARCHAR},
+	  	 		 	  		
+		reserve_status = #{reserveStatus,jdbcType=INTEGER}
+	  	 		
+    where 
+            
+    id = #{id,jdbcType=INTEGER}
+                                                                                                                                    
+  </update>
+  
+                                                                                    
+</mapper>
