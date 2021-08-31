@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import cn.hutool.core.util.StrUtil;
+import java.math.BigDecimal;
 
 /**
- * commodity CommodityExample
+ * Commodity CommodityExample
  * @author Cong_自动生成
- * @date 2021-08-24 16:48:22
+ * @date 2021-08-31 02:34:06
  */
 public class CommodityExample {
 
@@ -180,77 +181,6 @@ public class CommodityExample {
 
         public Criteria andIdNotBetween(Integer value1, Integer value2) {
             addCriterion("id not between", value1, value2, "id");
-            return (Criteria) this;
-        }
-        
-				
-        public Criteria andUrlIsNull() {
-            addCriterion("url is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlIsNotNull() {
-            addCriterion("url is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlEqualTo(String value) {
-            addCriterion("url =", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlNotEqualTo(String value) {
-            addCriterion("url <>", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlGreaterThan(String value) {
-            addCriterion("url >", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlGreaterThanOrEqualTo(String value) {
-            addCriterion("url >=", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlLessThan(String value) {
-            addCriterion("url <", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlLessThanOrEqualTo(String value) {
-            addCriterion("url <=", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlLike(String value) {
-            addCriterion("url like", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlNotLike(String value) {
-            addCriterion("url not like", value, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlIn(List<String> values) {
-            addCriterion("url in", values, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlNotIn(List<String> values) {
-            addCriterion("url not in", values, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlBetween(String value1, String value2) {
-            addCriterion("url between", value1, value2, "url");
-            return (Criteria) this;
-        }
-
-        public Criteria andUrlNotBetween(String value1, String value2) {
-            addCriterion("url not between", value1, value2, "url");
             return (Criteria) this;
         }
         
@@ -539,148 +469,217 @@ public class CommodityExample {
         }
         
 				
-        public Criteria andTempletIdIsNull() {
-            addCriterion("templet_id is null");
+        public Criteria andTitleIsNull() {
+            addCriterion("title is null");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdIsNotNull() {
-            addCriterion("templet_id is not null");
+        public Criteria andTitleIsNotNull() {
+            addCriterion("title is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdEqualTo(Integer value) {
-            addCriterion("templet_id =", value, "templetId");
+        public Criteria andTitleEqualTo(String value) {
+            addCriterion("title =", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdNotEqualTo(Integer value) {
-            addCriterion("templet_id <>", value, "templetId");
+        public Criteria andTitleNotEqualTo(String value) {
+            addCriterion("title <>", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdGreaterThan(Integer value) {
-            addCriterion("templet_id >", value, "templetId");
+        public Criteria andTitleGreaterThan(String value) {
+            addCriterion("title >", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("templet_id >=", value, "templetId");
+        public Criteria andTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("title >=", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdLessThan(Integer value) {
-            addCriterion("templet_id <", value, "templetId");
+        public Criteria andTitleLessThan(String value) {
+            addCriterion("title <", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdLessThanOrEqualTo(Integer value) {
-            addCriterion("templet_id <=", value, "templetId");
+        public Criteria andTitleLessThanOrEqualTo(String value) {
+            addCriterion("title <=", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdLike(Integer value) {
-            addCriterion("templet_id like", value, "templetId");
+        public Criteria andTitleLike(String value) {
+            addCriterion("title like", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdNotLike(Integer value) {
-            addCriterion("templet_id not like", value, "templetId");
+        public Criteria andTitleNotLike(String value) {
+            addCriterion("title not like", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdIn(List<Integer> values) {
-            addCriterion("templet_id in", values, "templetId");
+        public Criteria andTitleIn(List<String> values) {
+            addCriterion("title in", values, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdNotIn(List<Integer> values) {
-            addCriterion("templet_id not in", values, "templetId");
+        public Criteria andTitleNotIn(List<String> values) {
+            addCriterion("title not in", values, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdBetween(Integer value1, Integer value2) {
-            addCriterion("templet_id between", value1, value2, "templetId");
+        public Criteria andTitleBetween(String value1, String value2) {
+            addCriterion("title between", value1, value2, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTempletIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("templet_id not between", value1, value2, "templetId");
+        public Criteria andTitleNotBetween(String value1, String value2) {
+            addCriterion("title not between", value1, value2, "title");
             return (Criteria) this;
         }
         
 				
-        public Criteria andFrequenceIsNull() {
-            addCriterion("frequence is null");
+        public Criteria andDescriptionIsNull() {
+            addCriterion("description is null");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceIsNotNull() {
-            addCriterion("frequence is not null");
+        public Criteria andDescriptionIsNotNull() {
+            addCriterion("description is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceEqualTo(String value) {
-            addCriterion("frequence =", value, "frequence");
+        public Criteria andDescriptionEqualTo(String value) {
+            addCriterion("description =", value, "description");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceNotEqualTo(String value) {
-            addCriterion("frequence <>", value, "frequence");
+        public Criteria andDescriptionNotEqualTo(String value) {
+            addCriterion("description <>", value, "description");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceGreaterThan(String value) {
-            addCriterion("frequence >", value, "frequence");
+        public Criteria andDescriptionGreaterThan(String value) {
+            addCriterion("description >", value, "description");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceGreaterThanOrEqualTo(String value) {
-            addCriterion("frequence >=", value, "frequence");
+        public Criteria andDescriptionGreaterThanOrEqualTo(String value) {
+            addCriterion("description >=", value, "description");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceLessThan(String value) {
-            addCriterion("frequence <", value, "frequence");
+        public Criteria andDescriptionLessThan(String value) {
+            addCriterion("description <", value, "description");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceLessThanOrEqualTo(String value) {
-            addCriterion("frequence <=", value, "frequence");
+        public Criteria andDescriptionLessThanOrEqualTo(String value) {
+            addCriterion("description <=", value, "description");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceLike(String value) {
-            addCriterion("frequence like", value, "frequence");
+        public Criteria andDescriptionLike(String value) {
+            addCriterion("description like", value, "description");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceNotLike(String value) {
-            addCriterion("frequence not like", value, "frequence");
+        public Criteria andDescriptionNotLike(String value) {
+            addCriterion("description not like", value, "description");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceIn(List<String> values) {
-            addCriterion("frequence in", values, "frequence");
+        public Criteria andDescriptionIn(List<String> values) {
+            addCriterion("description in", values, "description");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceNotIn(List<String> values) {
-            addCriterion("frequence not in", values, "frequence");
+        public Criteria andDescriptionNotIn(List<String> values) {
+            addCriterion("description not in", values, "description");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceBetween(String value1, String value2) {
-            addCriterion("frequence between", value1, value2, "frequence");
+        public Criteria andDescriptionBetween(String value1, String value2) {
+            addCriterion("description between", value1, value2, "description");
             return (Criteria) this;
         }
 
-        public Criteria andFrequenceNotBetween(String value1, String value2) {
-            addCriterion("frequence not between", value1, value2, "frequence");
+        public Criteria andDescriptionNotBetween(String value1, String value2) {
+            addCriterion("description not between", value1, value2, "description");
             return (Criteria) this;
         }
         
 				
+        public Criteria andPriceIsNull() {
+            addCriterion("price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIsNotNull() {
+            addCriterion("price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceEqualTo(BigDecimal value) {
+            addCriterion("price =", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotEqualTo(BigDecimal value) {
+            addCriterion("price <>", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceGreaterThan(BigDecimal value) {
+            addCriterion("price >", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("price >=", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceLessThan(BigDecimal value) {
+            addCriterion("price <", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("price <=", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceLike(BigDecimal value) {
+            addCriterion("price like", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotLike(BigDecimal value) {
+            addCriterion("price not like", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIn(List<BigDecimal> values) {
+            addCriterion("price in", values, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotIn(List<BigDecimal> values) {
+            addCriterion("price not in", values, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("price between", value1, value2, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("price not between", value1, value2, "price");
+            return (Criteria) this;
+        }
         
 			
 		 public Criteria andLikeQuery(Commodity record) {
@@ -689,9 +688,6 @@ public class CommodityExample {
         	StringBuffer buffer=new StringBuffer();
 			if(record.getId()!=null&&StrUtil.isNotEmpty(record.getId().toString())) {
     			 list.add("ifnull(id,'')");
-    		}
-			if(record.getUrl()!=null&&StrUtil.isNotEmpty(record.getUrl().toString())) {
-    			 list.add("ifnull(url,'')");
     		}
 			if(record.getCreator()!=null&&StrUtil.isNotEmpty(record.getCreator().toString())) {
     			 list.add("ifnull(creator,'')");
@@ -705,18 +701,17 @@ public class CommodityExample {
 			if(record.getCategoryId()!=null&&StrUtil.isNotEmpty(record.getCategoryId().toString())) {
     			 list.add("ifnull(category_id,'')");
     		}
-			if(record.getTempletId()!=null&&StrUtil.isNotEmpty(record.getTempletId().toString())) {
-    			 list.add("ifnull(templet_id,'')");
+			if(record.getTitle()!=null&&StrUtil.isNotEmpty(record.getTitle().toString())) {
+    			 list.add("ifnull(title,'')");
     		}
-			if(record.getFrequence()!=null&&StrUtil.isNotEmpty(record.getFrequence().toString())) {
-    			 list.add("ifnull(frequence,'')");
+			if(record.getDescription()!=null&&StrUtil.isNotEmpty(record.getDescription().toString())) {
+    			 list.add("ifnull(description,'')");
     		}
-		 
+			if(record.getPrice()!=null&&StrUtil.isNotEmpty(record.getPrice().toString())) {
+    			 list.add("ifnull(price,'')");
+    		}
 			if(record.getId()!=null&&StrUtil.isNotEmpty(record.getId().toString())) {
     			list2.add("'%"+record.getId()+"%'");
-    		}
-			if(record.getUrl()!=null&&StrUtil.isNotEmpty(record.getUrl().toString())) {
-    			list2.add("'%"+record.getUrl()+"%'");
     		}
 			if(record.getCreator()!=null&&StrUtil.isNotEmpty(record.getCreator().toString())) {
     			list2.add("'%"+record.getCreator()+"%'");
@@ -730,13 +725,15 @@ public class CommodityExample {
 			if(record.getCategoryId()!=null&&StrUtil.isNotEmpty(record.getCategoryId().toString())) {
     			list2.add("'%"+record.getCategoryId()+"%'");
     		}
-			if(record.getTempletId()!=null&&StrUtil.isNotEmpty(record.getTempletId().toString())) {
-    			list2.add("'%"+record.getTempletId()+"%'");
+			if(record.getTitle()!=null&&StrUtil.isNotEmpty(record.getTitle().toString())) {
+    			list2.add("'%"+record.getTitle()+"%'");
     		}
-			if(record.getFrequence()!=null&&StrUtil.isNotEmpty(record.getFrequence().toString())) {
-    			list2.add("'%"+record.getFrequence()+"%'");
+			if(record.getDescription()!=null&&StrUtil.isNotEmpty(record.getDescription().toString())) {
+    			list2.add("'%"+record.getDescription()+"%'");
     		}
-		 
+			if(record.getPrice()!=null&&StrUtil.isNotEmpty(record.getPrice().toString())) {
+    			list2.add("'%"+record.getPrice()+"%'");
+    		}
         	buffer.append(" CONCAT(");
 	        buffer.append(StrUtil.join(",",list));
         	buffer.append(")");
@@ -752,21 +749,20 @@ public class CommodityExample {
         public Criteria andLikeQuery2(String searchText) {
 		 	List<String> list= new ArrayList<String>();
         	StringBuffer buffer=new StringBuffer();
-    		list.add("ifnull(c.id,'')");
-    		list.add("ifnull(url,'')");
+    		list.add("ifnull(id,'')");
     		list.add("ifnull(creator,'')");
     		list.add("ifnull(create_date,'')");
     		list.add("ifnull(status,'')");
     		list.add("ifnull(category_id,'')");
-    		list.add("ifnull(templet_id,'')");
-    		list.add("ifnull(frequence,'')");
-         	buffer.append(" CONCAT(");
+    		list.add("ifnull(title,'')");
+    		list.add("ifnull(description,'')");
+    		list.add("ifnull(price,'')");
+        	buffer.append(" CONCAT(");
 	        buffer.append(StrUtil.join(",",list));
         	buffer.append(")");
         	buffer.append("like '%");
         	buffer.append(searchText);
         	buffer.append("%'");
-        	System.out.println("--->buffer："+buffer.toString());
         	addCriterion(buffer.toString());
         	return (Criteria) this;
         }

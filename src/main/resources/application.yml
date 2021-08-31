@@ -1,11 +1,11 @@
 # 项目相关配置
-fuce:
+my-price-config:
   #名称
-  name: v2
+  name: MyPrice
   #版本
-  version: 4.1
+  version: 1.2
   #版权年份
-  copyright-year: 2018
+  copyright-year: 2021
   #邮件功能
   #邮箱发送smtp
   email-smtp: smtp.163.com
@@ -69,12 +69,12 @@ spring :
     #禁用缓存 默认false
     cache: false
   jackson:
-    time-zone: GMT+8
+    time-zone: GMT+12
     date-format: yyyy-MM-dd HH:mm:ss
   redis:
     ssl: false
     database: 0
-    host: 192.168.1.135
+    host: RHEL7
     port: 6379
     password: 
     timeout: 1000

@@ -101,28 +101,10 @@ public class CommodityService implements BaseService<Commodity, CommodityExample
 	@Override
 	@Transactional(propagation =Propagation.REQUIRED)
 	public int insertSelective(Commodity record) {
-		int status =0;
-		record.setId(null);
 		record.setCreator(ShiroUtils.getUserId());
 		record.setCreateDate(new Date());
-		status=commodityMapper.insertSelective(record);
-		if(status>0) {
-			System.out.println("commondityID:"+ record.getId());
-//			CommodityTradeMeDetail tradeMeDetail =new CommodityTradeMeDetail();
-//					tradeMeDetail.setId(record.getId()-1);
-//			commodityTrademeDetailService.insertSelective(tradeMeDetail);
-//			
-			
-//		//	tradeMeDetail =TradeMeCrawler.doCrawlerDetail(record.getId(),record.getUrl());
-//			log.debug("begin to save the detail of the commodity.");
-//			System.out.println(tradeMeDetail.toString());
-//			 
-//			commodityTrademeDetailService.insertSelective(tradeMeDetail);
-			
-		}else {
-			System.out.println("fail to save :"+status);
-		}
-		return status;
+		 
+		return commodityMapper.insertSelective(record);
 	}
 	
 	

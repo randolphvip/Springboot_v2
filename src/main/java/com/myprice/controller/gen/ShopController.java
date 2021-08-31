@@ -1,11 +1,11 @@
-package ${parentPack}.controller.gen;
+package com.myprice.controller.gen;
 
 import com.fc.v2.common.base.BaseController;
 import com.fc.v2.common.domain.AjaxResult;
 import com.fc.v2.common.domain.ResultTable;
 import com.fc.v2.model.custom.Tablepar;
-import ${parentPack}.model.auto.${tableInfo.javaTableName};
-import ${parentPack}.service.${tableInfo.javaTableName}Service;
+import com.myprice.model.auto.Shop;
+import com.myprice.service.ShopService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,31 +16,31 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * ${tableInfo.tableComment}Controller
- * @ClassName: ${tableInfo.javaTableName}Controller
- * @author ${author}
- * @date ${datetime}
+ * ShopController
+ * @ClassName: ShopController
+ * @author Cong
+ * @date 2021-08-31 01:46:33
  */
-@Api(value = "${tableInfo.tableComment}")
+@Api(value = "Shop")
 @Controller
-@RequestMapping("/${tableInfo.javaTableName}Controller")
-public class ${tableInfo.javaTableName}Controller extends BaseController{
+@RequestMapping("/ShopController")
+public class ShopController extends BaseController{
 	
-	private String prefix = "gen/${tableInfo.javaTableName_a}";
+	private String prefix = "gen/shop";
 	
 	@Autowired
-	private ${tableInfo.javaTableName}Service ${tableInfo.javaTableName_a}Service;
+	private ShopService shopService;
 	
 	
 	/**
-	 * ${tableInfo.tableComment}页面展示
+	 * Shop页面展示
 	 * @param model
 	 * @return String
-	 * @author ${author}
+	 * @author Cong
 	 */
 	@ApiOperation(value = "分页跳转", notes = "分页跳转")
 	@GetMapping("/view")
-	@RequiresPermissions("gen:${tableInfo.javaTableName_a}:view")
+	@RequiresPermissions("gen:shop:view")
     public String view(ModelMap model)
     {
         return prefix + "/list";
@@ -52,13 +52,13 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
 	 * @param searchText
 	 * @return
 	 */
-	//@Log(title = "${tableInfo.tableComment}", action = "111")
+	//@Log(title = "Shop", action = "111")
 	@ApiOperation(value = "分页跳转", notes = "分页跳转")
 	@GetMapping("/list")
-	@RequiresPermissions("gen:${tableInfo.javaTableName_a}:list")
+	@RequiresPermissions("gen:shop:list")
 	@ResponseBody
-	public ResultTable list(Tablepar tablepar,${tableInfo.javaTableName} ${tableInfo.javaTableName_a}){
-		PageInfo<${tableInfo.javaTableName}> page=${tableInfo.javaTableName_a}Service.list(tablepar,${tableInfo.javaTableName_a}) ; 
+	public ResultTable list(Tablepar tablepar,Shop shop){
+		PageInfo<Shop> page=shopService.list(tablepar,shop) ; 
 		return pageTable(page.getList(),page.getTotal());
 	}
 	
@@ -77,13 +77,13 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
      * @param 
      * @return
      */
-	//@Log(title = "${tableInfo.tableComment}新增", action = "111")
+	//@Log(title = "Shop新增", action = "111")
 	@ApiOperation(value = "新增", notes = "新增")
 	@PostMapping("/add")
-	@RequiresPermissions("gen:${tableInfo.javaTableName_a}:add")
+	@RequiresPermissions("gen:shop:add")
 	@ResponseBody
-	public AjaxResult add(${tableInfo.javaTableName} ${tableInfo.javaTableName_a}){
-		int b=${tableInfo.javaTableName_a}Service.insertSelective(${tableInfo.javaTableName_a});
+	public AjaxResult add(Shop shop){
+		int b=shopService.insertSelective(shop);
 		if(b>0){
 			return success();
 		}else{
@@ -92,17 +92,17 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
 	}
 	
 	/**
-	 * ${tableInfo.tableComment}删除
+	 * Shop删除
 	 * @param ids
 	 * @return
 	 */
-	//@Log(title = "${tableInfo.tableComment}删除", action = "111")
+	//@Log(title = "Shop删除", action = "111")
 	@ApiOperation(value = "删除", notes = "删除")
 	@DeleteMapping("/remove")
-	@RequiresPermissions("gen:${tableInfo.javaTableName_a}:remove")
+	@RequiresPermissions("gen:shop:remove")
 	@ResponseBody
 	public AjaxResult remove(String ids){
-		int b=${tableInfo.javaTableName_a}Service.deleteByPrimaryKey(ids);
+		int b=shopService.deleteByPrimaryKey(ids);
 		if(b>0){
 			return success();
 		}else{
@@ -121,7 +121,7 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
 	@GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") String id, ModelMap map)
     {
-        map.put("${tableInfo.javaTableName}", ${tableInfo.javaTableName_a}Service.selectByPrimaryKey(id));
+        map.put("Shop", shopService.selectByPrimaryKey(id));
 
         return prefix + "/edit";
     }
@@ -129,14 +129,14 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
 	/**
      * 修改保存
      */
-    //@Log(title = "${tableInfo.tableComment}修改", action = "111")
+    //@Log(title = "Shop修改", action = "111")
 	@ApiOperation(value = "修改保存", notes = "修改保存")
-    @RequiresPermissions("gen:${tableInfo.javaTableName_a}:edit")
+    @RequiresPermissions("gen:shop:edit")
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(${tableInfo.javaTableName} ${tableInfo.javaTableName_a})
+    public AjaxResult editSave(Shop shop)
     {
-        return toAjax(${tableInfo.javaTableName_a}Service.updateByPrimaryKeySelective(${tableInfo.javaTableName_a}));
+        return toAjax(shopService.updateByPrimaryKeySelective(shop));
     }
 
     

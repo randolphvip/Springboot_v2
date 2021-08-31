@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @author fuce
  */
 @Component
-@ConfigurationProperties(prefix = "fuce")
+@ConfigurationProperties(prefix = "my-price-config")
 public class V2Config
 {
     /** 项目名称 */

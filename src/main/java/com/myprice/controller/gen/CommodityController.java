@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fc.v2.common.base.BaseController;
+import com.fc.v2.common.conf.oss.OssTemplate;
 import com.fc.v2.common.domain.AjaxResult;
 import com.fc.v2.common.domain.ResultTable;
 import com.fc.v2.model.custom.Tablepar;
@@ -46,6 +47,10 @@ public class CommodityController extends BaseController{
 	private CommodityService commodityService;
 	@Autowired
 	private TemplateService templateService;	
+	
+	
+	@Autowired
+	private  OssTemplate ossTemplate;
 	
 	/**
 	 * commodity页面展示
@@ -84,12 +89,8 @@ public class CommodityController extends BaseController{
     @GetMapping("/add")
     public String add(ModelMap modelMap)
     {
-		
-		List<Template> templates= templateService.selectByExample(new TemplateExample());
-		//角色
-		modelMap.put("templates",templates);
-		//部门
-		
+		modelMap.put("BucketName",ossTemplate.getOssProperties().getBucketName());
+  		
         return prefix + "/add";
     }
 	
@@ -98,12 +99,13 @@ public class CommodityController extends BaseController{
      * @param 
      * @return
      */
+	
 	//@Log(title = "commodity新增", action = "111")
 	@ApiOperation(value = "新增", notes = "新增")
 	@PostMapping("/add")
 	@RequiresPermissions("gen:commodity:add")
 	@ResponseBody
-	public AjaxResult add(Commodity commodity){
+	public AjaxResult add( Commodity commodity){
 		int b=commodityService.insertSelective(commodity);
 		if(b>0){
 			return success();
@@ -146,6 +148,7 @@ public class CommodityController extends BaseController{
     	
 		//引擎模板
 		map.put("templates",templateService.selectByExample(new TemplateExample()));
+		map.put("BucketName",ossTemplate.getOssProperties().getBucketName());
 
         return prefix + "/edit";
     }

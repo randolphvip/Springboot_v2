@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('Shop新增')"/>
+</head>
+<body>
+<form class="layui-form">
+    <div class="mainBox">
+        <div class="main-container">
+            <div class="main-container">
+
+				<div class="layui-form-item">
+                    <label class="layui-form-label">Shop Name</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="shopName" autocomplete="off" placeholder="Shop Name" class="layui-input">
+                    </div>
+                </div>
+
+
+				<div class="layui-form-item">
+                    <label class="layui-form-label">Description</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="description" autocomplete="off" placeholder="Description" class="layui-input">
+                    </div>
+                </div>
+
+
+				<div class="layui-form-item">
+                    <label class="layui-form-label">Logo</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="logo" autocomplete="off" placeholder="Logo" class="layui-input">
+                    </div>
+                </div>
+
+
+				<div class="layui-form-item">
+                    <label class="layui-form-label">Address</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="address" autocomplete="off" placeholder="Address" class="layui-input">
+                    </div>
+                </div>
+
+
+				<div class="layui-form-item">
+                    <label class="layui-form-label">Website</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="website" autocomplete="off" placeholder="Website" class="layui-input">
+                    </div>
+                </div>
+
+
+				<div class="layui-form-item">
+                    <label class="layui-form-label">Hotline</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="hotline" autocomplete="off" placeholder="Hotline" class="layui-input">
+                    </div>
+                </div>
+
+
+				<div class="layui-form-item">
+                    <label class="layui-form-label">Keywords</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="keywords" autocomplete="off" placeholder="Keywords" class="layui-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="shop-save">
+                <i class="layui-icon layui-icon-ok"></i>
+                Submit
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                Reset
+            </button>
+        </div>
+    </div>
+</form>
+<th:block th:include="include :: footer"/>
+<script>
+    layui.use(['form','laydate','jquery'], function () {
+        let form = layui.form;
+        let $ = layui.jquery;
+        let MODULE_PATH = rootPath+"/ShopController";
+        //保存
+        form.on('submit(shop-save)', function (data) {
+            $.ajax({
+                url: MODULE_PATH+'/add',
+                data: data.field,
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded',
+                type: 'post',
+                success: function (result) {
+                    if (result.code==200) {
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                            parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                            parent.layui.table.reload("shop-table");
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2, time: 1000});
+                    }
+                }
+            })
+            return false;
+        });
+    })
+</script>
+</body>
+</html>

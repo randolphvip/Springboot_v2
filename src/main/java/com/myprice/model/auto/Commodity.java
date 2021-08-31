@@ -1,23 +1,19 @@
 package com.myprice.model.auto;
 
 import java.io.Serializable;
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import cn.hutool.core.date.DateUtil;
 import io.swagger.annotations.ApiModelProperty;
+import cn.hutool.core.date.DateUtil;
+import java.util.Date;
+import java.math.BigDecimal;
 
-public class Commodity  implements Serializable{
+public class Commodity implements Serializable {
     private static final long serialVersionUID = 1L;
 
 	
 	@ApiModelProperty(value = "ID")
 	private Integer id;
-	
-	@ApiModelProperty(value = "url")
-	private String url;
 	
 	@ApiModelProperty(value = "creator")
 	private String creator;
@@ -31,23 +27,19 @@ public class Commodity  implements Serializable{
 	@ApiModelProperty(value = "category")
 	private Integer categoryId;
 	
-	@ApiModelProperty(value = "templet")
-	private Integer templetId;
+	@ApiModelProperty(value = "Title ")
+	private String title;
 	
-	@ApiModelProperty(value = "frequence")
-	private String frequence;
- 
+	@ApiModelProperty(value = "Description")
+	private String description;
 	
-	@ApiModelProperty(value = "creatorName")
+	@ApiModelProperty(value = "price")
+	private BigDecimal price;
+	
 	private String creatorName;
 	
-	@ApiModelProperty(value = "templetName")
-	private String templetName;	
+	private String categoryName;
 	
-	@ApiModelProperty(value = "categoryName")
-	private String categoryName;	
-	
-
 	@JsonProperty("id")
 	public Integer getId() {
 		return id;
@@ -55,14 +47,6 @@ public class Commodity  implements Serializable{
 
 	public void setId(Integer id) {
 		this.id =  id;
-	}
-	@JsonProperty("url")
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url =  url;
 	}
 	@JsonProperty("creator")
 	public String getCreator() {
@@ -96,30 +80,51 @@ public class Commodity  implements Serializable{
 	public void setCategoryId(Integer categoryId) {
 		this.categoryId =  categoryId;
 	}
-	@JsonProperty("templetId")
-	public Integer getTempletId() {
-		return templetId;
+	@JsonProperty("title")
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTempletId(Integer templetId) {
-		this.templetId =  templetId;
+	public void setTitle(String title) {
+		this.title =  title;
 	}
-	@JsonProperty("frequence")
-	public String getFrequence() {
-		return frequence;
+	@JsonProperty("description")
+	public String getDescription() {
+		return description;
 	}
 
-	public void setFrequence(String frequence) {
-		this.frequence =  frequence;
+	public void setDescription(String description) {
+		this.description =  description;
 	}
- 
+	@JsonProperty("price")
+	public BigDecimal getPrice() {
+		return price;
+	}
 
-																		
-	public Commodity(Integer id,String url,String creator,Date createDate,Integer status,Integer categoryId,Integer templetId,String frequence) {
+	public void setPrice(BigDecimal price) {
+		this.price =  price;
+	}
+
+																
+	public String getCreatorName() {
+		return creatorName;
+	}
+
+	public void setCreatorName(String creatorName) {
+		this.creatorName = creatorName;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public Commodity(Integer id,String creator,Date createDate,Integer status,Integer categoryId,String title,String description,BigDecimal price) {
 				
 		this.id = id;
-				
-		this.url = url;
 				
 		this.creator = creator;
 				
@@ -129,10 +134,12 @@ public class Commodity  implements Serializable{
 				
 		this.categoryId = categoryId;
 				
-		this.templetId = templetId;
+		this.title = title;
 				
-		this.frequence = frequence;
- 				
+		this.description = description;
+				
+		this.price = price;
+				
 	}
 
 	public Commodity() {
@@ -145,33 +152,6 @@ public class Commodity  implements Serializable{
 		}
 		return "";
 	}
-	
-	@JsonProperty("creatorName")
-	public String getCreatorName() {
-		return creatorName;
-	}
-
-	public void setCreatorName(String creatorName) {
-		this.creatorName = creatorName;
-	}
-	@JsonProperty("templetName")
-	public String getTempletName() {
-		return templetName;
-	}
-
-	public void setTempletName(String templetName) {
-		this.templetName = templetName;
-	}
-	
-	@JsonProperty("categoryName")
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-
 	
 
 }

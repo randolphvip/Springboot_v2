@@ -1,24 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.pollix.at/thymeleaf/shiro">
 <head>
-    <th:block th:include="include :: header('commodity列表')"/>
+    <th:block th:include="include :: header('Commodity列表')"/>
 </head>
 <body class="pear-container">
 <div class="layui-card">
     <div class="layui-card-body">
         <form class="layui-form" action="">
             <div class="layui-form-item">
-                <label class="layui-form-label">search</label>
+                <label class="layui-form-label">名称</label>
                 <div class="layui-input-inline">
                     <input type="text" name="searchText" placeholder="" class="layui-input">
-                </div>
-                <label class="layui-form-label">Status</label>
-                <div class="layui-input-inline">
-                   <select name="status" id="status"   lay-filter="commodity-status" >
-                  		  <option value="">All</option>
-                          <option value="1">ON</option>
-                          <option value="0">OFF</option>
-                      </select>
                 </div>
                 <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="commodity-query">
                     <i class="layui-icon layui-icon-search"></i>
@@ -51,19 +43,21 @@
 </script>
 
 <script type="text/html" id="commodity-bar">
+
+    <button shiro:hasPermission="gen:shopCommodity:view" class="pear-btn pear-btn-warming pear-btn-md" lay-event="detail" title="detail"><i class="layui-icon layui-icon-search"></i>
+    </button>
+
     <button shiro:hasPermission="gen:commodity:edit" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit" title="Edit"><i class="layui-icon layui-icon-edit"></i>
     </button>
 
-    <button shiro:hasPermission="gen:commodity:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="Delete"><i class="layui-icon  layui-icon-delete"></i>
-    </button>
-
-    <button shiro:hasPermission="gen:commodity:view"  class="pear-btn pear-btn-warming pear-btn-md" lay-event="view" title="view"><i class="layui-icon layui-icon-template"></i>
+    <button shiro:hasPermission="gen:commodity:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="Delete"><i class="layui-icon layui-icon-delete"></i>
     </button>
 </script>
 
 <script type="text/html" id="commodity-enable">
     <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="ON|OFF" lay-filter="commodity-enable" {{d.status== 1 ? 'checked' : '' }} >
 </script>
+
 
 <script type="text/html" id="commodity-type">
     {{#if (d.dataState == '0') { }}
@@ -84,19 +78,20 @@
         let cols = [
             [
                 {type: 'checkbox'},
-          
-    		{title: 'ID', field: 'id', align: 'center'},
- //   		{title: 'Title', field: 'title', align: 'center'},
-			//{title: 'url', field: 'url', align: 'center'},
-			{title: 'creator', field: 'creatorName', align: 'center'},
-			{title: 'create date', field: 'createDate', align: 'center'},
-//			{title: 'close date', field: 'closeDatetime', align: 'center'},
-			{title: 'category', field: 'categoryName', align: 'center'},
-			{title: 'templet', field: 'templetName', align: 'center'},
-//			{title: 'Buy Now Price', field: 'buyNowPrice', align: 'center'},
-//			{title: 'Starting price', field: 'startingPrice', align: 'center'},
-  			{title: 'status', field: 'status', align: 'center',templet: '#commodity-enable'},
-            {title: 'operation', toolbar: '#commodity-bar', align: 'center'}
+                
+				{title: 'ID', field: 'id', align: 'center'},
+				
+				{title: 'Title ', field: 'title', align: 'center'},
+
+				{title: 'creator', field: 'creatorName', align: 'center'},
+
+				{title: 'create date', field: 'createDate', align: 'center'},
+				 
+				{title: 'category', field: 'categoryName', align: 'center'},
+				 
+				{title: 'status', field: 'status', align: 'center',templet: '#commodity-enable' ,width: 100},
+					
+                {title: 'operation', toolbar: '#commodity-bar', align: 'center'}
             ]
         ]
 
@@ -121,8 +116,8 @@
                 window.remove(obj);
             } else if (obj.event === 'edit') {
                 window.edit(obj);
-            }else if (obj.event === 'view') {
-                window.view(obj);
+            }else if (obj.event=='detail'){
+            	window.detail(obj);
             }
         });
 
@@ -142,67 +137,15 @@
             table.reload('commodity-table', {where: data.field})
             return false;
         });
-        
-        //查询按钮绑定
-        form.on('select(commodity-status)', function (data) {
-        	console.log(data);
-      //      table.reload('commodity-table', {where: data.field})
-      //      return false;
-        });
+
+      // add shop information and URL information
+        window.detail = function (obj) {
+        	window.location.href=rootPath+"/ShopCommodityController/view?commodityId=" + obj.data['id']+"&title="+ obj.data['title'];
+        }
+      
 
         
-        //状态切换绑定
-        form.on('switch(commodity-enable)', function (obj) {
-            let operate;
-
-            if (obj.elem.checked) {
-                operate = 1;
-            } else {
-                operate = 0;
-            }
-
-            let loading = layer.load()
-
-            $.ajax({
-                url: MODULE_PATH+'updateVisible',
-                data: JSON.stringify({id: this.value,status:operate}),
-                dataType: 'json',
-                contentType: 'application/json',
-                type: 'put',
-                success: function (result) {
-                    layer.close(loading);
-                    if (result.code==200) {
-                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
-                        });
-                    } else {
-                        layer.msg(result.msg, {icon: 2, time: 1000});
-                    }
-                }
-            })
-        });
-
-
-        var index = 
-       
-
-          //查看原始页面
-          window.view = function (obj) {
-              window.open(obj.data['url']);
-          }
-
-
-        //   window.view =   function (obj) {
-        //     layer.open({
-        //         type: 2,
-        //         title: '查看',
-        //         shade: 0.1,
-        //         area: ['500px', '500px'],
-        //         content: obj.data['url']
-        //     });
-
-        // }
         
-
         //添加
         window.add = function () {
             layer.open({
@@ -278,12 +221,41 @@
                 })
             });
         }
+        
+      //状态切换绑定
+        form.on('switch(commodity-enable)', function (obj) {
+            let operate;
+
+            if (obj.elem.checked) {
+                operate = 1;
+            } else {
+                operate = 0;
+            }
+
+            let loading = layer.load()
+
+            $.ajax({
+                url: MODULE_PATH+'updateVisible',
+                data: JSON.stringify({id: this.value,status:operate}),
+                dataType: 'json',
+                contentType: 'application/json',
+                type: 'put',
+                success: function (result) {
+                    layer.close(loading);
+                    if (result.code==200) {
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2, time: 1000});
+                    }
+                }
+            })
+        });
+      
         //刷新按钮
         window.refresh = function () {
             table.reload('commodity-table');
         }
     })
-
-
 </script>
 </html>

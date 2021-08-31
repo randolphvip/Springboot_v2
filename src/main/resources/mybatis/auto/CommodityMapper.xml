@@ -3,14 +3,14 @@
 <mapper namespace="com.myprice.mapper.auto.CommodityMapper">
   <resultMap id="BaseResultMap" type="com.myprice.model.auto.Commodity">
     <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="url" jdbcType="VARCHAR" property="url" />
     <result column="creator" jdbcType="VARCHAR" property="creator" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="category_id" jdbcType="INTEGER" property="categoryId" />
-    <result column="templet_id" jdbcType="INTEGER" property="templetId" />
-    <result column="frequence" jdbcType="VARCHAR" property="frequence" />
-   </resultMap>
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -72,13 +72,13 @@
   <sql id="Base_Column_List">
   
 	  	  	      	id,
-       	  	      	url,
        	  	      	creator,
        	  	      	create_date,
        	  	      	status,
        	  	      	category_id,
-       	  	      	templet_id,
-       	  	      	frequence 
+       	  	      	title,
+       	  	      	description,
+       	  	    	  	price
        	  	
   </sql>
   
@@ -114,40 +114,35 @@
     </if>
   </delete>
   
-  <insert id="insert" parameterType="com.myprice.model.auto.Commodity" >
+  <insert id="insert" parameterType="com.myprice.model.auto.Commodity">
     insert into u_commodity (
       	  	       id,
-       	  	       url,
        	  	       creator,
        	  	       create_date,
        	  	       status,
        	  	       category_id,
-       	  	       templet_id,
-       	  	       frequence 
+       	  	       title,
+       	  	       description,
+       	  	    	  price
        	    )
     values (
 	  	  	      	#{id,jdbcType=INTEGER},
-       	  	      	#{url,jdbcType=VARCHAR},
        	  	      	#{creator,jdbcType=VARCHAR},
        	  	      	#{createDate,jdbcType=TIMESTAMP},
        	  	      	#{status,jdbcType=INTEGER},
        	  	      	#{categoryId,jdbcType=INTEGER},
-       	  	      	#{templetId,jdbcType=INTEGER},
-       	  	      	#{frequence,jdbcType=VARCHAR} 
-       	  	    	  
+       	  	      	#{title,jdbcType=VARCHAR},
+       	  	      	#{description,jdbcType=VARCHAR},
+       	  	    	  #{price,jdbcType=DECIMAL}
        	    )
   </insert>
   
-  <insert id="insertSelective" parameterType="com.myprice.model.auto.Commodity"  useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.myprice.model.auto.Commodity">
     insert into u_commodity
     <trim prefix="(" suffix=")" suffixOverrides=",">
           
       <if test="id != null">
         id,
-      </if>
-         
-      <if test="url != null">
-        url,
       </if>
          
       <if test="creator != null">
@@ -166,22 +161,21 @@
         category_id,
       </if>
          
-      <if test="templetId != null">
-        templet_id,
+      <if test="title != null">
+        title,
       </if>
          
-      <if test="frequence != null">
-        frequence,
+      <if test="description != null">
+        description,
       </if>
          
-    
+      <if test="price != null">
+        price,
+      </if>
          </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
           <if test="id != null">
         #{id,jdbcType=INTEGER},
-      </if>
-          <if test="url != null">
-        #{url,jdbcType=VARCHAR},
       </if>
           <if test="creator != null">
         #{creator,jdbcType=VARCHAR},
@@ -195,13 +189,15 @@
           <if test="categoryId != null">
         #{categoryId,jdbcType=INTEGER},
       </if>
-          <if test="templetId != null">
-        #{templetId,jdbcType=INTEGER},
+          <if test="title != null">
+        #{title,jdbcType=VARCHAR},
       </if>
-          <if test="frequence != null">
-        #{frequence,jdbcType=VARCHAR},
+          <if test="description != null">
+        #{description,jdbcType=VARCHAR},
       </if>
-          
+          <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
         </trim>
   </insert>
   
@@ -218,9 +214,6 @@
           <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-          <if test="record.url != null">
-        url = #{record.url,jdbcType=VARCHAR},
-      </if>
           <if test="record.creator != null">
         creator = #{record.creator,jdbcType=VARCHAR},
       </if>
@@ -233,13 +226,15 @@
           <if test="record.categoryId != null">
         category_id = #{record.categoryId,jdbcType=INTEGER},
       </if>
-          <if test="record.templetId != null">
-        templet_id = #{record.templetId,jdbcType=INTEGER},
+          <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
       </if>
-          <if test="record.frequence != null">
-        frequence = #{record.frequence,jdbcType=VARCHAR},
+          <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
       </if>
-        
+          <if test="record.price != null">
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
          
     </set>
     <if test="_parameter != null">
@@ -254,8 +249,6 @@
             	     	 
     	 id = #{record.id,jdbcType=INTEGER},
     	         	     	 
-    	 url = #{record.url,jdbcType=VARCHAR},
-    	         	     	 
     	 creator = #{record.creator,jdbcType=VARCHAR},
     	         	     	 
     	 create_date = #{record.createDate,jdbcType=TIMESTAMP},
@@ -264,9 +257,11 @@
     	         	     	 
     	 category_id = #{record.categoryId,jdbcType=INTEGER},
     	         	     	 
-    	 templet_id = #{record.templetId,jdbcType=INTEGER},
+    	 title = #{record.title,jdbcType=VARCHAR},
     	         	     	 
-    	 frequence = #{record.frequence,jdbcType=VARCHAR} 
+    	 description = #{record.description,jdbcType=VARCHAR},
+    	         	     	 
+    	 price = #{record.price,jdbcType=DECIMAL}
     	         
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -278,10 +273,6 @@
     update u_commodity
     <set>
                           
-      <if test="url != null">
-        url = #{url,jdbcType=VARCHAR},
-      </if>
-                      
       <if test="creator != null">
         creator = #{creator,jdbcType=VARCHAR},
       </if>
@@ -298,31 +289,31 @@
         category_id = #{categoryId,jdbcType=INTEGER},
       </if>
                       
-      <if test="templetId != null">
-        templet_id = #{templetId,jdbcType=INTEGER},
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
       </if>
                       
-      <if test="frequence != null">
-        frequence = #{frequence,jdbcType=VARCHAR},
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
       </if>
                       
-   
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
               </set>
     
     where 
             
     id = #{id,jdbcType=INTEGER}
-                                                                          
+                                                                  
   </update>
 
-      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
+      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
 
   <update id="updateByPrimaryKey" parameterType="com.myprice.model.auto.Commodity">
     update u_commodity
     set 
     		 		 	  	  
-		url = #{url,jdbcType=VARCHAR},
-	  	 		 	  	  
 		creator = #{creator,jdbcType=VARCHAR},
 	  	 		 	  	  
 		create_date = #{createDate,jdbcType=TIMESTAMP},
@@ -331,17 +322,17 @@
 	  	 		 	  	  
 		category_id = #{categoryId,jdbcType=INTEGER},
 	  	 		 	  	  
-		templet_id = #{templetId,jdbcType=INTEGER},
+		title = #{title,jdbcType=VARCHAR},
 	  	 		 	  	  
-		frequence = #{frequence,jdbcType=VARCHAR} 
+		description = #{description,jdbcType=VARCHAR},
 	  	 		 	  		
-		 
+		price = #{price,jdbcType=DECIMAL}
 	  	 		
     where 
             
     id = #{id,jdbcType=INTEGER}
-                                                                            
+                                                                    
   </update>
   
-                                                 
+                                            
 </mapper>

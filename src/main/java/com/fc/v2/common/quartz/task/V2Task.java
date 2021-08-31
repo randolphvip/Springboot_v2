@@ -62,13 +62,13 @@ public class V2Task {
 		//1.取出所有的tradeMe模板数据。
 
 		CommodityExample commodity =new CommodityExample();
-		commodity.createCriteria().andTempletIdEqualTo(1);
+//		commodity.createCriteria().andTempletIdEqualTo(1);
 		List<Commodity> list  =commodityService.selectByExample(commodity);
 		//2.创建线程池
 		ExecutorService exec= Executors.newFixedThreadPool(3);
 		
 		for (Commodity commodity2 : list) {
-			exec.submit(new CrawlerTask(commodity2.getUrl()));
+//			exec.submit(new CrawlerTask(commodity2.getUrl()));
 		}
 		//从数据库中把所有的商品信息拉取出来，然后循环抓取价格信息
 

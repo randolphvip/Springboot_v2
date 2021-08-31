@@ -66,7 +66,7 @@
         form.on('submit(email-save)', function (data) {
             $.ajax({
                 url: MODULE_PATH+'/add',
-                data: JSON.stringify({receiversEmail:data.field['receiversEmail'],title:data.field['receiversEmail'],content:layedite.getContent(layeditIndex)}),
+                data: JSON.stringify({receiversEmail:data.field['receiversEmail'],title:data.field['title'],content:layedite.getContent(layeditIndex)}),
                 dataType: 'json',
                 contentType: 'application/json',
                 type: 'post',

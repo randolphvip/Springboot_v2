@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="include :: header('commodity修改')"/>
+    <th:block th:include="include :: header('Commodity修改')"/>
 </head>
 <body>
 <form class="layui-form" action=""  th:object="${Commodity}">
@@ -15,22 +15,23 @@
                                autocomplete="off" class="layui-input">
                     </div>
                 </div>
-
-				<div class="layui-form-item">
-                    <label class="layui-form-label">url</label>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Title </label>
                     <div class="layui-input-block">
-                        <input th:value="*{url}" type="text" name="url" autocomplete="off" placeholder="url" class="layui-input">
+                        <input th:value="*{title}" type="text" name="title" autocomplete="off" placeholder="Title " class="layui-input">
                     </div>
                 </div>
- 
+                
+                
 				<div class="layui-form-item">
                     <label class="layui-form-label">status</label>
                     <div class="layui-input-block">
-                        <select name="status" id="status" th:field="*{status}">
+                    	<select name="status" id="status" th:field="*{status}">
                             <option value="1">ON</option>
                             <option value="0">OFF</option>
                         </select>
-                    </div>
+                     </div>
                 </div>
 
 				<div class="layui-form-item">
@@ -40,25 +41,21 @@
                     </div>
                 </div>
 
+				
+
 				<div class="layui-form-item">
-                    <label class="layui-form-label">templet</label>
+                    <label class="layui-form-label">Description</label>
                     <div class="layui-input-block">
-                        <select id="templetId" name="templetId" th:field="*{templetId}">
-                            <option th:each="list : ${templates}" th:text="${list.name}" th:value="${list.id}"></option>
-                        </select>
+                      <textarea id="description" name="description" style="display: none;" th:text="*{description}"></textarea>
                      </div>
-
-                    </div>
                 </div>
 
-				<div class="layui-form-item">
-                    <label class="layui-form-label">frequence</label>
+				<!--div class="layui-form-item">
+                    <label class="layui-form-label">price</label>
                     <div class="layui-input-block">
-                        <input th:value="*{frequence}" type="text" name="frequence" autocomplete="off" placeholder="frequence" class="layui-input">
+                        <input th:value="*{price}" type="text" name="price" autocomplete="off" placeholder="price" class="layui-input">
                     </div>
-                </div>
-
-			 
+                </div-->
             </div>
         </div>
     </div>
@@ -78,14 +75,42 @@
 </form>
 <th:block th:include="include :: footer"/>
 <script>
-    layui.use(['form','laydate','jquery', 'dtree'], function () {
+    layui.use(['form','laydate','jquery', 'dtree','layedit'], function () {
         let form = layui.form;
         let $ = layui.jquery;
         let MODULE_PATH = rootPath+"/CommodityController";
 		
 		var laydate = layui.laydate;
-        let dtree = layui.dtree;
+		let dtree = layui.dtree;
+		
+	  	///-------------------------- -------------------------------------------------------   
+			let FILE_PATH = rootPath + "/oss";
+			let BucketName = '[[${BucketName}]]';
+			let layedite = layui.layedit;
+			layedite.set({
+				uploadImage : {
+					url : FILE_PATH + '/createObjectLayedit/'
+							+ BucketName //接口url
+					,
+					type : 'post' //默认post
+				}
+			});
+			let layeditIndex = layedite.build('description'); //建立编辑器
 
+			//-------------------------------------------   ------------------------------------------ 
+			
+	         
+		
+        //同时绑定多个
+        lay('.datetime-input').each(function(){
+          laydate.render({
+            elem: this
+            ,trigger: 'click'
+            ,type: 'datetime'
+          });
+        });
+        
+        
         dtree.renderSelect({
             elem: "#selectCategory",
             url: rootPath+"/ProductTypeController/selectParent",
@@ -96,17 +121,12 @@
             response: {treeId: "id", parentId: "parentId", title: "productTypeName"},  //修改response中返回数据的定义
             selectInitVal: "[[${Commodity.categoryId}]]"
         });
-
-
-        //同时绑定多个
-        lay('.datetime-input').each(function(){
-          laydate.render({
-            elem: this
-            ,trigger: 'click'
-            ,type: 'datetime'
-          });
-        });
+        
+        
         form.on('submit(commodity-update)', function (data) {
+        	data.field['description'] = layedite.getContent(layeditIndex);
+			console.log(data.field);
+			
             $.ajax({
                 url: MODULE_PATH+'/edit',
                 data: data.field,

@@ -3,17 +3,15 @@
 <mapper namespace="com.myprice.mapper.auto.CommodityMapper">
   <resultMap id="BaseResultMap2" type="com.myprice.model.auto.Commodity">
     <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="url" jdbcType="VARCHAR" property="url" />
     <result column="creator" jdbcType="VARCHAR" property="creator" />
      <result column="creator_name" jdbcType="VARCHAR" property="creatorName" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="category_id" jdbcType="INTEGER" property="categoryId" />
     <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
-    <result column="templet_id" jdbcType="INTEGER" property="templetId" />
-     <result column="templet_name" jdbcType="VARCHAR" property="templetName" />
-    <result column="frequence" jdbcType="VARCHAR" property="frequence" />
-    
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+      
    	<!--result column="title" jdbcType="VARCHAR" property="title" />
     <result column="buy_now_price" jdbcType="DECIMAL" property="buyNowPrice" />
     <result column="starting_price" jdbcType="DECIMAL" property="startingPrice" />
@@ -57,23 +55,16 @@
   <sql id="Base_Column_List2">
   
 	  	  	      	c.id as id,
-       	  	      	c.url as url,
+	  	  	      	c.title as title,
        	  	      	c.creator as creator,
        	  	      	c.create_date as create_date,
        	  	      	c.status as status,
        	  	      	c.category_id as category_id,
-       	  	      	c.templet_id as category_id,
-       	  	      	c.frequence as category_id,
+       	  	      	c.description as description,
        	  	     	(select username  from t_sys_user u where u.id=c.creator) as creator_name,
-       	  	    	( select name  from u_template t where t.id=c.templet_id  ) as templet_name,
        	  	    	( select product_type_name  from u_product_type p where p.id=c.category_id   ) as category_name
        	  	    	
-       	  	    	<!-- ,
-       	  	    	d.title as title,
-       	  	    	d.close_datetime as close_datetime,
-       	  	    	d.buy_now_price as buy_now_price,
-       	  	    	d.starting_price as starting_price -->
-       	  	
+        	  	
   </sql>
   
   <select id="queryCommodityList" parameterType="com.myprice.model.auto.CommodityExample" resultMap="BaseResultMap2">
