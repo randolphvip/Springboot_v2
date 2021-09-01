@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myprice.mapper.auto.MonitorPriceMapper">
+  <resultMap id="BaseResultMap2" type="com.myprice.model.auto.MonitorPrice">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="shop_commodity_id" jdbcType="INTEGER" property="shopCommodityId" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    
+    
+     <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+      <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
+      <result column="branch_name" jdbcType="VARCHAR" property="branchName" />
+  </resultMap>
+  
+ 
+  
+  <select id="selectByExample2" parameterType="com.myprice.model.auto.MonitorPriceExample" resultMap="BaseResultMap2">
+	SELECT
+				id,
+				shop_id,
+				commodity_id,
+				shop_commodity_id,
+				date,
+				price,
+				branch_id,
+					(SELECT sb.branch_name from u_shop_branch sb where sb.id= mp.branch_id ) as branch_name,
+				(SELECT s.shop_name from u_shop s where s.id= mp.shop_id ) as shop_name,
+				(SELECT c.title from u_commodity c where c.id= mp.commodity_id) as commodity_name 
+			FROM
+				u_monitor_price mp
+ 
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+   
+  
+                                  
+</mapper>

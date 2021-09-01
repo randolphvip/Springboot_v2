@@ -6,8 +6,8 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fc.v2.util.DateUtils;
 
-import cn.hutool.core.date.DateUtil;
 import io.swagger.annotations.ApiModelProperty;
 
 public class CommodityTradeMe implements Serializable {
@@ -262,7 +262,7 @@ public class CommodityTradeMe implements Serializable {
 
 	public String dateToStringConvert(Date date) {
 		if(date!=null) {
-			return DateUtil.format(date, "yyyy-MM-dd HH:mm:ss");
+			return DateUtils.format(date, "yyyy-MM-dd HH:mm:ss");
 		}
 		return "";
 	}

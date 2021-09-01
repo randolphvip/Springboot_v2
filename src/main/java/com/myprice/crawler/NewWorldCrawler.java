@@ -1,12 +1,10 @@
 package com.myprice.crawler;
 
-import java.io.IOException;
 import java.util.Map;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +12,7 @@ public class NewWorldCrawler {
 	private static final Logger log = LoggerFactory.getLogger(NewWorldCrawler.class);
 	Map<String, String> cookies =null;
 	public  NewWorldCrawler () {
-		init("b83029b6-5dd5-449e-8056-26f3943a4e18|false");//lower Hutt
+		init("745d0bda-4b4f-4e4c-ab1f-6d77512f92f4|False");//lower Hutt
 	}
 	
 	public  NewWorldCrawler (String StoreID) {
@@ -23,11 +21,11 @@ public class NewWorldCrawler {
 	
 	private void init(String StoreID) {
 		try {
-			String url = "https://www.paknsave.co.nz/";
+			String url = "https://www.newworld.co.nz//";
 			 this.cookies = Jsoup.connect(url).execute().cookies();
 			 this.cookies.put("STORE_ID_V2", StoreID);// 设置要采购的店铺ID。
 		} catch (Exception e) {
-			log.error("Getting session from Pakn Save fail");
+			log.error("Getting session from New World fail");
 			e.printStackTrace();
 		}
 	}
@@ -44,61 +42,55 @@ public class NewWorldCrawler {
 		
 		Element element = doc.selectFirst(
 				"#pol > div > div.fs-product-detail__price > div.fs-price-lockup.fs-price-lockup--large.u-margin-bottom.u-margin-top > span:nth-child(2) > meta:nth-child(1)");
- 
-			System.out.println("-->  :" + element.attr("content"));
-
-		 
-		System.out.println(System.currentTimeMillis() - begin);
-		
-		
-		System.out.println("duration :" + (System.currentTimeMillis() - begin));
-		
+ 			System.out.println("-->  :" + element.attr("content"));
+		 		
+ 			System.out.println("duration :" + (System.currentTimeMillis() - begin));
 		
 		}catch (Exception e) {
-			log.error("Getting session from Pakn Save fail");
+			log.error("Getting session from New World fail");
 			e.printStackTrace();
 		}
 	}
 	
 	
 	public static void main(String[] args) {
-		String url = "https://www.paknsave.co.nz/shop/product/5046542_kgm_000pns?name=bananas";
+		String url = "https://www.newworld.co.nz/shop/product/5046542_kgm_000nw?name=bananas";
 		NewWorldCrawler paknSaveCrawler =new NewWorldCrawler();
 		paknSaveCrawler.doCrawlerPaknSave(url);
 
 	}
 
-	public static void crawlerCategroy(String URL) {
-		long begin = System.currentTimeMillis();
-
-		try {
-
-			// Map<String, String> cookies =new HashMap<String, String>();
-
-			Map<String, String> cookies = Jsoup.connect(URL).execute().cookies();
-			cookies.put("STORE_ID_V2", "98ec3885-ac93-4fcb-807b-59c9055c52c4|false");// 设置要采购的店铺ID。
-
-			Document doc = Jsoup.connect(URL).cookies(cookies).get();
-			System.out.println("4:" + (System.currentTimeMillis() - begin));
-
-//			
-//		Map<String, String> cookies =  Jsoup.connect(URL).execute().cookies();
-//			cookies.put("STORE_ID_V2", "98ec3885-ac93-4fcb-807b-59c9055c52c4|false");
-//			Document doc= Jsoup.connect(URL).cookies(cookies).get();
-// 
-
-			Elements elements = doc.select(
-					"#pol > div > div.fs-product-detail__price > div.fs-price-lockup.fs-price-lockup--large.u-margin-bottom.u-margin-top > span:nth-child(2) > meta:nth-child(1)");
-			System.out.println(elements.size());
-			for (Element e : elements) {
-
-				System.out.println("-->  :" + e.attr("content"));
-
-			}
-			System.out.println(System.currentTimeMillis() - begin);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-	}
+//	public static void crawlerCategroy(String URL) {
+//		long begin = System.currentTimeMillis();
+//
+//		try {
+//
+//			// Map<String, String> cookies =new HashMap<String, String>();
+//
+//			Map<String, String> cookies = Jsoup.connect(URL).execute().cookies();
+//			cookies.put("STORE_ID_V2", "98ec3885-ac93-4fcb-807b-59c9055c52c4|false");// 设置要采购的店铺ID。
+//
+//			Document doc = Jsoup.connect(URL).cookies(cookies).get();
+//			System.out.println("4:" + (System.currentTimeMillis() - begin));
+//
+////			
+////		Map<String, String> cookies =  Jsoup.connect(URL).execute().cookies();
+////			cookies.put("STORE_ID_V2", "98ec3885-ac93-4fcb-807b-59c9055c52c4|false");
+////			Document doc= Jsoup.connect(URL).cookies(cookies).get();
+//// 
+//
+//			Elements elements = doc.select(
+//					"#pol > div > div.fs-product-detail__price > div.fs-price-lockup.fs-price-lockup--large.u-margin-bottom.u-margin-top > span:nth-child(2) > meta:nth-child(1)");
+//			System.out.println(elements.size());
+//			for (Element e : elements) {
+//
+//				System.out.println("-->  :" + e.attr("content"));
+//
+//			}
+//			System.out.println(System.currentTimeMillis() - begin);
+//		} catch (IOException e1) {
+//			e1.printStackTrace();
+//		}
+//	}
 
 }

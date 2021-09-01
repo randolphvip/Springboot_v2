@@ -3,6 +3,8 @@ package com.myprice.model.auto;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fc.v2.util.DateUtils;
+
 import io.swagger.annotations.ApiModelProperty;
 import cn.hutool.core.date.DateUtil;
 import java.util.Date;
@@ -148,7 +150,8 @@ public class Commodity implements Serializable {
 
 	public String dateToStringConvert(Date date) {
 		if(date!=null) {
-			return DateUtil.format(date, "yyyy-MM-dd HH:mm:ss");
+			return DateUtils.format(date, "yyyy-MM-dd HH:mm:ss");
+			//return DateUtils.format(date, "yyyy-MM-dd HH:mm:ss");
 		}
 		return "";
 	}
