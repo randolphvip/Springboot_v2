@@ -1,17 +1,17 @@
 package com.myprice.model.auto;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import cn.hutool.core.util.StrUtil;
+import java.math.BigDecimal;
 
 /**
- * paknsave CommodityPaknsaveDetailExample
+ * PaknSave CommodityDetailPaknsaveExample
  * @author Cong_自动生成
- * @date 2021-08-28 20:06:21
+ * @date 2021-09-01 17:47:19
  */
-public class CommodityPaknsaveDetailExample {
+public class CommodityDetailPaknsaveExample {
 
     protected String orderByClause;
 
@@ -19,7 +19,7 @@ public class CommodityPaknsaveDetailExample {
 
     protected List<Criteria> oredCriteria;
 
-    public CommodityPaknsaveDetailExample() {
+    public CommodityDetailPaknsaveExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -539,8 +539,150 @@ public class CommodityPaknsaveDetailExample {
             return (Criteria) this;
         }
         
+				
+        public Criteria andCategoryIsNull() {
+            addCriterion("category is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryIsNotNull() {
+            addCriterion("category is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryEqualTo(String value) {
+            addCriterion("category =", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryNotEqualTo(String value) {
+            addCriterion("category <>", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryGreaterThan(String value) {
+            addCriterion("category >", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryGreaterThanOrEqualTo(String value) {
+            addCriterion("category >=", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryLessThan(String value) {
+            addCriterion("category <", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryLessThanOrEqualTo(String value) {
+            addCriterion("category <=", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryLike(String value) {
+            addCriterion("category like", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryNotLike(String value) {
+            addCriterion("category not like", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryIn(List<String> values) {
+            addCriterion("category in", values, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryNotIn(List<String> values) {
+            addCriterion("category not in", values, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryBetween(String value1, String value2) {
+            addCriterion("category between", value1, value2, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryNotBetween(String value1, String value2) {
+            addCriterion("category not between", value1, value2, "category");
+            return (Criteria) this;
+        }
+        
+				
+        public Criteria andShopCommondityIdIsNull() {
+            addCriterion("shop_commondity_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdIsNotNull() {
+            addCriterion("shop_commondity_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdEqualTo(Integer value) {
+            addCriterion("shop_commondity_id =", value, "shopCommondityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdNotEqualTo(Integer value) {
+            addCriterion("shop_commondity_id <>", value, "shopCommondityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdGreaterThan(Integer value) {
+            addCriterion("shop_commondity_id >", value, "shopCommondityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("shop_commondity_id >=", value, "shopCommondityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdLessThan(Integer value) {
+            addCriterion("shop_commondity_id <", value, "shopCommondityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdLessThanOrEqualTo(Integer value) {
+            addCriterion("shop_commondity_id <=", value, "shopCommondityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdLike(Integer value) {
+            addCriterion("shop_commondity_id like", value, "shopCommondityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdNotLike(Integer value) {
+            addCriterion("shop_commondity_id not like", value, "shopCommondityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdIn(List<Integer> values) {
+            addCriterion("shop_commondity_id in", values, "shopCommondityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdNotIn(List<Integer> values) {
+            addCriterion("shop_commondity_id not in", values, "shopCommondityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdBetween(Integer value1, Integer value2) {
+            addCriterion("shop_commondity_id between", value1, value2, "shopCommondityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopCommondityIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("shop_commondity_id not between", value1, value2, "shopCommondityId");
+            return (Criteria) this;
+        }
+        
 			
-		 public Criteria andLikeQuery(CommodityPaknsaveDetail record) {
+		 public Criteria andLikeQuery(CommodityDetailPaknsave record) {
 		 	List<String> list= new ArrayList<String>();
 		 	List<String> list2= new ArrayList<String>();
         	StringBuffer buffer=new StringBuffer();
@@ -562,6 +704,12 @@ public class CommodityPaknsaveDetailExample {
 			if(record.getUnit()!=null&&StrUtil.isNotEmpty(record.getUnit().toString())) {
     			 list.add("ifnull(unit,'')");
     		}
+			if(record.getCategory()!=null&&StrUtil.isNotEmpty(record.getCategory().toString())) {
+    			 list.add("ifnull(category,'')");
+    		}
+			if(record.getShopCommondityId()!=null&&StrUtil.isNotEmpty(record.getShopCommondityId().toString())) {
+    			 list.add("ifnull(shop_commondity_id,'')");
+    		}
 			if(record.getId()!=null&&StrUtil.isNotEmpty(record.getId().toString())) {
     			list2.add("'%"+record.getId()+"%'");
     		}
@@ -579,6 +727,12 @@ public class CommodityPaknsaveDetailExample {
     		}
 			if(record.getUnit()!=null&&StrUtil.isNotEmpty(record.getUnit().toString())) {
     			list2.add("'%"+record.getUnit()+"%'");
+    		}
+			if(record.getCategory()!=null&&StrUtil.isNotEmpty(record.getCategory().toString())) {
+    			list2.add("'%"+record.getCategory()+"%'");
+    		}
+			if(record.getShopCommondityId()!=null&&StrUtil.isNotEmpty(record.getShopCommondityId().toString())) {
+    			list2.add("'%"+record.getShopCommondityId()+"%'");
     		}
         	buffer.append(" CONCAT(");
 	        buffer.append(StrUtil.join(",",list));
@@ -601,6 +755,8 @@ public class CommodityPaknsaveDetailExample {
     		list.add("ifnull(price,'')");
     		list.add("ifnull(img,'')");
     		list.add("ifnull(unit,'')");
+    		list.add("ifnull(category,'')");
+    		list.add("ifnull(shop_commondity_id,'')");
         	buffer.append(" CONCAT(");
 	        buffer.append(StrUtil.join(",",list));
         	buffer.append(")");

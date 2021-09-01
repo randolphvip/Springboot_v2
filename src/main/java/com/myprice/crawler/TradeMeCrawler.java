@@ -101,9 +101,6 @@ public class TradeMeCrawler {
 				log.debug("--> buyNowPrices:"+buyNowPrice);
 			}
 			
-			
-			
-			
 			Element closingDatetimeElement  = doc.selectFirst("tg-rack-item-primary > div > tm-marketplace-closing-datetime > tm-closing-time > div" );
 			if(closingDatetimeElement!=null) {
 				log.debug("--> closingDatetimes:"+closingDatetimeElement.ownText());
@@ -120,10 +117,6 @@ public class TradeMeCrawler {
 				}
 			}
 				
-				
-				
- 			
-			
 			Element conditionElement  = doc.selectFirst("tm-listing-attributes-rack > tg-rack > tg-rack-item > div > div > tg-rack-item-secondary" );
 			if(conditionElement!=null) {
 				log.debug("--> condition:"+conditionElement.ownText());
@@ -138,7 +131,7 @@ public class TradeMeCrawler {
 						descriptionList.add(descriptionElement.ownText());
  					}
 		
-			log.debug("-->description"+descriptionList.toString());
+					log.debug("-->description"+descriptionList.toString());
 			tradeMe.setDescription(descriptionList.toString());	
 			
 			Elements shippingElements  = doc.select("#shipping-options > tg-row > tg-col:nth-child(2) > tm-listing-shipping-details > table > tbody > tr" );

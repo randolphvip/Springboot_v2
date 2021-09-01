@@ -1,4 +1,4 @@
-package com.fc.v2.controller.gen;
+package com.myprice.controller.gen;
 
 import java.util.List;
 
@@ -17,44 +17,45 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fc.v2.common.base.BaseController;
 import com.fc.v2.common.domain.AjaxResult;
-import com.fc.v2.common.domain.ResuTree;
 import com.fc.v2.common.domain.ResultTable;
-import com.fc.v2.model.auto.ProductType;
-import com.fc.v2.model.auto.ProductTypeExample;
 import com.fc.v2.model.custom.Tablepar;
-import com.fc.v2.service.ProductTypeService;
 import com.github.pagehelper.PageInfo;
+import com.myprice.model.auto.Commodity;
+import com.myprice.model.auto.Shop;
+import com.myprice.model.auto.ShopBranch;
+import com.myprice.service.ShopBranchService;
+import com.myprice.service.ShopService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 /**
- * 产品分类Controller
- * @ClassName: ProductTypeController
- * @author fuce
- * @date 2021-06-26 14:52:52
+ * Shop BranchController
+ * @ClassName: ShopBranchController
+ * @author Cong
+ * @date 2021-09-01 23:13:10
  */
-@Api(value = "产品分类")
+@Api(value = "Shop Branch")
 @Controller
-@RequestMapping("/ProductTypeController")
-public class ProductTypeController extends BaseController{
+@RequestMapping("/ShopBranchController")
+public class ShopBranchController extends BaseController{
 	
-	private String prefix = "gen/productType";
+	private String prefix = "gen/shopBranch";
 	
 	@Autowired
-	private ProductTypeService productTypeService;
-//	@Autowired
-//	private RedisService redis;
+	private ShopBranchService shopBranchService;
+	@Autowired
+	private ShopService	shopservice;
 	
 	/**
-	 * 产品分类页面展示
+	 * Shop Branch页面展示
 	 * @param model
 	 * @return String
-	 * @author fuce
+	 * @author Cong
 	 */
 	@ApiOperation(value = "分页跳转", notes = "分页跳转")
 	@GetMapping("/view")
-	@RequiresPermissions("gen:productType:view")
+	@RequiresPermissions("gen:shopBranch:view")
     public String view(ModelMap model)
     {
         return prefix + "/list";
@@ -66,18 +67,15 @@ public class ProductTypeController extends BaseController{
 	 * @param searchText
 	 * @return
 	 */
-	//@Log(title = "产品分类", action = "111")
+	//@Log(title = "Shop Branch", action = "111")
 	@ApiOperation(value = "分页跳转", notes = "分页跳转")
 	@GetMapping("/list")
-	@RequiresPermissions("gen:productType:list")
+	@RequiresPermissions("gen:shopBranch:list")
 	@ResponseBody
-	public ResultTable list(Tablepar tablepar,ProductType productType){
-		PageInfo<ProductType> page=productTypeService.list(tablepar,productType) ; 
+	public ResultTable list(Tablepar tablepar,ShopBranch shopBranch){
+		PageInfo<ShopBranch> page=shopBranchService.list(tablepar,shopBranch) ; 
 		return pageTable(page.getList(),page.getTotal());
 	}
-	
- 
-	 
 	
 	/**
      * 新增跳转
@@ -86,7 +84,8 @@ public class ProductTypeController extends BaseController{
     @GetMapping("/add")
     public String add(ModelMap modelMap)
     {
-//	System.out.println(redis.getCacheObject("sss")+"-----------------------------------------------------------------------Redis:");
+		List<Shop> shopList=	shopservice.selectByExample(null);
+		modelMap.put("shopList", shopList);
         return prefix + "/add";
     }
 	
@@ -95,13 +94,13 @@ public class ProductTypeController extends BaseController{
      * @param 
      * @return
      */
-	//@Log(title = "产品分类新增", action = "111")
+	//@Log(title = "Shop Branch新增", action = "111")
 	@ApiOperation(value = "新增", notes = "新增")
 	@PostMapping("/add")
-	@RequiresPermissions("gen:productType:add")
+	@RequiresPermissions("gen:shopBranch:add")
 	@ResponseBody
-	public AjaxResult add(ProductType productType){
-		int b=productTypeService.insertSelective(productType);
+	public AjaxResult add(ShopBranch shopBranch){
+		int b=shopBranchService.insertSelective(shopBranch);
 		if(b>0){
 			return success();
 		}else{
@@ -109,27 +108,18 @@ public class ProductTypeController extends BaseController{
 		}
 	}
 	
-    @GetMapping("/selectParent")
-	@ResponseBody
-    public ResuTree selectParent(){
-        List<ProductType> list = productTypeService.selectByExample(new ProductTypeExample());
-        return dataTree(list);
-    }
-
-	
-	
 	/**
-	 * 产品分类删除
+	 * Shop Branch删除
 	 * @param ids
 	 * @return
 	 */
-	//@Log(title = "产品分类删除", action = "111")
+	//@Log(title = "Shop Branch删除", action = "111")
 	@ApiOperation(value = "删除", notes = "删除")
 	@DeleteMapping("/remove")
-	@RequiresPermissions("gen:productType:remove")
+	@RequiresPermissions("gen:shopBranch:remove")
 	@ResponseBody
 	public AjaxResult remove(String ids){
-		int b=productTypeService.deleteByPrimaryKey(ids);
+		int b=shopBranchService.deleteByPrimaryKey(ids);
 		if(b>0){
 			return success();
 		}else{
@@ -148,7 +138,7 @@ public class ProductTypeController extends BaseController{
 	@GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") String id, ModelMap map)
     {
-        map.put("ProductType", productTypeService.selectByPrimaryKey(id));
+        map.put("ShopBranch", shopBranchService.selectByPrimaryKey(id));
 
         return prefix + "/edit";
     }
@@ -156,30 +146,30 @@ public class ProductTypeController extends BaseController{
 	/**
      * 修改保存
      */
-    //@Log(title = "产品分类修改", action = "111")
+    //@Log(title = "Shop Branch修改", action = "111")
 	@ApiOperation(value = "修改保存", notes = "修改保存")
-    @RequiresPermissions("gen:productType:edit")
+    @RequiresPermissions("gen:shopBranch:edit")
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(ProductType productType)
+    public AjaxResult editSave(ShopBranch shopBranch)
     {
-        return toAjax(productTypeService.updateByPrimaryKeySelective(productType));
+        return toAjax(shopBranchService.updateByPrimaryKeySelective(shopBranch));
     }
 
     
-	
 	/**
 	 * 修改状态
 	 * @param record
 	 * @return
 	 */
-    @PutMapping("/updateVisible")
+	@ApiOperation(value = "update status", notes = "update status")
+    @PutMapping("/updateStatus")
 	@ResponseBody
-    public AjaxResult updateVisible(@RequestBody ProductType record){
-		int i=productTypeService.updateVisible(record);
+    public AjaxResult updateStatus(@RequestBody ShopBranch record){
+		int i=shopBranchService.updateByPrimaryKeySelective(record);
 		 return toAjax(i);
 	}
-    
+
 
 	
 }

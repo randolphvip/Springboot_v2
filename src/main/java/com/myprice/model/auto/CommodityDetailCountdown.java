@@ -1,13 +1,14 @@
 package com.myprice.model.auto;
 
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
+import cn.hutool.core.date.DateUtil;
+import java.util.Date;
 import java.math.BigDecimal;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
-
-public class CommodityPaknsaveDetail extends Commodity implements Serializable {
+public class CommodityDetailCountdown implements Serializable {
     private static final long serialVersionUID = 1L;
 
 	
@@ -26,8 +27,14 @@ public class CommodityPaknsaveDetail extends Commodity implements Serializable {
 	@ApiModelProperty(value = "iamge")
 	private String img;
 	
-	@ApiModelProperty(value = "unit")
+	@ApiModelProperty(value = "Unit")
 	private String unit;
+	
+	@ApiModelProperty(value = "Category")
+	private String category;
+	
+	@ApiModelProperty(value = "shop_commondity")
+	private Integer shopCommondityId;
 	
 	@JsonProperty("id")
 	public Integer getId() {
@@ -77,9 +84,25 @@ public class CommodityPaknsaveDetail extends Commodity implements Serializable {
 	public void setUnit(String unit) {
 		this.unit =  unit;
 	}
+	@JsonProperty("category")
+	public String getCategory() {
+		return category;
+	}
 
-												
-	public CommodityPaknsaveDetail(Integer id,String title,String description,BigDecimal price,String img,String unit) {
+	public void setCategory(String category) {
+		this.category =  category;
+	}
+	@JsonProperty("shopCommondityId")
+	public Integer getShopCommondityId() {
+		return shopCommondityId;
+	}
+
+	public void setShopCommondityId(Integer shopCommondityId) {
+		this.shopCommondityId =  shopCommondityId;
+	}
+
+																
+	public CommodityDetailCountdown(Integer id,String title,String description,BigDecimal price,String img,String unit,String category,Integer shopCommondityId) {
 				
 		this.id = id;
 				
@@ -93,9 +116,13 @@ public class CommodityPaknsaveDetail extends Commodity implements Serializable {
 				
 		this.unit = unit;
 				
+		this.category = category;
+				
+		this.shopCommondityId = shopCommondityId;
+				
 	}
 
-	public CommodityPaknsaveDetail() {
+	public CommodityDetailCountdown() {
 	    super();
 	}
 

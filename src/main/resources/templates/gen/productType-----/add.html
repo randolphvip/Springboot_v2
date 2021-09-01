@@ -19,7 +19,7 @@
 				<div class="layui-form-item">
                     <label class="layui-form-label">Name</label>
                     <div class="layui-input-block">
-                        <input type="text" name="productTypeName" autocomplete="off" placeholder="Product Type" class="layui-input">
+                        <input type="text" name="categoryName" autocomplete="off" placeholder="Product Type" class="layui-input">
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@
             selectInputName: {nodeId: "parentId"},
             skin: "layui",
             dataFormat: "list",
-            response: {treeId: "id", parentId: "parentId", title: "productTypeName"},  //修改response中返回数据的定义
+            response: {treeId: "id", parentId: "parentId", title: "categoryName"},  //修改response中返回数据的定义
             selectInitVal: '1'
         });
 

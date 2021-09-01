@@ -62,7 +62,7 @@
        	  	      	c.category_id as category_id,
        	  	      	c.description as description,
        	  	     	(select username  from t_sys_user u where u.id=c.creator) as creator_name,
-       	  	    	( select product_type_name  from u_product_type p where p.id=c.category_id   ) as category_name
+       	  	    	( select category_name  from u_category p where p.id=c.category_id   ) as category_name
        	  	    	
         	  	
   </sql>

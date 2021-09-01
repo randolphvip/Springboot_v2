@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.myprice.mapper.auto.CommodityPaknsaveDetailMapper">
-  <resultMap id="BaseResultMap" type="com.myprice.model.auto.CommodityPaknsaveDetail">
+<mapper namespace="com.myprice.mapper.auto.CommodityDetailPaknsaveMapper">
+  <resultMap id="BaseResultMap" type="com.myprice.model.auto.CommodityDetailPaknsave">
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="img" jdbcType="VARCHAR" property="img" />
     <result column="unit" jdbcType="VARCHAR" property="unit" />
-    
-    <result column="category_name" jdbcType="INTEGER" property="categoryName" />
-    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
-    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="shop_commondity_id" jdbcType="INTEGER" property="shopCommondityId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,29 +76,19 @@
        	  	      	description,
        	  	      	price,
        	  	      	img,
-       	  	    	 unit
+       	  	      	unit,
+       	  	      	category,
+       	  	    	  	shop_commondity_id
        	  	
   </sql>
-    <sql id="Base_Column_List_extend_commondity">
   
-	  	  	      	c.id,
-       	  	      	title,
-       	  	      	description,
-       	  	      	price,
-       	  	      	img,
-       	  	    	unit,
-       	  	    	create_date,
-       	  	    	status,
-       	  	    	( select product_type_name  from u_product_type p where p.id=c.category_id   ) as category_name
-       	  	
-  </sql>
-  <select id="selectByExample" parameterType="com.myprice.model.auto.CommodityPaknsaveDetailExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.myprice.model.auto.CommodityDetailPaknsaveExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
-    <include refid="Base_Column_List_extend_commondity" />
-    from u_commodity_paknsave_detail p inner join u_commodity c on p.id= c.id 
+    <include refid="Base_Column_List" />
+    from u_commodity_detail_paknsave
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -111,29 +99,31 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from u_commodity_paknsave_detail
+    from u_commodity_detail_paknsave
     where id = #{id,jdbcType=INTEGER}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from u_commodity_paknsave_detail
+    delete from u_commodity_detail_paknsave
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.myprice.model.auto.CommodityPaknsaveDetailExample">
-    delete from u_commodity_paknsave_detail
+  <delete id="deleteByExample" parameterType="com.myprice.model.auto.CommodityDetailPaknsaveExample">
+    delete from u_commodity_detail_paknsave
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   
-  <insert id="insert" parameterType="com.myprice.model.auto.CommodityPaknsaveDetail">
-    insert into u_commodity_paknsave_detail (
+  <insert id="insert" parameterType="com.myprice.model.auto.CommodityDetailPaknsave">
+    insert into u_commodity_detail_paknsave (
       	  	       id,
        	  	       title,
        	  	       description,
        	  	       price,
        	  	       img,
-       	  	    	  unit
+       	  	       unit,
+       	  	       category,
+       	  	    	  shop_commondity_id
        	    )
     values (
 	  	  	      	#{id,jdbcType=INTEGER},
@@ -141,12 +131,14 @@
        	  	      	#{description,jdbcType=VARCHAR},
        	  	      	#{price,jdbcType=DECIMAL},
        	  	      	#{img,jdbcType=VARCHAR},
-       	  	    	  #{unit,jdbcType=VARCHAR}
+       	  	      	#{unit,jdbcType=VARCHAR},
+       	  	      	#{category,jdbcType=VARCHAR},
+       	  	    	  #{shopCommondityId,jdbcType=INTEGER}
        	    )
   </insert>
   
-  <insert id="insertSelective" parameterType="com.myprice.model.auto.CommodityPaknsaveDetail">
-    insert into u_commodity_paknsave_detail
+  <insert id="insertSelective" parameterType="com.myprice.model.auto.CommodityDetailPaknsave">
+    insert into u_commodity_detail_paknsave
     <trim prefix="(" suffix=")" suffixOverrides=",">
           
       <if test="id != null">
@@ -172,6 +164,14 @@
       <if test="unit != null">
         unit,
       </if>
+         
+      <if test="category != null">
+        category,
+      </if>
+         
+      <if test="shopCommondityId != null">
+        shop_commondity_id,
+      </if>
          </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
           <if test="id != null">
@@ -192,18 +192,24 @@
           <if test="unit != null">
         #{unit,jdbcType=VARCHAR},
       </if>
+          <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+          <if test="shopCommondityId != null">
+        #{shopCommondityId,jdbcType=INTEGER},
+      </if>
         </trim>
   </insert>
   
-  <select id="countByExample" parameterType="com.myprice.model.auto.CommodityPaknsaveDetailExample" resultType="java.lang.Long">
-    select count(*) from u_commodity_paknsave_detail
+  <select id="countByExample" parameterType="com.myprice.model.auto.CommodityDetailPaknsaveExample" resultType="java.lang.Long">
+    select count(*) from u_commodity_detail_paknsave
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   
   <update id="updateByExampleSelective" parameterType="map">
-    update u_commodity_paknsave_detail
+    update u_commodity_detail_paknsave
     <set>
           <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -223,6 +229,12 @@
           <if test="record.unit != null">
         unit = #{record.unit,jdbcType=VARCHAR},
       </if>
+          <if test="record.category != null">
+        category = #{record.category,jdbcType=VARCHAR},
+      </if>
+          <if test="record.shopCommondityId != null">
+        shop_commondity_id = #{record.shopCommondityId,jdbcType=INTEGER},
+      </if>
          
     </set>
     <if test="_parameter != null">
@@ -232,7 +244,7 @@
   
   
   <update id="updateByExample" parameterType="map">
-    update u_commodity_paknsave_detail
+    update u_commodity_detail_paknsave
     set
             	     	 
     	 id = #{record.id,jdbcType=INTEGER},
@@ -245,7 +257,11 @@
     	         	     	 
     	 img = #{record.img,jdbcType=VARCHAR},
     	         	     	 
-    	 unit = #{record.unit,jdbcType=VARCHAR}
+    	 unit = #{record.unit,jdbcType=VARCHAR},
+    	         	     	 
+    	 category = #{record.category,jdbcType=VARCHAR},
+    	         	     	 
+    	 shop_commondity_id = #{record.shopCommondityId,jdbcType=INTEGER}
     	         
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -253,8 +269,8 @@
   </update>
   
   
-      <update id="updateByPrimaryKeySelective" parameterType="com.myprice.model.auto.CommodityPaknsaveDetail">
-    update u_commodity_paknsave_detail
+      <update id="updateByPrimaryKeySelective" parameterType="com.myprice.model.auto.CommodityDetailPaknsave">
+    update u_commodity_detail_paknsave
     <set>
                           
       <if test="title != null">
@@ -276,18 +292,26 @@
       <if test="unit != null">
         unit = #{unit,jdbcType=VARCHAR},
       </if>
+                      
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+                      
+      <if test="shopCommondityId != null">
+        shop_commondity_id = #{shopCommondityId,jdbcType=INTEGER},
+      </if>
               </set>
     
     where 
             
     id = #{id,jdbcType=INTEGER}
-                                                  
+                                                                  
   </update>
 
-      	      	   	      	   	      	   	      	   	      	   	      	
+      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
 
-  <update id="updateByPrimaryKey" parameterType="com.myprice.model.auto.CommodityPaknsaveDetail">
-    update u_commodity_paknsave_detail
+  <update id="updateByPrimaryKey" parameterType="com.myprice.model.auto.CommodityDetailPaknsave">
+    update u_commodity_detail_paknsave
     set 
     		 		 	  	  
 		title = #{title,jdbcType=VARCHAR},
@@ -297,14 +321,18 @@
 		price = #{price,jdbcType=DECIMAL},
 	  	 		 	  	  
 		img = #{img,jdbcType=VARCHAR},
+	  	 		 	  	  
+		unit = #{unit,jdbcType=VARCHAR},
+	  	 		 	  	  
+		category = #{category,jdbcType=VARCHAR},
 	  	 		 	  		
-		unit = #{unit,jdbcType=VARCHAR}
+		shop_commondity_id = #{shopCommondityId,jdbcType=INTEGER}
 	  	 		
     where 
             
     id = #{id,jdbcType=INTEGER}
-                                                    
+                                                                    
   </update>
   
-                                  
+                                            
 </mapper>

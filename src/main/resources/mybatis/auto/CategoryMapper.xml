@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fc.v2.mapper.auto.ProductTypeMapper">
-  <resultMap id="BaseResultMap" type="com.fc.v2.model.auto.ProductType">
+<mapper namespace="com.fc.v2.mapper.auto.CategoryMapper">
+  <resultMap id="BaseResultMap" type="com.fc.v2.model.auto.Category">
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
-    <result column="product_type_name" jdbcType="VARCHAR" property="productTypeName" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="order_num" jdbcType="INTEGER" property="orderNum" />
   </resultMap>
@@ -70,19 +70,19 @@
   
 	  	  	      	id,
        	  	      	parent_id,
-       	  	      	product_type_name,
+       	  	      	category_name,
        	  	      	status,
        	  	    	  	order_num
        	  	
   </sql>
   
-  <select id="selectByExample" parameterType="com.fc.v2.model.auto.ProductTypeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.fc.v2.model.auto.CategoryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from u_product_type
+    from u_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,40 +93,40 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from u_product_type
+    from u_category
     where id = #{id,jdbcType=INTEGER}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from u_product_type
+    delete from u_category
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fc.v2.model.auto.ProductTypeExample">
-    delete from u_product_type
+  <delete id="deleteByExample" parameterType="com.fc.v2.model.auto.CategoryExample">
+    delete from u_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   
-  <insert id="insert" parameterType="com.fc.v2.model.auto.ProductType">
-    insert into u_product_type (
+  <insert id="insert" parameterType="com.fc.v2.model.auto.Category">
+    insert into u_category (
       	  	       id,
        	  	       parent_id,
-       	  	       product_type_name,
+       	  	       category_name,
        	  	       status,
        	  	    	  order_num
        	    )
     values (
 	  	  	      	#{id,jdbcType=INTEGER},
        	  	      	#{parentId,jdbcType=VARCHAR},
-       	  	      	#{productTypeName,jdbcType=VARCHAR},
+       	  	      	#{categoryName,jdbcType=VARCHAR},
        	  	      	#{status,jdbcType=INTEGER},
        	  	    	  #{orderNum,jdbcType=INTEGER}
        	    )
   </insert>
   
-  <insert id="insertSelective" parameterType="com.fc.v2.model.auto.ProductType">
-    insert into u_product_type
+  <insert id="insertSelective" parameterType="com.fc.v2.model.auto.Category">
+    insert into u_category
     <trim prefix="(" suffix=")" suffixOverrides=",">
           
       <if test="id != null">
@@ -137,8 +137,8 @@
         parent_id,
       </if>
          
-      <if test="productTypeName != null">
-        product_type_name,
+      <if test="categoryName != null">
+        category_name,
       </if>
          
       <if test="status != null">
@@ -156,8 +156,8 @@
           <if test="parentId != null">
         #{parentId,jdbcType=VARCHAR},
       </if>
-          <if test="productTypeName != null">
-        #{productTypeName,jdbcType=VARCHAR},
+          <if test="categoryName != null">
+        #{categoryName,jdbcType=VARCHAR},
       </if>
           <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -168,15 +168,15 @@
         </trim>
   </insert>
   
-  <select id="countByExample" parameterType="com.fc.v2.model.auto.ProductTypeExample" resultType="java.lang.Long">
-    select count(*) from u_product_type
+  <select id="countByExample" parameterType="com.fc.v2.model.auto.CategoryExample" resultType="java.lang.Long">
+    select count(*) from u_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   
   <update id="updateByExampleSelective" parameterType="map">
-    update u_product_type
+    update u_category
     <set>
           <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -184,8 +184,8 @@
           <if test="record.parentId != null">
         parent_id = #{record.parentId,jdbcType=VARCHAR},
       </if>
-          <if test="record.productTypeName != null">
-        product_type_name = #{record.productTypeName,jdbcType=VARCHAR},
+          <if test="record.categoryName != null">
+        category_name = #{record.categoryName,jdbcType=VARCHAR},
       </if>
           <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
@@ -202,14 +202,14 @@
   
   
   <update id="updateByExample" parameterType="map">
-    update u_product_type
+    update u_category
     set
             	     	 
     	 id = #{record.id,jdbcType=INTEGER},
     	         	     	 
     	 parent_id = #{record.parentId,jdbcType=VARCHAR},
     	         	     	 
-    	 product_type_name = #{record.productTypeName,jdbcType=VARCHAR},
+    	 category_name = #{record.categoryName,jdbcType=VARCHAR},
     	         	     	 
     	 status = #{record.status,jdbcType=INTEGER},
     	         	     	 
@@ -221,16 +221,16 @@
   </update>
   
   
-      <update id="updateByPrimaryKeySelective" parameterType="com.fc.v2.model.auto.ProductType">
-    update u_product_type
+      <update id="updateByPrimaryKeySelective" parameterType="com.fc.v2.model.auto.Category">
+    update u_category
     <set>
                           
       <if test="parentId != null">
         parent_id = #{parentId,jdbcType=VARCHAR},
       </if>
                       
-      <if test="productTypeName != null">
-        product_type_name = #{productTypeName,jdbcType=VARCHAR},
+      <if test="categoryName != null">
+        category_name = #{categoryName,jdbcType=VARCHAR},
       </if>
                       
       <if test="status != null">
@@ -250,13 +250,13 @@
 
       	      	   	      	   	      	   	      	   	      	
 
-  <update id="updateByPrimaryKey" parameterType="com.fc.v2.model.auto.ProductType">
-    update u_product_type
+  <update id="updateByPrimaryKey" parameterType="com.fc.v2.model.auto.Category">
+    update u_category
     set 
     		 		 	  	  
 		parent_id = #{parentId,jdbcType=VARCHAR},
 	  	 		 	  	  
-		product_type_name = #{productTypeName,jdbcType=VARCHAR},
+		category_name = #{categoryName,jdbcType=VARCHAR},
 	  	 		 	  	  
 		status = #{status,jdbcType=INTEGER},
 	  	 		 	  		

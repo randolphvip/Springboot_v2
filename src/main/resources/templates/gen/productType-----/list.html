@@ -10,7 +10,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">Name</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="productTypeName" placeholder="" class="layui-input">
+                    <input type="text" name="categoryName" placeholder="" class="layui-input">
                 </div>
                 <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="productType-query">
                     <i class="layui-icon layui-icon-search"></i>
@@ -93,7 +93,7 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
             cols: [
                 [
                     {type: 'checkbox'},
-                    {field: 'productTypeName', minWidth: 200, title: 'Categories'},
+                    {field: 'categoryName', minWidth: 200, title: 'Categories'},
                     {field: 'status', title: 'status',templet: '#productType-enable'},
                     {field: 'orderNum', title: 'order'},
                     {title: 'operation', templet: '#productType-bar', width: 150, align: 'center'}
@@ -105,7 +105,7 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
     render();
 
     form.on('submit(productType-query)', function (data) {
-        var keyword = data.field.productTypeName;
+        var keyword = data.field.categoryName;
         var $tds = $('#productType-table').next('.treeTable').find('.layui-table-body tbody tr td');
         if (!keyword) {
             $tds.css('background-color', 'transparent');

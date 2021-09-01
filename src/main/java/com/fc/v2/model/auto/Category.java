@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import cn.hutool.core.date.DateUtil;
 import java.util.Date;
 
-public class ProductType implements Serializable {
+public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
 
 	
@@ -18,7 +18,7 @@ public class ProductType implements Serializable {
 	private Integer parentId;
 	
 	@ApiModelProperty(value = "产品分类名称")
-	private String productTypeName;
+	private String categoryName;
 	
 	@ApiModelProperty(value = "状态")
 	private Integer status;
@@ -42,13 +42,13 @@ public class ProductType implements Serializable {
 	public void setParentId(Integer parentId) {
 		this.parentId =  parentId;
 	}
-	@JsonProperty("productTypeName")
-	public String getProductTypeName() {
-		return productTypeName;
+	@JsonProperty("categoryName")
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setProductTypeName(String productTypeName) {
-		this.productTypeName =  productTypeName;
+	public void setCategoryName(String categoryName) {
+		this.categoryName =  categoryName;
 	}
 	@JsonProperty("status")
 	public Integer getStatus() {
@@ -68,13 +68,13 @@ public class ProductType implements Serializable {
 	}
 
 										
-	public ProductType(Integer id,Integer parentId,String productTypeName,Integer status,Integer orderNum) {
+	public Category(Integer id,Integer parentId,String categoryName,Integer status,Integer orderNum) {
 				
 		this.id = id;
 				
 		this.parentId = parentId;
 				
-		this.productTypeName = productTypeName;
+		this.categoryName = categoryName;
 				
 		this.status = status;
 				
@@ -82,7 +82,7 @@ public class ProductType implements Serializable {
 				
 	}
 
-	public ProductType() {
+	public Category() {
 	    super();
 	}
 

@@ -6,11 +6,11 @@ import java.util.List;
 import cn.hutool.core.util.StrUtil;
 
 /**
- * 产品分类 ProductTypeExample
+ * 产品分类  
  * @author fuce_自动生成
  * @date 2021-06-26 14:52:52
  */
-public class ProductTypeExample {
+public class CategoryExample {
 
     protected String orderByClause = " order_num ASC ";
 
@@ -18,7 +18,7 @@ public class ProductTypeExample {
 
     protected List<Criteria> oredCriteria;
 
-    public ProductTypeExample() {
+    public CategoryExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -255,73 +255,73 @@ public class ProductTypeExample {
         }
         
 				
-        public Criteria andProductTypeNameIsNull() {
-            addCriterion("product_type_name is null");
+        public Criteria andCategoryNameIsNull() {
+            addCriterion("category_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameIsNotNull() {
-            addCriterion("product_type_name is not null");
+        public Criteria andCategoryNameIsNotNull() {
+            addCriterion("category_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameEqualTo(String value) {
-            addCriterion("product_type_name =", value, "productTypeName");
+        public Criteria andCategoryNameEqualTo(String value) {
+            addCriterion("category_name =", value, "categoryName");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameNotEqualTo(String value) {
-            addCriterion("product_type_name <>", value, "productTypeName");
+        public Criteria andCategoryNameNotEqualTo(String value) {
+            addCriterion("category_name <>", value, "categoryName");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameGreaterThan(String value) {
-            addCriterion("product_type_name >", value, "productTypeName");
+        public Criteria andCategoryNameGreaterThan(String value) {
+            addCriterion("category_name >", value, "categoryName");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameGreaterThanOrEqualTo(String value) {
-            addCriterion("product_type_name >=", value, "productTypeName");
+        public Criteria andCategoryNameGreaterThanOrEqualTo(String value) {
+            addCriterion("category_name >=", value, "categoryName");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameLessThan(String value) {
-            addCriterion("product_type_name <", value, "productTypeName");
+        public Criteria andCategoryNameLessThan(String value) {
+            addCriterion("category_name <", value, "categoryName");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameLessThanOrEqualTo(String value) {
-            addCriterion("product_type_name <=", value, "productTypeName");
+        public Criteria andCategoryNameLessThanOrEqualTo(String value) {
+            addCriterion("category_name <=", value, "categoryName");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameLike(String value) {
-            addCriterion("product_type_name like", value, "productTypeName");
+        public Criteria andCategoryNameLike(String value) {
+            addCriterion("category_name like", value, "categoryName");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameNotLike(String value) {
-            addCriterion("product_type_name not like", value, "productTypeName");
+        public Criteria andCategoryNameNotLike(String value) {
+            addCriterion("category_name not like", value, "categoryName");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameIn(List<String> values) {
-            addCriterion("product_type_name in", values, "productTypeName");
+        public Criteria andCategoryNameIn(List<String> values) {
+            addCriterion("category_name in", values, "categoryName");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameNotIn(List<String> values) {
-            addCriterion("product_type_name not in", values, "productTypeName");
+        public Criteria andCategoryNameNotIn(List<String> values) {
+            addCriterion("category_name not in", values, "categoryName");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameBetween(String value1, String value2) {
-            addCriterion("product_type_name between", value1, value2, "productTypeName");
+        public Criteria andCategoryNameBetween(String value1, String value2) {
+            addCriterion("category_name between", value1, value2, "categoryName");
             return (Criteria) this;
         }
 
-        public Criteria andProductTypeNameNotBetween(String value1, String value2) {
-            addCriterion("product_type_name not between", value1, value2, "productTypeName");
+        public Criteria andCategoryNameNotBetween(String value1, String value2) {
+            addCriterion("category_name not between", value1, value2, "categoryName");
             return (Criteria) this;
         }
         
@@ -468,7 +468,7 @@ public class ProductTypeExample {
         }
         
 			
-		 public Criteria andLikeQuery(ProductType record) {
+		 public Criteria andLikeQuery(Category record) {
 		 	List<String> list= new ArrayList<String>();
 		 	List<String> list2= new ArrayList<String>();
         	StringBuffer buffer=new StringBuffer();
@@ -478,8 +478,8 @@ public class ProductTypeExample {
 			if(record.getParentId()!=null&&StrUtil.isNotEmpty(record.getParentId().toString())) {
     			 list.add("ifnull(parent_id,'')");
     		}
-			if(record.getProductTypeName()!=null&&StrUtil.isNotEmpty(record.getProductTypeName().toString())) {
-    			 list.add("ifnull(product_type_name,'')");
+			if(record.getCategoryName()!=null&&StrUtil.isNotEmpty(record.getCategoryName().toString())) {
+    			 list.add("ifnull(category_name,'')");
     		}
 			if(record.getStatus()!=null&&StrUtil.isNotEmpty(record.getStatus().toString())) {
     			 list.add("ifnull(status,'')");
@@ -493,8 +493,8 @@ public class ProductTypeExample {
 			if(record.getParentId()!=null&&StrUtil.isNotEmpty(record.getParentId().toString())) {
     			list2.add("'%"+record.getParentId()+"%'");
     		}
-			if(record.getProductTypeName()!=null&&StrUtil.isNotEmpty(record.getProductTypeName().toString())) {
-    			list2.add("'%"+record.getProductTypeName()+"%'");
+			if(record.getCategoryName()!=null&&StrUtil.isNotEmpty(record.getCategoryName().toString())) {
+    			list2.add("'%"+record.getCategoryName()+"%'");
     		}
 			if(record.getStatus()!=null&&StrUtil.isNotEmpty(record.getStatus().toString())) {
     			list2.add("'%"+record.getStatus()+"%'");
@@ -519,7 +519,7 @@ public class ProductTypeExample {
         	StringBuffer buffer=new StringBuffer();
     		list.add("ifnull(id,'')");
     		list.add("ifnull(parent_id,'')");
-    		list.add("ifnull(product_type_name,'')");
+    		list.add("ifnull(category_name,'')");
     		list.add("ifnull(status,'')");
     		list.add("ifnull(order_num,'')");
         	buffer.append(" CONCAT(");

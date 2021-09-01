@@ -28,8 +28,8 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">Name</label>
 						<div class="layui-input-block">
-							<input th:value="*{productTypeName}" type="text"
-								name="productTypeName" autocomplete="off" placeholder="Type Name"
+							<input th:value="*{categoryName}" type="text"
+								name="categoryName" autocomplete="off" placeholder="Type Name"
 								class="layui-input">
 						</div>
 					</div>
@@ -90,7 +90,7 @@
 						response : {
 							treeId : "id",
 							parentId : "parentId",
-							title : "productTypeName"
+							title : "categoryName"
 						}, //修改response中返回数据的定义
 						selectInitVal : '[[${ProductType.parentId}]]'
 					});

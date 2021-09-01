@@ -95,7 +95,7 @@
 
 					dtree.renderSelect({
 						elem : "#selectCategory",
-						url : rootPath + "/ProductTypeController/selectParent",
+						url : rootPath + "/CategoryController/selectParent",
 						method : 'get',
 						selectInputName : {
 							nodeId : "categoryId"
@@ -105,7 +105,7 @@
 						response : {
 							treeId : "id",
 							parentId : "parentId",
-							title : "productTypeName"
+							title : "categoryName"
 						}, //修改response中返回数据的定义
 						selectInitVal : '1'
 					});

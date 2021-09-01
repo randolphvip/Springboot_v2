@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myprice.mapper.auto.ShopBranchMapper">
+  <resultMap id="BaseResultMap2" type="com.myprice.model.auto.ShopBranch">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="hotline" jdbcType="VARCHAR" property="hotline" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="store_id" jdbcType="VARCHAR" property="storeId" />
+    <result column="branch_name" jdbcType="VARCHAR" property="branchName" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_default" jdbcType="INTEGER" property="isDefault" />
+    <result column="cookie" jdbcType="VARCHAR" property="cookie" />
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+  </resultMap>
+ 
+  
+  <select id="selectByExample2" parameterType="com.myprice.model.auto.ShopBranchExample" resultMap="BaseResultMap2">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    	id,
+       	  	      	address,
+       	  	      	hotline,
+       	  	      	shop_id,
+       	  	      	store_id,
+       	  	      	branch_name,
+       	  	      	status,
+       	  	      	is_default,
+       	  	      ( SELECT s.shop_name FROM u_shop s WHERE s.id = sb.shop_id ) AS shop_name ,
+       	  	    	 cookie
+    from u_shop_branch sb
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+   
+  
+                                                 
+</mapper>
