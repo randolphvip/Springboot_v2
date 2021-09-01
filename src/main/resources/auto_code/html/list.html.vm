@@ -76,7 +76,7 @@
 					
 				#end
                 
-                {title: '操作', toolbar: '#${tableInfo.javaTableName_a}-bar', align: 'center'}
+                {title: 'Operation', toolbar: '#${tableInfo.javaTableName_a}-bar', align: 'center'}
             ]
         ]
 
@@ -136,7 +136,7 @@
         window.edit = function (obj) {
             layer.open({
                 type: 2,
-                title: '修改',
+                title: 'edit',
                 shade: 0.1,
                 area: ['500px', '500px'],
                 content: MODULE_PATH + 'edit/' + obj.data['id']
@@ -144,7 +144,7 @@
         }
         //删除
         window.remove = function (obj) {
-            layer.confirm('确定要删除该数据', {icon: 3, title: '提示'}, function (index) {
+            layer.confirm('confirm to delete', {icon: 3, title: 'delete'}, function (index) {
                 layer.close(index);
                 let loading = layer.load();
                 $.ajax({
@@ -169,7 +169,7 @@
         window.batchRemove = function (obj) {
             let data = table.checkStatus(obj.config.id).data;
             if (data.length === 0) {
-                layer.msg("未选中数据", {icon: 3, time: 1000});
+                layer.msg("Data not selected", {icon: 3, time: 1000});
                 return false;
             }
             let ids = "";
@@ -177,7 +177,7 @@
                 ids += data[i].id + ",";
             }
             ids = ids.substr(0, ids.length - 1);
-            layer.confirm('确定要删除这些数据', {icon: 3, title: '提示'}, function (index) {
+            layer.confirm('confirm to delete'', {icon: 3, title: 'delete'}, function (index) {
                 layer.close(index);
                 let loading = layer.load();
                 $.ajax({

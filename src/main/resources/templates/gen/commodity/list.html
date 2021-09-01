@@ -91,7 +91,7 @@
 				 
 				{title: 'status', field: 'status', align: 'center',templet: '#commodity-enable' ,width: 100},
 					
-                {title: 'operation', toolbar: '#commodity-bar', align: 'center'}
+                {title: 'Operation', toolbar: '#commodity-bar', align: 'center'}
             ]
         ]
 
@@ -193,7 +193,7 @@
         window.batchRemove = function (obj) {
             let data = table.checkStatus(obj.config.id).data;
             if (data.length === 0) {
-                layer.msg("未选中数据", {icon: 3, time: 1000});
+                layer.msg("Data not selected", {icon: 3, time: 1000});
                 return false;
             }
             let ids = "";

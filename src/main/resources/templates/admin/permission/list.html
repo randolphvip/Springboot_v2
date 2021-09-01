@@ -98,7 +98,7 @@
                         {field: 'type', title: '权限类型', templet: '#power-type'},
                         {field: 'visible', title: '是否可用', templet: '#power-enable'},
                         {field: 'orderNum', title: '排序'},
-                        {title: '操作', templet: '#power-bar', width: 150, align: 'center'}
+                        {title: 'Operation', templet: '#power-bar', width: 150, align: 'center'}
                     ]
                 ]
             });
@@ -229,7 +229,7 @@
         window.batchRemove = function (obj) {
             let data = table.checkStatus(obj.config.id).data;
             if (data.length === 0) {
-                layer.msg("未选中数据", {icon: 3, time: 1000});
+                layer.msg("Data not selected", {icon: 3, time: 1000});
                 return false;
             }
             let ids = "";

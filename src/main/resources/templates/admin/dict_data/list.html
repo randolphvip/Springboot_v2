@@ -90,7 +90,7 @@
                 {title: '创建者', field: 'createBy', align: 'left'},
                 {title: '创建时间', field: 'createTime', align: 'left'},
                 {title: '备注', field: 'remark', align: 'left'},
-                {title: '操作', toolbar: '#dictData-bar', align: 'left',width:150}
+                {title: 'Operation', toolbar: '#dictData-bar', align: 'left',width:150}
             ]
         ]
 
@@ -208,7 +208,7 @@
         window.batchRemove = function (obj) {
             let data = table.checkStatus(obj.config.id).data;
             if (data.length === 0) {
-                layer.msg("未选中数据", {icon: 3, time: 1000});
+                layer.msg("Data not selected", {icon: 3, time: 1000});
                 return false;
             }
             let ids = "";

@@ -78,7 +78,7 @@
                 {title: '执行状态', field: 'status', align: 'center',toolbar: '#sysQuartzJobLog-status'},
                 {title: '开始时间', field: 'startTime', align: 'left'},
                 {title: '结束时间', field: 'endTime', align: 'left'},
-                {title: '操作', toolbar: '#sysQuartzJobLog-bar', align: 'center'}
+                {title: 'Operation', toolbar: '#sysQuartzJobLog-bar', align: 'center'}
             ]
         ]
 
@@ -160,7 +160,7 @@
         window.batchRemove = function (obj) {
             let data = table.checkStatus(obj.config.id).data;
             if (data.length === 0) {
-                layer.msg("未选中数据", {icon: 3, time: 1000});
+                layer.msg("Data not selected", {icon: 3, time: 1000});
                 return false;
             }
             let ids = "";

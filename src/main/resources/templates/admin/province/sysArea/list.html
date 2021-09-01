@@ -82,7 +82,7 @@
                 {title: '纬度', field: 'lat', align: 'left'},
                 {title: '排序', field: 'sort', align: 'left'},
                 {title: '状态', field: 'dataState', align: 'center',toolbar: '#sysArea-type'},
-                {title: '操作', toolbar: '#sysArea-bar', align: 'center'}
+                {title: 'Operation', toolbar: '#sysArea-bar', align: 'center'}
             ]
         ]
 
@@ -175,7 +175,7 @@
         window.batchRemove = function (obj) {
             let data = table.checkStatus(obj.config.id).data;
             if (data.length === 0) {
-                layer.msg("未选中数据", {icon: 3, time: 1000});
+                layer.msg("Data not selected", {icon: 3, time: 1000});
                 return false;
             }
             let ids = "";

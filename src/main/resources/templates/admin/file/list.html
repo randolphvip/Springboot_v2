@@ -76,7 +76,7 @@
                 {title: '创建时间', field: 'createTime', align: 'left'},
                 {title: '修改人', field: 'updateUserName', align: 'left'},
                 {title: '修改时间', field: 'updateTime', align: 'left'},
-                {title: '操作', toolbar: '#sysFile-bar', align: 'center'}
+                {title: 'Operation', toolbar: '#sysFile-bar', align: 'center'}
             ]
         ]
 
@@ -185,7 +185,7 @@
         window.batchRemove = function (obj) {
             let data = table.checkStatus(obj.config.id).data;
             if (data.length === 0) {
-                layer.msg("未选中数据", {icon: 3, time: 1000});
+                layer.msg("Data not selected", {icon: 3, time: 1000});
                 return false;
             }
             let ids = "";

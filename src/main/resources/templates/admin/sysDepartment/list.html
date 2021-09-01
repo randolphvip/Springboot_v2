@@ -88,7 +88,7 @@
                         {field: 'email', title: '邮箱'},
                         {field: 'status', title: '状态',templet: '#department-enable'},
                         {field: 'orderNum', title: '排序'},
-                        {title: '操作', templet: '#department-bar', width: 150, align: 'center'}
+                        {title: 'Operation', templet: '#department-bar', width: 150, align: 'center'}
                     ]
                 ]
             });
@@ -220,7 +220,7 @@
         window.batchRemove = function (obj) {
             let data = table.checkStatus(obj.config.id).data;
             if (data.length === 0) {
-                layer.msg("未选中数据", {icon: 3, time: 1000});
+                layer.msg("Data not selected", {icon: 3, time: 1000});
                 return false;
             }
             let ids = "";

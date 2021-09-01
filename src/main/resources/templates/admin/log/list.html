@@ -61,7 +61,7 @@
                 {title: '方法', field: 'method', align: 'left'},
                 {title: '时间', field: 'operTime', align: 'center'},
                 {title: '用户', field: 'operName', align: 'center'},
-                {title: '操作', toolbar: '#log-bar', align: 'center'}
+                {title: 'Operation', toolbar: '#log-bar', align: 'center'}
             ]
         ]
 
@@ -132,7 +132,7 @@
         window.batchRemove = function (obj) {
             let data = table.checkStatus(obj.config.id).data;
             if (data.length === 0) {
-                layer.msg("未选中数据", {icon: 3, time: 1000});
+                layer.msg("Data not selected", {icon: 3, time: 1000});
                 return false;
             }
             let ids = "";
