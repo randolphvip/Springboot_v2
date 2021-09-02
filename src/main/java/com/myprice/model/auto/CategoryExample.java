@@ -1,4 +1,4 @@
-package com.fc.v2.model.auto;
+package com.myprice.model.auto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import cn.hutool.core.util.StrUtil;
 
 /**
  * 产品分类  
- * @author fuce_自动生成
+ * _自动生成
  * @date 2021-06-26 14:52:52
  */
 public class CategoryExample {

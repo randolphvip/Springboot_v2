@@ -1,13 +1,15 @@
-package com.fc.v2.mapper.auto;
+package com.myprice.mapper.auto;
 
-import com.fc.v2.model.auto.Category;
-import com.fc.v2.model.auto.CategoryExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.myprice.model.auto.Category;
+import com.myprice.model.auto.CategoryExample;
 
 /**
  * 产品分类  
- * @author fuce_自动生成
+ * _自动生成
  * @email ${email}
  * @date 2021-06-26 14:52:52
  */

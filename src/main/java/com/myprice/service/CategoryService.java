@@ -1,4 +1,4 @@
-package com.fc.v2.service;
+package com.myprice.service;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,17 +8,17 @@ import org.springframework.stereotype.Service;
 
 import com.fc.v2.common.base.BaseService;
 import com.fc.v2.common.support.ConvertUtil;
-import com.fc.v2.mapper.auto.CategoryMapper;
-import com.fc.v2.model.auto.Category;
-import com.fc.v2.model.auto.CategoryExample;
 import com.fc.v2.model.custom.Tablepar;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.myprice.mapper.auto.CategoryMapper;
+import com.myprice.model.auto.Category;
+import com.myprice.model.auto.CategoryExample;
 
 import cn.hutool.core.util.StrUtil;
 
 /**
- * @author fuce_自动生成
+ * _自动生成
  * @email ${email}
  * @date 2021-06-26 14:52:52  
  **/

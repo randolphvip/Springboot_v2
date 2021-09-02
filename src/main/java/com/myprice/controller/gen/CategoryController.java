@@ -1,4 +1,4 @@
-package com.fc.v2.controller.gen;
+package com.myprice.controller.gen;
 
 import java.util.List;
 
@@ -19,11 +19,11 @@ import com.fc.v2.common.base.BaseController;
 import com.fc.v2.common.domain.AjaxResult;
 import com.fc.v2.common.domain.ResuTree;
 import com.fc.v2.common.domain.ResultTable;
-import com.fc.v2.model.auto.Category;
-import com.fc.v2.model.auto.CategoryExample;
 import com.fc.v2.model.custom.Tablepar;
-import com.fc.v2.service.CategoryService;
 import com.github.pagehelper.PageInfo;
+import com.myprice.model.auto.Category;
+import com.myprice.model.auto.CategoryExample;
+import com.myprice.service.CategoryService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,7 +31,7 @@ import io.swagger.annotations.ApiOperation;
 /**
  * 产品分类Controller
  * @ClassName: CategoryController
- * @author fuce
+ * 
  * @date 2021-06-26 14:52:52
  */
 @Api(value = "产品分类")
@@ -50,7 +50,7 @@ public class CategoryController extends BaseController{
 	 * 产品分类页面展示
 	 * @param model
 	 * @return String
-	 * @author fuce
+	 * 
 	 */
 	@ApiOperation(value = "分页跳转", notes = "分页跳转")
 	@GetMapping("/view")

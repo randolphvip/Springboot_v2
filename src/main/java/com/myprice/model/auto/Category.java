@@ -1,11 +1,10 @@
-package com.fc.v2.model.auto;
+package com.myprice.model.auto;
 
 import java.io.Serializable;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import io.swagger.annotations.ApiModelProperty;
-import cn.hutool.core.date.DateUtil;
-import java.util.Date;
 
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -17,13 +16,13 @@ public class Category implements Serializable {
 	@ApiModelProperty(value = "parent_id")
 	private Integer parentId;
 	
-	@ApiModelProperty(value = "产品分类名称")
+	@ApiModelProperty(value = "categoryName")
 	private String categoryName;
 	
-	@ApiModelProperty(value = "状态")
+	@ApiModelProperty(value = "status")
 	private Integer status;
 	
-	@ApiModelProperty(value = "排序")
+	@ApiModelProperty(value = "orderNum")
 	private Integer orderNum;
 	
 	@JsonProperty("id")
