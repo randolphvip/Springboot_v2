@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 代码自动生成
  * 
  * @ClassName: AutoCodeController
- * @author fuce
+ * 
  * @date 2019-08-13 00:34
  */
 @Api(value = "代码自动生成")
@@ -54,7 +54,7 @@ public class AutoCodeController extends BaseController {
 	 * 
 	 * @param model
 	 * @return
-	 * @author fuce
+	 * 
 	 * @Date 2019年8月13日 上午12:34:30
 	 */
 	@ApiOperation(value = " 代码自动生成全局配置", notes = "代码自动生成全局配置")
@@ -71,7 +71,7 @@ public class AutoCodeController extends BaseController {
 	 * 树结构查询所有表
 	 * 
 	 * @return
-	 * @author fuce
+	 * 
 	 * @Date 2021年1月15日 下午2:21:19
 	 */
 	@GetMapping("/selectTables")
@@ -100,7 +100,7 @@ public class AutoCodeController extends BaseController {
 	 * 
 	 * @param tableName
 	 * @return
-	 * @author fuce
+	 * 
 	 * @Date 2019年8月15日 上午1:10:42
 	 */
 	@ApiOperation(value = "根据表查询表字段详情", notes = "根据表查询表字段详情")
@@ -114,7 +114,7 @@ public class AutoCodeController extends BaseController {
 	/**
 	 * 生成文件
 	 * 
-	 * @author fuce
+	 * 
 	 * @Date 2021年1月15日 下午2:21:55
 	 */
 	@PostMapping("/createAuto")
@@ -132,7 +132,7 @@ public class AutoCodeController extends BaseController {
 	/**
 	 * 生成文件Zip
 	 * 
-	 * @author fuce
+	 * 
 	 * @throws IOException
 	 * @Date 2021年1月15日 下午2:21:55
 	 */
@@ -160,7 +160,7 @@ public class AutoCodeController extends BaseController {
 	/**
 	 * 预览生成文件
 	 * 
-	 * @author fuce
+	 * 
 	 * @Date 2021年1月15日 下午2:21:55
 	 */
 	@GetMapping("/viewAuto")
@@ -180,7 +180,7 @@ public class AutoCodeController extends BaseController {
 //	 * @param request
 //	 * @return
 //	 * @throws Exception
-//	 * @author fuce
+//	 * 
 //	 * @Date 2019年8月24日 下午3:25:41
 //	 */
 //	//@Log(title = "保存配置文件", action = "1")
@@ -210,7 +210,7 @@ public class AutoCodeController extends BaseController {
 //	 * @param vMapperORdao 生成mapper or dao
 //	 * @return
 //	 * @throws Exception
-//	 * @author fuce
+//	 * 
 //	 * @Date 2019年8月31日 上午2:49:18
 //	 */
 //	//@Log(title = "保存单表信息", action = "1")

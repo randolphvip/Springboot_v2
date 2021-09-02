@@ -31,7 +31,7 @@ import com.fc.v2.util.SnowflakeIdWorker;
 /**
  * aws 对外提供服务端点
  * @ClassName: OssEndpoint
- * @author fuce
+ * 
  * @date 2021-02-28 20:01
  */
 @RestController

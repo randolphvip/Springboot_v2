@@ -19,7 +19,7 @@ import com.fc.v2.util.SnowflakeIdWorker;
  * 电子邮件Service
 * @Title: TSysEmailService.java
 * @Package com.fc.v2.service
-* @author fuce
+* 
 * @email 87766867@qq.com
 * @date 2019-06-30 00:49:49
  */

@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
  * 抽象类BaseService
 * @ClassName: BaseService
 * @Description: Service实现这个
-* @author fuce
+* 
 * @date 2018年6月3日
 *
  */

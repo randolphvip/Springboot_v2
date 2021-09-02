@@ -9,7 +9,7 @@ import com.github.pagehelper.PageHelper;
 * 分页插件配置类
 * @ClassName: PageHelperConf
 * @Description: 这里用一句话描述这个类的作用
-* @author fuce
+* 
 * @date 2018年6月3日
 *
  */

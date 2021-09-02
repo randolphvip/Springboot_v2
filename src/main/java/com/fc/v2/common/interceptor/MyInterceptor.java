@@ -141,7 +141,7 @@ public class MyInterceptor  implements HandlerInterceptor {
 	 * @param request
 	 * @param response
 	 * @return
-	 * @author fuce
+	 * 
 	 * @Date 2019年11月11日 下午5:17:30
 	 */
 	public Boolean ifurl(HttpServletRequest request, HttpServletResponse response) {

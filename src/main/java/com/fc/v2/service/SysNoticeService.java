@@ -23,7 +23,7 @@ import java.util.List;
  * 公告 SysNoticeService
  * @Title: SysNoticeService.java
  * @Package com.fc.v2.service
- * @author fuce_自动生成
+ * _自动生成
  * @email 115889198@qq.com
  * @date 2019-09-08 01:38:44
  **/
@@ -196,7 +196,7 @@ public class SysNoticeService implements BaseService<SysNotice, SysNoticeExample
 	 * @param tsysUser
 	 * @param state 阅读状态  0未阅读 1 阅读  -1全部
 	 * @return
-	 * @author fuce
+	 * 
 	 * @Date 2019年9月8日 上午3:36:21
 	 */
 	public List<SysNotice> getuserNoticeNotRead(TsysUser tsysUser,int state){
@@ -226,7 +226,7 @@ public class SysNoticeService implements BaseService<SysNotice, SysNoticeExample
 	/**
 	 * 根据公告id把当前用户的公告置为以查看
 	 * @param noticeid
-	 * @author fuce
+	 * 
 	 * @Date 2019年9月8日 下午7:14:19
 	 */
 	public void editUserState(String noticeid) {

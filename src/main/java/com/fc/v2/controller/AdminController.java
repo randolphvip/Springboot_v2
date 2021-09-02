@@ -30,7 +30,7 @@ import java.util.List;
  * 后台方法
  * 
  * @ClassName: HomeController
- * @author fuce
+ * 
  * @date 2019-10-21 00:10
  *
  */
@@ -41,7 +41,7 @@ public class AdminController extends BaseController {
 
 	private String prefix = "admin";
 
-	@ApiOperation(value = "首页", notes = "首页")
+	@ApiOperation(value = "MainPage", notes = "MainPage")
 	@GetMapping("/index")
 	public String index(HttpServletRequest request) {
 		request.getSession().setAttribute("sessionUserName", ShiroUtils.getUser().getNickname());
@@ -178,7 +178,7 @@ public class AdminController extends BaseController {
 	 * @param rememberMe
 	 * @param request
 	 * @return
-	 * @author fuce
+	 * 
 	 * @Date 2020年12月7日 上午12:54:28
 	 */
 	@ApiOperation(value = "手机登录", notes = "手机登录")

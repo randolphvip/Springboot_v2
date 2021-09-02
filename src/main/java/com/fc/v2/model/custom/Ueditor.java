@@ -2,7 +2,7 @@ package com.fc.v2.model.custom;
 /**
  * 百度编辑器
 * @ClassName: Ueditor
-* @author fuce
+* 
 * @date 2019-09-02 01:09
 *
  */

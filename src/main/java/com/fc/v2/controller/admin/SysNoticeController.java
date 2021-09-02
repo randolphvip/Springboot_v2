@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 公告Controller
  * @ClassName: SysNoticeController
- * @author fuce
+ * 
  * @date 2019-11-20 22:31
  */
 @Api(value = "公告")
@@ -36,7 +36,7 @@ public class SysNoticeController extends BaseController{
 	 * 展示页面跳转
 	 * @param model
 	 * @return
-	 * @author fuce
+	 * 
 	 * @Date 2019年11月11日 下午4:09:24
 	 */
 	@ApiOperation(value = "分页跳转", notes = "分页跳转")
@@ -51,7 +51,7 @@ public class SysNoticeController extends BaseController{
 	 * @param tablepar
 	 * @param searchText
 	 * @return
-	 * @author fuce
+	 * 
 	 * @Date 2019年11月11日 下午4:09:35
 	 */
 	//@Log(title = "公告集合查询", action = "111")
@@ -69,7 +69,7 @@ public class SysNoticeController extends BaseController{
 	 * 对应的用户的展示页面
 	 * @param model
 	 * @return
-	 * @author fuce
+	 * 
 	 * @Date 2019年11月11日 下午4:09:42
 	 */
 	@ApiOperation(value = "对应的用户的展示页面", notes = "对应的用户的展示页面")
@@ -108,7 +108,7 @@ public class SysNoticeController extends BaseController{
 	 * 新增保存
 	 * @param sysNotice
 	 * @return
-	 * @author fuce
+	 * 
 	 * @Date 2019年11月11日 下午4:07:09
 	 */
 	//@Log(title = "公告新增", action = "111")

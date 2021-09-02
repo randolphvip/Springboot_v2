@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * 服务器信息Controller
  * @ClassName: ServiceController
- * @author fuce
+ * 
  * @date 2019-06-23 00:55
  * @version V1.0
  */
@@ -34,7 +34,7 @@ public class ServiceController extends BaseController{
 	 * 展示页面
 	 * @param model
 	 * @return
-	 * @author fuce
+	 * 
 	 * @Date 2019年11月11日 下午4:04:03
 	 */
 	@ApiOperation(value = "展示页面", notes = "展示页面")

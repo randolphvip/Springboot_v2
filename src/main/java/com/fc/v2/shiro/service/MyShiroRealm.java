@@ -26,7 +26,7 @@ import java.util.List;
  * 身份校验核心类
  * 
  * @ClassName: MyShiroRealm
- * @author fuce
+ * 
  * @date 2018年8月25日
  *
  */

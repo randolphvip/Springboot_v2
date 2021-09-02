@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 /**
  * 拦截器
 * @ClassName: MyWebAppConfigurer
-* @author fuce
+* 
 * @date 2018年6月3日
 *
  */

@@ -30,7 +30,7 @@ import java.util.Map;
  * 权限配置文件
  * 
  * @ClassName: ShiroConfiguration
- * @author fuce
+ * 
  * @date 2018年8月25日
  *
  */
@@ -85,7 +85,7 @@ public class ShiroConfig {
 //	/**
 //	 * session过期控制
 //	 * @return
-//	 * @author fuce
+//	 * 
 //	 * @Date 2019年11月2日 下午12:49:49
 //	 */
 //	@Bean

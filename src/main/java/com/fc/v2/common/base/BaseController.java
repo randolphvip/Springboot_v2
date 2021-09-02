@@ -17,7 +17,7 @@ import java.util.Date;
 /**
  * web层通用数据处理
 * @ClassName: BaseController
-* @author fuce
+* 
 * @date 2018年8月18日
 *
  */

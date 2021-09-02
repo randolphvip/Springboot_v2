@@ -3,7 +3,7 @@ package com.fc.v2.model.custom.autocode;
 /**
  * 配置文件model
  * @ClassName: AutoConfigModel
- * @author fuce
+ * 
  * @date 2021-01-17 23:29
  */
 public class AutoConfigModel {

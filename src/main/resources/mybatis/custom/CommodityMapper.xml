@@ -18,43 +18,14 @@
      <result column="close_datetime" jdbcType="TIMESTAMP" property="closeDatetime" /-->
    </resultMap>
    
-   
-<sql id="Example_Where_Clause2">
-   
-  <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
+ 
   
   
+ 
   
-  <sql id="Base_Column_List2">
-  
-	  	  	      	c.id as id,
+  <select id="queryCommodityList" parameterType="com.myprice.model.auto.CommodityExample" resultMap="BaseResultMap2">
+    select
+    				c.id as id,
 	  	  	      	c.title as title,
        	  	      	c.creator as creator,
        	  	      	c.create_date as create_date,
@@ -63,16 +34,9 @@
        	  	      	c.description as description,
        	  	     	(select username  from t_sys_user u where u.id=c.creator) as creator_name,
        	  	    	( select category_name  from u_category p where p.id=c.category_id   ) as category_name
-       	  	    	
-        	  	
-  </sql>
-  
-  <select id="queryCommodityList" parameterType="com.myprice.model.auto.CommodityExample" resultMap="BaseResultMap2">
-    select
-    <include refid="Base_Column_List2" />
-    from u_commodity c  
+   		 from u_commodity c  
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause2" />
+      <include refid="Example_Where_Clause" />
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}

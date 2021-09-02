@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fc.v2.mapper.auto.CategoryMapper">
-  <resultMap id="BaseResultMap" type="com.fc.v2.model.auto.Category">
+<mapper namespace="com.myprice.mapper.auto.CategoryMapper">
+  <resultMap id="BaseResultMap" type="com.myprice.model.auto.Category">
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
     <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
@@ -76,7 +76,7 @@
        	  	
   </sql>
   
-  <select id="selectByExample" parameterType="com.fc.v2.model.auto.CategoryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.myprice.model.auto.CategoryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -101,14 +101,14 @@
     delete from u_category
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fc.v2.model.auto.CategoryExample">
+  <delete id="deleteByExample" parameterType="com.myprice.model.auto.CategoryExample">
     delete from u_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   
-  <insert id="insert" parameterType="com.fc.v2.model.auto.Category">
+  <insert id="insert" parameterType="com.myprice.model.auto.Category">
     insert into u_category (
       	  	       id,
        	  	       parent_id,
@@ -125,7 +125,7 @@
        	    )
   </insert>
   
-  <insert id="insertSelective" parameterType="com.fc.v2.model.auto.Category">
+  <insert id="insertSelective" parameterType="com.myprice.model.auto.Category">
     insert into u_category
     <trim prefix="(" suffix=")" suffixOverrides=",">
           
@@ -168,7 +168,7 @@
         </trim>
   </insert>
   
-  <select id="countByExample" parameterType="com.fc.v2.model.auto.CategoryExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.myprice.model.auto.CategoryExample" resultType="java.lang.Long">
     select count(*) from u_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -221,7 +221,7 @@
   </update>
   
   
-      <update id="updateByPrimaryKeySelective" parameterType="com.fc.v2.model.auto.Category">
+      <update id="updateByPrimaryKeySelective" parameterType="com.myprice.model.auto.Category">
     update u_category
     <set>
                           
@@ -250,7 +250,7 @@
 
       	      	   	      	   	      	   	      	   	      	
 
-  <update id="updateByPrimaryKey" parameterType="com.fc.v2.model.auto.Category">
+  <update id="updateByPrimaryKey" parameterType="com.myprice.model.auto.Category">
     update u_category
     set 
     		 		 	  	  
