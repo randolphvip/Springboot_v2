@@ -1,12 +1,9 @@
 package com.fc.v2.common.log;
 
-import com.fc.v2.model.auto.TsysOperLog;
-import com.fc.v2.model.auto.TsysUser;
-import com.fc.v2.service.SysOperLogService;
-import com.fc.v2.shiro.util.ShiroUtils;
-import com.fc.v2.util.ServletUtils;
-import com.fc.v2.util.StringUtils;
-import com.google.gson.Gson;
+import java.lang.reflect.Method;
+import java.util.Date;
+import java.util.Map;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -21,9 +18,13 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Method;
-import java.util.Date;
-import java.util.Map;
+import com.fc.v2.model.auto.TsysOperLog;
+import com.fc.v2.model.auto.TsysUser;
+import com.fc.v2.service.SysOperLogService;
+import com.fc.v2.shiro.util.ShiroUtils;
+import com.fc.v2.util.ServletUtils;
+import com.fc.v2.util.StringUtils;
+import com.google.gson.Gson;
 
 /**
  * 操作日志记录处理
@@ -52,7 +53,7 @@ public class LogAspect
      * @param joinPoint 切点
      */
     @AfterReturning(pointcut = "logPointCut()")
-    public void doBefore(JoinPoint joinPoint)
+    public void doAfter(JoinPoint joinPoint)
     {
         handleLog(joinPoint, null);
     }
@@ -88,21 +89,16 @@ public class LogAspect
             TsysOperLog operLog = new TsysOperLog();
            
             //赋值操作
-            /*String ip = ShiroUtils.getIp();
-            operLog.setOperIp(ip);*/
-            // 操作地点
-            //operLog.setOperLocation(AddressUtils.getRealAddressByIP(ip));
+            String ip = ShiroUtils.getIp();
+            operLog.setIp(ip);
+             
             // 请求的地址
             operLog.setOperUrl(ServletUtils.getRequest().getRequestURI());
             if (currentUser != null)
             {
 //            	//操作人
                 operLog.setOperName(currentUser.getUsername());
-//                if (StringUtils.isNotNull(currentUser.getDept())
-//                        && StringUtils.isNotEmpty(currentUser.getDept().getDeptName()))
-//                {
-//                    operLog.setDeptName(currentUser.getDept().getDeptName());
-//                }
+                operLog.setOperator(ShiroUtils.getUserId());
             }
 
             if (e != null)
@@ -118,9 +114,6 @@ public class LogAspect
             // 处理设置注解上的参数
             getControllerMethodDescription(controllerLog, operLog);
             // 保存数据库
-            //System.out.println("-----------------");
-            //System.out.println(new Gson().toJson(operLog));
-            //System.out.println("-----------------");
             operLogService.insertSelective(operLog);
         }
         catch (Exception exp)
@@ -142,11 +135,11 @@ public class LogAspect
     public void getControllerMethodDescription(Log log, TsysOperLog operLog) throws Exception
     {
         // 设置action动作
-       // operLog.setAction(log.action());
+    //    operLog.setAction(log.action());
         // 设置标题
         operLog.setTitle(log.title());
         // 设置channel
-        //operLog.setChannel(log.channel());
+    //   operLog.setChannel(log.channel());
         // 是否需要保存request，参数和值
         if (log.isSaveRequestData())
         {

@@ -14,11 +14,11 @@
                 </div>
                 <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="log-query">
                     <i class="layui-icon layui-icon-search"></i>
-                    查询
+                    Search
                 </button>
                 <button type="reset" class="pear-btn pear-btn-md">
                     <i class="layui-icon layui-icon-refresh"></i>
-                    重置
+                    Reset
                 </button>
             </div>
         </form>
@@ -34,12 +34,12 @@
 <script type="text/html" id="role-toolbar">
     <button shiro:hasPermission="system:log:remove" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
-        删除
+        Delete
     </button>
 </script>
 
 <script type="text/html" id="log-bar">
-    <button shiro:hasPermission="system:log:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="删除"><i class="layui-icon layui-icon-delete"></i>
+    <button shiro:hasPermission="system:log:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="Delete"><i class="layui-icon layui-icon-delete"></i>
     </button>
 </script>
 
@@ -105,7 +105,7 @@
         });
 
 
-        //删除
+        //Delete
         window.remove = function (obj) {
             layer.confirm('确定要删除该日志', {icon: 3, title: '提示'}, function (index) {
                 layer.close(index);

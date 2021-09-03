@@ -33,12 +33,12 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
 	
 	
 	/**
-	 * ${tableInfo.tableComment}页面展示
+	 * ${tableInfo.tableComment} display
 	 * @param model
 	 * @return String
 	 * @author ${author}
 	 */
-	@ApiOperation(value = "分页跳转", notes = "分页跳转")
+	@ApiOperation(value = "Page Jump", notes = "Page Jump")
 	@GetMapping("/view")
 	@RequiresPermissions("gen:${tableInfo.javaTableName_a}:view")
     public String view(ModelMap model)
@@ -47,13 +47,13 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
     }
 	
 	/**
-	 * list集合
+	 * list
 	 * @param tablepar
 	 * @param searchText
 	 * @return
 	 */
-	//@Log(title = "${tableInfo.tableComment}", action = "111")
-	@ApiOperation(value = "分页跳转", notes = "分页跳转")
+	@Log(title = "${tableInfo.tableComment}", action = "List")
+	@ApiOperation(value = "Page Jump", notes = "Page Jump")
 	@GetMapping("/list")
 	@RequiresPermissions("gen:${tableInfo.javaTableName_a}:list")
 	@ResponseBody
@@ -65,7 +65,7 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
 	/**
      * 新增跳转
      */
-	@ApiOperation(value = "新增跳转", notes = "新增跳转")
+	@ApiOperation(value = "Jump to add page", notes = "Jump to add page")
     @GetMapping("/add")
     public String add(ModelMap modelMap)
     {
@@ -77,8 +77,8 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
      * @param 
      * @return
      */
-	//@Log(title = "${tableInfo.tableComment}新增", action = "111")
-	@ApiOperation(value = "新增", notes = "新增")
+	@Log(title = "${tableInfo.tableComment} Add", action = "Add")
+	@ApiOperation(value = "Add", notes = "Add")
 	@PostMapping("/add")
 	@RequiresPermissions("gen:${tableInfo.javaTableName_a}:add")
 	@ResponseBody
@@ -92,12 +92,12 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
 	}
 	
 	/**
-	 * ${tableInfo.tableComment}删除
+	 * ${tableInfo.tableComment}Delete
 	 * @param ids
 	 * @return
 	 */
-	//@Log(title = "${tableInfo.tableComment}删除", action = "111")
-	@ApiOperation(value = "删除", notes = "删除")
+	@Log(title = "${tableInfo.tableComment}Delete", action = "Delete")
+	@ApiOperation(value = "Delete", notes = "Delete")
 	@DeleteMapping("/remove")
 	@RequiresPermissions("gen:${tableInfo.javaTableName_a}:remove")
 	@ResponseBody
@@ -112,12 +112,12 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
 	
 	
 	/**
-	 * 修改跳转
+	 * Jump to Edit page
 	 * @param id
 	 * @param mmap
 	 * @return
 	 */
-	@ApiOperation(value = "修改跳转", notes = "修改跳转")
+	@ApiOperation(value = "Jump to Edit page", notes = "Jump to Edit page")
 	@GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") String id, ModelMap map)
     {
@@ -127,10 +127,10 @@ public class ${tableInfo.javaTableName}Controller extends BaseController{
     }
 	
 	/**
-     * 修改保存
+     * Edit
      */
-    //@Log(title = "${tableInfo.tableComment}修改", action = "111")
-	@ApiOperation(value = "修改保存", notes = "修改保存")
+    @Log(title = "${tableInfo.tableComment} Edit", action = "Edit")
+	@ApiOperation(value = "Edit", notes = "Edit")
     @RequiresPermissions("gen:${tableInfo.javaTableName_a}:edit")
     @PostMapping("/edit")
     @ResponseBody

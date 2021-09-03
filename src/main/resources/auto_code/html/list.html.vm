@@ -14,11 +14,11 @@
                 </div>
                 <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="${tableInfo.javaTableName_a}-query">
                     <i class="layui-icon layui-icon-search"></i>
-                   	 search
+                   	 Search
                 </button>
                 <button type="reset" class="pear-btn pear-btn-md">
                     <i class="layui-icon layui-icon-refresh"></i>
-					reset
+					Reset
                 </button>
             </div>
         </form>

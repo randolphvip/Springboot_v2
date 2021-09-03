@@ -41,7 +41,7 @@
 <script type="text/html" id="productType-toolbar">
     <button shiro:hasPermission="gen:productType:add" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="layui-icon layui-icon-add-1"></i>
-		 Add
+		 New
     </button>
     <button shiro:hasPermission="gen:productType:remove" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
@@ -184,7 +184,7 @@ layui.use(['table', 'form', 'jquery', 'treetable'], function () {
     window.add = function () {
         layer.open({
             type: 2,
-            title: 'Add',
+            title: 'New',
             shade: 0.1,
             area: ['450px', '500px'],
             content: MODULE_PATH + 'add'

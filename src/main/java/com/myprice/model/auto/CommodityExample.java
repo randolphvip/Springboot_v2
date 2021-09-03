@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 /**
  * Commodity CommodityExample
  * @author Cong_自动生成
- * @date 2021-08-31 02:34:06
+ * @date 2021-09-02 23:19:41
  */
 public class CommodityExample {
 
@@ -681,6 +681,148 @@ public class CommodityExample {
             return (Criteria) this;
         }
         
+				
+        public Criteria andImageIsNull() {
+            addCriterion("image is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageIsNotNull() {
+            addCriterion("image is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageEqualTo(String value) {
+            addCriterion("image =", value, "image");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageNotEqualTo(String value) {
+            addCriterion("image <>", value, "image");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageGreaterThan(String value) {
+            addCriterion("image >", value, "image");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageGreaterThanOrEqualTo(String value) {
+            addCriterion("image >=", value, "image");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageLessThan(String value) {
+            addCriterion("image <", value, "image");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageLessThanOrEqualTo(String value) {
+            addCriterion("image <=", value, "image");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageLike(String value) {
+            addCriterion("image like", value, "image");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageNotLike(String value) {
+            addCriterion("image not like", value, "image");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageIn(List<String> values) {
+            addCriterion("image in", values, "image");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageNotIn(List<String> values) {
+            addCriterion("image not in", values, "image");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageBetween(String value1, String value2) {
+            addCriterion("image between", value1, value2, "image");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageNotBetween(String value1, String value2) {
+            addCriterion("image not between", value1, value2, "image");
+            return (Criteria) this;
+        }
+        
+				
+        public Criteria andUnitIsNull() {
+            addCriterion("unit is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitIsNotNull() {
+            addCriterion("unit is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitEqualTo(String value) {
+            addCriterion("unit =", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitNotEqualTo(String value) {
+            addCriterion("unit <>", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitGreaterThan(String value) {
+            addCriterion("unit >", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitGreaterThanOrEqualTo(String value) {
+            addCriterion("unit >=", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitLessThan(String value) {
+            addCriterion("unit <", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitLessThanOrEqualTo(String value) {
+            addCriterion("unit <=", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitLike(String value) {
+            addCriterion("unit like", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitNotLike(String value) {
+            addCriterion("unit not like", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitIn(List<String> values) {
+            addCriterion("unit in", values, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitNotIn(List<String> values) {
+            addCriterion("unit not in", values, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitBetween(String value1, String value2) {
+            addCriterion("unit between", value1, value2, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitNotBetween(String value1, String value2) {
+            addCriterion("unit not between", value1, value2, "unit");
+            return (Criteria) this;
+        }
+        
 			
 		 public Criteria andLikeQuery(Commodity record) {
 		 	List<String> list= new ArrayList<String>();
@@ -710,6 +852,12 @@ public class CommodityExample {
 			if(record.getPrice()!=null&&StrUtil.isNotEmpty(record.getPrice().toString())) {
     			 list.add("ifnull(price,'')");
     		}
+			if(record.getImage()!=null&&StrUtil.isNotEmpty(record.getImage().toString())) {
+    			 list.add("ifnull(image,'')");
+    		}
+			if(record.getUnit()!=null&&StrUtil.isNotEmpty(record.getUnit().toString())) {
+    			 list.add("ifnull(unit,'')");
+    		}
 			if(record.getId()!=null&&StrUtil.isNotEmpty(record.getId().toString())) {
     			list2.add("'%"+record.getId()+"%'");
     		}
@@ -734,6 +882,12 @@ public class CommodityExample {
 			if(record.getPrice()!=null&&StrUtil.isNotEmpty(record.getPrice().toString())) {
     			list2.add("'%"+record.getPrice()+"%'");
     		}
+			if(record.getImage()!=null&&StrUtil.isNotEmpty(record.getImage().toString())) {
+    			list2.add("'%"+record.getImage()+"%'");
+    		}
+			if(record.getUnit()!=null&&StrUtil.isNotEmpty(record.getUnit().toString())) {
+    			list2.add("'%"+record.getUnit()+"%'");
+    		}
         	buffer.append(" CONCAT(");
 	        buffer.append(StrUtil.join(",",list));
         	buffer.append(")");
@@ -757,6 +911,8 @@ public class CommodityExample {
     		list.add("ifnull(title,'')");
     		list.add("ifnull(description,'')");
     		list.add("ifnull(price,'')");
+    		list.add("ifnull(image,'')");
+    		list.add("ifnull(unit,'')");
         	buffer.append(" CONCAT(");
 	        buffer.append(StrUtil.join(",",list));
         	buffer.append(")");

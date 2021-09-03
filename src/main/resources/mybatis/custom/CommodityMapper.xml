@@ -11,7 +11,8 @@
     <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-      
+      <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
    	<!--result column="title" jdbcType="VARCHAR" property="title" />
     <result column="buy_now_price" jdbcType="DECIMAL" property="buyNowPrice" />
     <result column="starting_price" jdbcType="DECIMAL" property="startingPrice" />
@@ -32,6 +33,8 @@
        	  	      	c.status as status,
        	  	      	c.category_id as category_id,
        	  	      	c.description as description,
+    	  	      	c.image  as image,
+    	  	    	c.unit as unit,
        	  	     	(select username  from t_sys_user u where u.id=c.creator) as creator_name,
        	  	    	( select category_name  from u_category p where p.id=c.category_id   ) as category_name
    		 from u_commodity c  

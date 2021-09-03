@@ -14,11 +14,11 @@
                 </div>
                 <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="sysQuartzJobLog-query">
                     <i class="layui-icon layui-icon-search"></i>
-                    查询
+                    Search
                 </button>
                 <button type="reset" class="pear-btn pear-btn-md">
                     <i class="layui-icon layui-icon-refresh"></i>
-                    重置
+                    Reset
                 </button>
             </div>
         </form>
@@ -34,7 +34,7 @@
 <script type="text/html" id="role-toolbar">
     <button shiro:hasPermission="gen:sysQuartzJobLog:remove" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
-        删除
+        Delete
     </button>
 </script>
 
@@ -43,7 +43,7 @@
     <button shiro:hasPermission="gen:sysQuartzJobLog:list" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="detail" title="查看"><i class="layui-icon layui-icon-search"></i>
     </button>
 
-    <button shiro:hasPermission="gen:sysQuartzJobLog:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="删除"><i class="layui-icon layui-icon-delete"></i>
+    <button shiro:hasPermission="gen:sysQuartzJobLog:remove" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove" title="Delete"><i class="layui-icon layui-icon-delete"></i>
     </button>
 
 </script>
@@ -133,7 +133,7 @@
             });
         }
 
-        //删除
+        //Delete
         window.remove = function (obj) {
             layer.confirm('确定要删除该定时任务日志', {icon: 3, title: '提示'}, function (index) {
                 layer.close(index);

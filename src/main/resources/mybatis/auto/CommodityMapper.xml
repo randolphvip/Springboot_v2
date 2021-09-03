@@ -10,6 +10,8 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,7 +80,9 @@
        	  	      	category_id,
        	  	      	title,
        	  	      	description,
-       	  	    	  	price
+       	  	      	price,
+       	  	      	image,
+       	  	    	  	unit
        	  	
   </sql>
   
@@ -114,7 +118,7 @@
     </if>
   </delete>
   
-  <insert id="insert" parameterType="com.myprice.model.auto.Commodity">
+  <insert id="insert" parameterType="com.myprice.model.auto.Commodity" useGeneratedKeys="true" keyProperty="id">
     insert into u_commodity (
       	  	       id,
        	  	       creator,
@@ -123,7 +127,9 @@
        	  	       category_id,
        	  	       title,
        	  	       description,
-       	  	    	  price
+       	  	       price,
+       	  	       image,
+       	  	    	  unit
        	    )
     values (
 	  	  	      	#{id,jdbcType=INTEGER},
@@ -133,11 +139,13 @@
        	  	      	#{categoryId,jdbcType=INTEGER},
        	  	      	#{title,jdbcType=VARCHAR},
        	  	      	#{description,jdbcType=VARCHAR},
-       	  	    	  #{price,jdbcType=DECIMAL}
+       	  	      	#{price,jdbcType=DECIMAL},
+       	  	      	#{image,jdbcType=VARCHAR},
+       	  	    	  #{unit,jdbcType=VARCHAR}
        	    )
   </insert>
   
-  <insert id="insertSelective" parameterType="com.myprice.model.auto.Commodity">
+  <insert id="insertSelective" parameterType="com.myprice.model.auto.Commodity" useGeneratedKeys="true" keyProperty="id">
     insert into u_commodity
     <trim prefix="(" suffix=")" suffixOverrides=",">
           
@@ -172,6 +180,14 @@
       <if test="price != null">
         price,
       </if>
+         
+      <if test="image != null">
+        image,
+      </if>
+         
+      <if test="unit != null">
+        unit,
+      </if>
          </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
           <if test="id != null">
@@ -197,6 +213,12 @@
       </if>
           <if test="price != null">
         #{price,jdbcType=DECIMAL},
+      </if>
+          <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+          <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
       </if>
         </trim>
   </insert>
@@ -235,6 +257,12 @@
           <if test="record.price != null">
         price = #{record.price,jdbcType=DECIMAL},
       </if>
+          <if test="record.image != null">
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
+          <if test="record.unit != null">
+        unit = #{record.unit,jdbcType=VARCHAR},
+      </if>
          
     </set>
     <if test="_parameter != null">
@@ -261,7 +289,11 @@
     	         	     	 
     	 description = #{record.description,jdbcType=VARCHAR},
     	         	     	 
-    	 price = #{record.price,jdbcType=DECIMAL}
+    	 price = #{record.price,jdbcType=DECIMAL},
+    	         	     	 
+    	 image = #{record.image,jdbcType=VARCHAR},
+    	         	     	 
+    	 unit = #{record.unit,jdbcType=VARCHAR}
     	         
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -300,15 +332,23 @@
       <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
       </if>
+                      
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+                      
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
               </set>
     
     where 
             
     id = #{id,jdbcType=INTEGER}
-                                                                  
+                                                                                  
   </update>
 
-      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
+      	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	   	      	
 
   <update id="updateByPrimaryKey" parameterType="com.myprice.model.auto.Commodity">
     update u_commodity
@@ -325,14 +365,18 @@
 		title = #{title,jdbcType=VARCHAR},
 	  	 		 	  	  
 		description = #{description,jdbcType=VARCHAR},
+	  	 		 	  	  
+		price = #{price,jdbcType=DECIMAL},
+	  	 		 	  	  
+		image = #{image,jdbcType=VARCHAR},
 	  	 		 	  		
-		price = #{price,jdbcType=DECIMAL}
+		unit = #{unit,jdbcType=VARCHAR}
 	  	 		
     where 
             
     id = #{id,jdbcType=INTEGER}
-                                                                    
+                                                                                    
   </update>
   
-                                            
+                                                      
 </mapper>

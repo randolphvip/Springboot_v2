@@ -19,6 +19,7 @@ import com.fc.v2.common.base.BaseController;
 import com.fc.v2.common.domain.AjaxResult;
 import com.fc.v2.common.domain.ResuTree;
 import com.fc.v2.common.domain.ResultTable;
+import com.fc.v2.common.log.Log;
 import com.fc.v2.model.custom.Tablepar;
 import com.github.pagehelper.PageInfo;
 import com.myprice.model.auto.Category;
@@ -95,8 +96,8 @@ public class CategoryController extends BaseController{
      * @param 
      * @return
      */
-	//@Log(title = "产品分类新增", action = "111")
-	@ApiOperation(value = "新增", notes = "新增")
+	@Log(title = "Create a new category", action = "Add")
+	@ApiOperation(value = "Add", notes = "Add")
 	@PostMapping("/add")
 	@RequiresPermissions("gen:category:add")
 	@ResponseBody

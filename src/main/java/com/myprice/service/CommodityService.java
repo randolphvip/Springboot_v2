@@ -101,7 +101,7 @@ public class CommodityService implements BaseService<Commodity, CommodityExample
 	@Override
 	@Transactional(propagation =Propagation.REQUIRED)
 	public int insertSelective(Commodity record) {
-		record.setCreator(ShiroUtils.getUserId());
+	//	record.setCreator(ShiroUtils.getUserId());
 		record.setCreateDate(new Date());
 		 
 		return commodityMapper.insertSelective(record);

@@ -80,6 +80,7 @@
                 {type: 'checkbox'},
                 
 				{title: 'ID', field: 'id', align: 'center'},
+				{title: 'image', field: 'image', align: 'center'},
 				
 				{title: 'Title ', field: 'title', align: 'center'},
 
@@ -88,6 +89,7 @@
 				{title: 'create date', field: 'createDate', align: 'center'},
 				 
 				{title: 'category', field: 'categoryName', align: 'center'},
+				{title: 'unit', field: 'unit', align: 'center'},
 				 
 				{title: 'status', field: 'status', align: 'center',templet: '#commodity-enable' ,width: 100},
 					
@@ -150,7 +152,7 @@
         window.add = function () {
             layer.open({
                 type: 2,
-                title: '新增',
+                title: 'New',
                 shade: 0.1,
                 area: ['500px', '500px'],
                 content: MODULE_PATH + 'add'
@@ -166,7 +168,7 @@
                 content: MODULE_PATH + 'edit/' + obj.data['id']
             });
         }
-        //删除
+        //Delete
         window.remove = function (obj) {
             layer.confirm('确定要删除该数据', {icon: 3, title: '提示'}, function (index) {
                 layer.close(index);

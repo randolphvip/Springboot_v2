@@ -40,6 +40,20 @@
                         <ul id="selectCategory" name="categoryId" class="dtree" data-id="0"></ul>
                     </div>
                 </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">image</label>
+                    <div class="layui-input-block">
+                        <input th:value="*{image}" type="text" name="image" autocomplete="off" placeholder="image" class="layui-input">
+                    </div>
+                </div>
+
+				<div class="layui-form-item">
+                    <label class="layui-form-label">unit</label>
+                    <div class="layui-input-block">
+                        <input th:value="*{unit}" type="text" name="unit" autocomplete="off" placeholder="unit" class="layui-input">
+                    </div>
+                </div>
 
 				
 
@@ -68,7 +82,7 @@
             </button>
             <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
                 <i class="layui-icon layui-icon-refresh"></i>
-				重置
+				Reset
             </button>
         </div>
     </div>

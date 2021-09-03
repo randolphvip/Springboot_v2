@@ -1,7 +1,5 @@
 package com.myprice.controller.gen;
 
-import java.util.List;
-
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,9 +18,9 @@ import com.fc.v2.common.conf.oss.OssTemplate;
 import com.fc.v2.common.domain.AjaxResult;
 import com.fc.v2.common.domain.ResultTable;
 import com.fc.v2.model.custom.Tablepar;
+import com.fc.v2.shiro.util.ShiroUtils;
 import com.github.pagehelper.PageInfo;
 import com.myprice.model.auto.Commodity;
-import com.myprice.model.auto.Template;
 import com.myprice.model.auto.TemplateExample;
 import com.myprice.service.CommodityService;
 import com.myprice.service.TemplateService;
@@ -106,6 +104,7 @@ public class CommodityController extends BaseController{
 	@RequiresPermissions("gen:commodity:add")
 	@ResponseBody
 	public AjaxResult add( Commodity commodity){
+		commodity.setCreator(ShiroUtils.getUserId());
 		int b=commodityService.insertSelective(commodity);
 		if(b>0){
 			return success();

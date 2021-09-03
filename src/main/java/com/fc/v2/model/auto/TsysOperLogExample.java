@@ -2,10 +2,17 @@ package com.fc.v2.model.auto;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
+import cn.hutool.core.util.StrUtil;
+
+/**
+ * 日志记录表 TSysOperLogExample
+ * @author Cong_自动生成
+ * @date 2021-09-02 17:30:18
+ */
 public class TsysOperLogExample {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -105,33 +112,8 @@ public class TsysOperLogExample {
             }
             criteria.add(new Criterion(condition, value1, value2));
         }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
-        }
-
+        
+				
         public Criteria andIdIsNull() {
             addCriterion("id is null");
             return (Criteria) this;
@@ -201,7 +183,8 @@ public class TsysOperLogExample {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
-
+        
+				
         public Criteria andTitleIsNull() {
             addCriterion("title is null");
             return (Criteria) this;
@@ -271,7 +254,8 @@ public class TsysOperLogExample {
             addCriterion("title not between", value1, value2, "title");
             return (Criteria) this;
         }
-
+        
+				
         public Criteria andMethodIsNull() {
             addCriterion("method is null");
             return (Criteria) this;
@@ -341,7 +325,8 @@ public class TsysOperLogExample {
             addCriterion("method not between", value1, value2, "method");
             return (Criteria) this;
         }
-
+        
+				
         public Criteria andOperNameIsNull() {
             addCriterion("oper_name is null");
             return (Criteria) this;
@@ -411,7 +396,8 @@ public class TsysOperLogExample {
             addCriterion("oper_name not between", value1, value2, "operName");
             return (Criteria) this;
         }
-
+        
+				
         public Criteria andOperUrlIsNull() {
             addCriterion("oper_url is null");
             return (Criteria) this;
@@ -481,7 +467,8 @@ public class TsysOperLogExample {
             addCriterion("oper_url not between", value1, value2, "operUrl");
             return (Criteria) this;
         }
-
+        
+				
         public Criteria andOperParamIsNull() {
             addCriterion("oper_param is null");
             return (Criteria) this;
@@ -551,7 +538,8 @@ public class TsysOperLogExample {
             addCriterion("oper_param not between", value1, value2, "operParam");
             return (Criteria) this;
         }
-
+        
+				
         public Criteria andErrorMsgIsNull() {
             addCriterion("error_msg is null");
             return (Criteria) this;
@@ -621,7 +609,8 @@ public class TsysOperLogExample {
             addCriterion("error_msg not between", value1, value2, "errorMsg");
             return (Criteria) this;
         }
-
+        
+				
         public Criteria andOperTimeIsNull() {
             addCriterion("oper_time is null");
             return (Criteria) this;
@@ -633,58 +622,466 @@ public class TsysOperLogExample {
         }
 
         public Criteria andOperTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("oper_time =", value, "operTime");
+            addCriterion("oper_time =", value, "operTime");
             return (Criteria) this;
         }
 
         public Criteria andOperTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("oper_time <>", value, "operTime");
+            addCriterion("oper_time <>", value, "operTime");
             return (Criteria) this;
         }
 
         public Criteria andOperTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("oper_time >", value, "operTime");
+            addCriterion("oper_time >", value, "operTime");
             return (Criteria) this;
         }
 
         public Criteria andOperTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("oper_time >=", value, "operTime");
+            addCriterion("oper_time >=", value, "operTime");
             return (Criteria) this;
         }
 
         public Criteria andOperTimeLessThan(Date value) {
-            addCriterionForJDBCDate("oper_time <", value, "operTime");
+            addCriterion("oper_time <", value, "operTime");
             return (Criteria) this;
         }
 
         public Criteria andOperTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("oper_time <=", value, "operTime");
+            addCriterion("oper_time <=", value, "operTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperTimeLike(Date value) {
+            addCriterion("oper_time like", value, "operTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperTimeNotLike(Date value) {
+            addCriterion("oper_time not like", value, "operTime");
             return (Criteria) this;
         }
 
         public Criteria andOperTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("oper_time in", values, "operTime");
+            addCriterion("oper_time in", values, "operTime");
             return (Criteria) this;
         }
 
         public Criteria andOperTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("oper_time not in", values, "operTime");
+            addCriterion("oper_time not in", values, "operTime");
             return (Criteria) this;
         }
 
         public Criteria andOperTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("oper_time between", value1, value2, "operTime");
+            addCriterion("oper_time between", value1, value2, "operTime");
             return (Criteria) this;
         }
 
         public Criteria andOperTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("oper_time not between", value1, value2, "operTime");
+            addCriterion("oper_time not between", value1, value2, "operTime");
             return (Criteria) this;
         }
-    }
+        
+				
+        public Criteria andOperatorIsNull() {
+            addCriterion("operator is null");
+            return (Criteria) this;
+        }
 
+        public Criteria andOperatorIsNotNull() {
+            addCriterion("operator is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorEqualTo(String value) {
+            addCriterion("operator =", value, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorNotEqualTo(String value) {
+            addCriterion("operator <>", value, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorGreaterThan(String value) {
+            addCriterion("operator >", value, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorGreaterThanOrEqualTo(String value) {
+            addCriterion("operator >=", value, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorLessThan(String value) {
+            addCriterion("operator <", value, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorLessThanOrEqualTo(String value) {
+            addCriterion("operator <=", value, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorLike(String value) {
+            addCriterion("operator like", value, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorNotLike(String value) {
+            addCriterion("operator not like", value, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorIn(List<String> values) {
+            addCriterion("operator in", values, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorNotIn(List<String> values) {
+            addCriterion("operator not in", values, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorBetween(String value1, String value2) {
+            addCriterion("operator between", value1, value2, "operator");
+            return (Criteria) this;
+        }
+
+        public Criteria andOperatorNotBetween(String value1, String value2) {
+            addCriterion("operator not between", value1, value2, "operator");
+            return (Criteria) this;
+        }
+        
+				
+        public Criteria andIpIsNull() {
+            addCriterion("ip is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpIsNotNull() {
+            addCriterion("ip is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpEqualTo(String value) {
+            addCriterion("ip =", value, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpNotEqualTo(String value) {
+            addCriterion("ip <>", value, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpGreaterThan(String value) {
+            addCriterion("ip >", value, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpGreaterThanOrEqualTo(String value) {
+            addCriterion("ip >=", value, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpLessThan(String value) {
+            addCriterion("ip <", value, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpLessThanOrEqualTo(String value) {
+            addCriterion("ip <=", value, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpLike(String value) {
+            addCriterion("ip like", value, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpNotLike(String value) {
+            addCriterion("ip not like", value, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpIn(List<String> values) {
+            addCriterion("ip in", values, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpNotIn(List<String> values) {
+            addCriterion("ip not in", values, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpBetween(String value1, String value2) {
+            addCriterion("ip between", value1, value2, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpNotBetween(String value1, String value2) {
+            addCriterion("ip not between", value1, value2, "ip");
+            return (Criteria) this;
+        }
+        
+				
+        public Criteria andActionIsNull() {
+            addCriterion("action is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionIsNotNull() {
+            addCriterion("action is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionEqualTo(String value) {
+            addCriterion("action =", value, "action");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionNotEqualTo(String value) {
+            addCriterion("action <>", value, "action");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionGreaterThan(String value) {
+            addCriterion("action >", value, "action");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionGreaterThanOrEqualTo(String value) {
+            addCriterion("action >=", value, "action");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionLessThan(String value) {
+            addCriterion("action <", value, "action");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionLessThanOrEqualTo(String value) {
+            addCriterion("action <=", value, "action");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionLike(String value) {
+            addCriterion("action like", value, "action");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionNotLike(String value) {
+            addCriterion("action not like", value, "action");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionIn(List<String> values) {
+            addCriterion("action in", values, "action");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionNotIn(List<String> values) {
+            addCriterion("action not in", values, "action");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionBetween(String value1, String value2) {
+            addCriterion("action between", value1, value2, "action");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionNotBetween(String value1, String value2) {
+            addCriterion("action not between", value1, value2, "action");
+            return (Criteria) this;
+        }
+        
+				
+        public Criteria andChannelIsNull() {
+            addCriterion("channel is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelIsNotNull() {
+            addCriterion("channel is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelEqualTo(String value) {
+            addCriterion("channel =", value, "channel");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelNotEqualTo(String value) {
+            addCriterion("channel <>", value, "channel");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelGreaterThan(String value) {
+            addCriterion("channel >", value, "channel");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelGreaterThanOrEqualTo(String value) {
+            addCriterion("channel >=", value, "channel");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelLessThan(String value) {
+            addCriterion("channel <", value, "channel");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelLessThanOrEqualTo(String value) {
+            addCriterion("channel <=", value, "channel");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelLike(String value) {
+            addCriterion("channel like", value, "channel");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelNotLike(String value) {
+            addCriterion("channel not like", value, "channel");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelIn(List<String> values) {
+            addCriterion("channel in", values, "channel");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelNotIn(List<String> values) {
+            addCriterion("channel not in", values, "channel");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelBetween(String value1, String value2) {
+            addCriterion("channel between", value1, value2, "channel");
+            return (Criteria) this;
+        }
+
+        public Criteria andChannelNotBetween(String value1, String value2) {
+            addCriterion("channel not between", value1, value2, "channel");
+            return (Criteria) this;
+        }
+        
+			
+		 public Criteria andLikeQuery(TsysOperLog record) {
+		 	List<String> list= new ArrayList<String>();
+		 	List<String> list2= new ArrayList<String>();
+        	StringBuffer buffer=new StringBuffer();
+			if(record.getId()!=null&&StrUtil.isNotEmpty(record.getId().toString())) {
+    			 list.add("ifnull(id,'')");
+    		}
+			if(record.getTitle()!=null&&StrUtil.isNotEmpty(record.getTitle().toString())) {
+    			 list.add("ifnull(title,'')");
+    		}
+			if(record.getMethod()!=null&&StrUtil.isNotEmpty(record.getMethod().toString())) {
+    			 list.add("ifnull(method,'')");
+    		}
+			if(record.getOperName()!=null&&StrUtil.isNotEmpty(record.getOperName().toString())) {
+    			 list.add("ifnull(oper_name,'')");
+    		}
+			if(record.getOperUrl()!=null&&StrUtil.isNotEmpty(record.getOperUrl().toString())) {
+    			 list.add("ifnull(oper_url,'')");
+    		}
+			if(record.getOperParam()!=null&&StrUtil.isNotEmpty(record.getOperParam().toString())) {
+    			 list.add("ifnull(oper_param,'')");
+    		}
+			if(record.getErrorMsg()!=null&&StrUtil.isNotEmpty(record.getErrorMsg().toString())) {
+    			 list.add("ifnull(error_msg,'')");
+    		}
+			if(record.getOperTime()!=null&&StrUtil.isNotEmpty(record.getOperTime().toString())) {
+    			 list.add("ifnull(oper_time,'')");
+    		}
+			if(record.getOperator()!=null&&StrUtil.isNotEmpty(record.getOperator().toString())) {
+    			 list.add("ifnull(operator,'')");
+    		}
+			if(record.getIp()!=null&&StrUtil.isNotEmpty(record.getIp().toString())) {
+    			 list.add("ifnull(ip,'')");
+    		}
+			if(record.getAction()!=null&&StrUtil.isNotEmpty(record.getAction().toString())) {
+    			 list.add("ifnull(action,'')");
+    		}
+			if(record.getChannel()!=null&&StrUtil.isNotEmpty(record.getChannel().toString())) {
+    			 list.add("ifnull(channel,'')");
+    		}
+			if(record.getId()!=null&&StrUtil.isNotEmpty(record.getId().toString())) {
+    			list2.add("'%"+record.getId()+"%'");
+    		}
+			if(record.getTitle()!=null&&StrUtil.isNotEmpty(record.getTitle().toString())) {
+    			list2.add("'%"+record.getTitle()+"%'");
+    		}
+			if(record.getMethod()!=null&&StrUtil.isNotEmpty(record.getMethod().toString())) {
+    			list2.add("'%"+record.getMethod()+"%'");
+    		}
+			if(record.getOperName()!=null&&StrUtil.isNotEmpty(record.getOperName().toString())) {
+    			list2.add("'%"+record.getOperName()+"%'");
+    		}
+			if(record.getOperUrl()!=null&&StrUtil.isNotEmpty(record.getOperUrl().toString())) {
+    			list2.add("'%"+record.getOperUrl()+"%'");
+    		}
+			if(record.getOperParam()!=null&&StrUtil.isNotEmpty(record.getOperParam().toString())) {
+    			list2.add("'%"+record.getOperParam()+"%'");
+    		}
+			if(record.getErrorMsg()!=null&&StrUtil.isNotEmpty(record.getErrorMsg().toString())) {
+    			list2.add("'%"+record.getErrorMsg()+"%'");
+    		}
+			if(record.getOperTime()!=null&&StrUtil.isNotEmpty(record.getOperTime().toString())) {
+    			list2.add("'%"+record.getOperTime()+"%'");
+    		}
+			if(record.getOperator()!=null&&StrUtil.isNotEmpty(record.getOperator().toString())) {
+    			list2.add("'%"+record.getOperator()+"%'");
+    		}
+			if(record.getIp()!=null&&StrUtil.isNotEmpty(record.getIp().toString())) {
+    			list2.add("'%"+record.getIp()+"%'");
+    		}
+			if(record.getAction()!=null&&StrUtil.isNotEmpty(record.getAction().toString())) {
+    			list2.add("'%"+record.getAction()+"%'");
+    		}
+			if(record.getChannel()!=null&&StrUtil.isNotEmpty(record.getChannel().toString())) {
+    			list2.add("'%"+record.getChannel()+"%'");
+    		}
+        	buffer.append(" CONCAT(");
+	        buffer.append(StrUtil.join(",",list));
+        	buffer.append(")");
+        	buffer.append(" like CONCAT(");
+        	buffer.append(StrUtil.join(",",list2));
+        	buffer.append(")");
+        	if(!" CONCAT() like CONCAT()".equals(buffer.toString())) {
+        		addCriterion(buffer.toString());
+        	}
+        	return (Criteria) this;
+        }
+        
+        public Criteria andLikeQuery2(String searchText) {
+		 	List<String> list= new ArrayList<String>();
+        	StringBuffer buffer=new StringBuffer();
+    		list.add("ifnull(id,'')");
+    		list.add("ifnull(title,'')");
+    		list.add("ifnull(method,'')");
+    		list.add("ifnull(oper_name,'')");
+    		list.add("ifnull(oper_url,'')");
+    		list.add("ifnull(oper_param,'')");
+    		list.add("ifnull(error_msg,'')");
+    		list.add("ifnull(oper_time,'')");
+    		list.add("ifnull(operator,'')");
+    		list.add("ifnull(ip,'')");
+    		list.add("ifnull(action,'')");
+    		list.add("ifnull(channel,'')");
+        	buffer.append(" CONCAT(");
+	        buffer.append(StrUtil.join(",",list));
+        	buffer.append(")");
+        	buffer.append("like '%");
+        	buffer.append(searchText);
+        	buffer.append("%'");
+        	addCriterion(buffer.toString());
+        	return (Criteria) this;
+        }
+        
+}
+	
     public static class Criteria extends GeneratedCriteria {
-
         protected Criteria() {
             super();
         }

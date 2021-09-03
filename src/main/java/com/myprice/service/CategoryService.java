@@ -53,16 +53,16 @@ public class CategoryService implements BaseService<Category, CategoryExample>{
 	        List<Category> list= categoryMapper.selectByExample(testExample);
 	        PageInfo<Category> pageInfo = new PageInfo<Category>(list);
 	        return  pageInfo;
-	        
-	        
-	        
-	        
-	        
-	    	 
-			
-			
-			 
 	 }
+	 
+	 public List <Category> list(Category category){
+	        CategoryExample testExample=new CategoryExample();
+	        testExample.createCriteria().andLikeQuery(category);
+	        List<Category> list= categoryMapper.selectByExample(testExample);
+ 	        return  list;
+	 }
+	 
+	 
 
 	@Override
 	public int deleteByPrimaryKey(String ids) {

@@ -19,7 +19,7 @@ public class Commodity implements Serializable {
 	
 	@ApiModelProperty(value = "creator")
 	private String creator;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+12")
 	@ApiModelProperty(value = "create date")
 	private Date createDate;
 	
@@ -38,8 +38,17 @@ public class Commodity implements Serializable {
 	@ApiModelProperty(value = "price")
 	private BigDecimal price;
 	
-	private String creatorName;
 	
+	@ApiModelProperty(value = "image")
+	private String image;
+	
+	@ApiModelProperty(value = "unit")
+	private String unit;
+	
+	
+	@ApiModelProperty(value = "creatorName")
+	private String creatorName;
+	@ApiModelProperty(value = "categoryName")
 	private String categoryName;
 	
 	@JsonProperty("id")
@@ -123,9 +132,26 @@ public class Commodity implements Serializable {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
+	
+	@JsonProperty("image")
+	public String getImage() {
+		return image;
+	}
 
-	public Commodity(Integer id,String creator,Date createDate,Integer status,Integer categoryId,String title,String description,BigDecimal price) {
-				
+	public void setImage(String image) {
+		this.image =  image;
+	}
+	@JsonProperty("unit")
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit =  unit;
+	}
+
+	public Commodity(Integer id,String creator,Date createDate,Integer status,Integer categoryId,String title,String description,BigDecimal price,String image,String unit) {
+		
 		this.id = id;
 				
 		this.creator = creator;
@@ -142,6 +168,18 @@ public class Commodity implements Serializable {
 				
 		this.price = price;
 				
+		this.image = image;
+				
+		this.unit = unit;
+				
+	}
+
+	@Override
+	public String toString() {
+		return "Commodity [id=" + id + ", creator=" + creator + ", createDate=" + createDate + ", status=" + status
+				+ ", categoryId=" + categoryId + ", title=" + title + ", description=" + description + ", price="
+				+ price + ", image=" + image + ", unit=" + unit + ", creatorName=" + creatorName + ", categoryName="
+				+ categoryName + "]";
 	}
 
 	public Commodity() {
