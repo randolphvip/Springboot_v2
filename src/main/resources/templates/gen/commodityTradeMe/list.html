@@ -8,7 +8,7 @@
     <div class="layui-card-body">
         <form class="layui-form" action="">
             <div class="layui-form-item">
-                <label class="layui-form-label">名称</label>
+                <label class="layui-form-label">keyword</label>
                 <div class="layui-input-inline">
                     <input type="text" name="searchText" placeholder="" class="layui-input">
                 </div>
@@ -58,7 +58,7 @@
 </script>
 
 
-
+ 
 <script type="text/html" id="CommodityTradeMe-type">
     {{#if (d.dataState == '0') { }}
     <span class="layui-badge layui-bg-orange">开启</span>
@@ -94,7 +94,7 @@
 									
 									{title: 'Create Date', field: 'createDate', align: 'center',width: 155},
 									
-									{title: 'Close Date', field: 'closeDatetime', align: 'center',width: 155},
+									{title: 'Close Date', field: 'closeDatetime', align: 'center',width: 155 },
 					
 									{title: 'status', field: 'status', align: 'center',templet: '#commodity-enable' ,width: 100},
 //									{title: 'Reserve Status', field: 'reserveStatus', align: 'center'},

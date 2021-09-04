@@ -8,7 +8,7 @@
     <div class="layui-card-body">
         <form class="layui-form" action="">
             <div class="layui-form-item">
-                <label class="layui-form-label">名称</label>
+                <label class="layui-form-label">Keyword</label>
                 <div class="layui-input-inline">
                     <input type="text" name="searchText" placeholder="" class="layui-input">
                 </div>
@@ -93,13 +93,13 @@
             [
                 {type: 'checkbox'},
                 {title: 'ID', field: 'id', align: 'center'},
-                {title: '任务名称', field: 'jobName', align: 'left'},
-                {title: '任务组名', field: 'jobGroup', align: 'left'},
-                {title: '调用目标字符串', field: 'invokeTarget', align: 'left'},
-                {title: 'cron执行表达式', field: 'cronExpression', align: 'left'},
-                {title: 'cron计划策略', field: 'misfirePolicy', align: 'left',toolbar: '#sysQuartzJob-misfirePolicy'},
-                {title: '是否并发执行', field: 'concurrent', align: 'left',toolbar: '#sysQuartzJob-concurrent'},
-                {title: '任务状态', field: 'status', align: 'center',toolbar: '#sysQuartzJob-enable'},
+                {title: 'Job Name', field: 'jobName', align: 'left'},
+                {title: 'Job Group', field: 'jobGroup', align: 'left'},
+                {title: 'Invoke Target', field: 'invokeTarget', align: 'left'},
+                {title: 'Cron Expression', field: 'cronExpression', align: 'left'},
+                {title: 'Cron Plicy', field: 'misfirePolicy', align: 'left',toolbar: '#sysQuartzJob-misfirePolicy'},
+                {title: 'Concurrency?', field: 'concurrent', align: 'left',toolbar: '#sysQuartzJob-concurrent'},
+                {title: 'Task Status', field: 'status', align: 'center',toolbar: '#sysQuartzJob-enable'},
                 {title: 'Operation', toolbar: '#sysQuartzJob-bar', align: 'center'}
             ]
         ]
