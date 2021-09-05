@@ -10,8 +10,6 @@ import java.util.List;
 /**
  * 类型转换器
  * 
- * 
- * 
  */
 public class ConvertUtil {
 
