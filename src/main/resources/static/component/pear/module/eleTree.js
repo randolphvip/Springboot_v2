@@ -259,7 +259,7 @@ layui.define(["jquery","laytpl"], function (exports) {
                 return;
             }
             var data = $.extend({}, options.where);
-            if(options.contentType && options.contentType.indexOf("application/json") == 0){ //提交 json 格式
+            if(options.contentType && options.contentType.indexOf("application/json") == 0){ //Submit json 格式
               data = JSON.stringify(data);
             }
 

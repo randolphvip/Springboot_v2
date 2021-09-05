@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="include :: header('${tableInfo.tableComment}新增')"/>
+    <th:block th:include="include :: header('${tableInfo.tableComment} Add')"/>
 </head>
 <body>
 <form class="layui-form">

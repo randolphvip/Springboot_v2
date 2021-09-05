@@ -1,16 +1,12 @@
 package com.fc.v2.common.quartz.task;
 
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.naming.java.javaURLContextFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.fc.v2.shiro.util.ShiroUtils;
-import com.myprice.crawler.PaknSaveCategoryCrawler;
+import com.myprice.crawler.PaknSaveCrawlerCommodityInformation;
 import com.myprice.model.auto.Category;
 import com.myprice.model.auto.Commodity;
 import com.myprice.model.auto.ShopCommodity;
@@ -21,29 +17,39 @@ import com.myprice.service.ShopCommodityService;
 /**
  
  */
-@Component("PaknSaveCommodity")
-public class PaknSaveCommodity {
+@Component("CrawlerPaknSaveCommodityTask")
+public class CrawlerPaknSaveCommodityTask {
  
 	
-	@Autowired
-	private CommodityService commodityService;
+@Autowired
+private CommodityService commodityService;
 @Autowired
 	private CategoryService categoryService;
 @Autowired
 private ShopCommodityService shopCommodityService;
 
-PaknSaveCategoryCrawler crawler = new PaknSaveCategoryCrawler();
-	public void runCrawlerPaknSaveCommodities(String source) {
+PaknSaveCrawlerCommodityInformation crawler =null;
+
+
+/**
+ * 定时器的入口
+ * @param source
+ */
+	public void runCrawlerPaknSaveCommodities(String  storeID) {
 	 System.out.println("--------------开始抓取商品信息");
-	 PaknSaveCategoryCrawler crawler = new PaknSaveCategoryCrawler();
-		//https://www.paknsave.co.nz/shop/category/fresh-foods-and-bakery/fruit--vegetables/fresh-fruit?pg=3
-	     // https://www.paknsave.co.nz/shop/category/Kitchen-Dining & Household/Stationery & Entertainment/Toys & Recreation
+	 System.out.println("--------------storeID"+storeID);
+	  
+	  crawler = new PaknSaveCrawlerCommodityInformation();//可以传入店的编号。默认为Lower Hutt
 	 String url= "https://www.paknsave.co.nz/shop/category";
-	 getUrl(url,62);
+	 int root_categoryID=62;
+	 getUrlOfCommodityCategory(url,root_categoryID);//
 	}
 	
+	
 	 
-	public String getUrl(String url, Integer parentID){
+	
+	 
+	public String getUrlOfCommodityCategory(String url, Integer parentID){
 		
 		Category category=	new Category();
 		category.setParentId(parentID);
@@ -56,24 +62,28 @@ PaknSaveCategoryCrawler crawler = new PaknSaveCategoryCrawler();
 	 		System.out.println("--------------------"+url);
 	 		return url;
 	 	}else {
-			//证明有子节点，继续迭代。
+			//证明有子节点，继续迭代。将本节点的内容拼接到URL
 	 		for (Category category2 : categoryList) {
 	 			String categoryName =category2.getCategoryName();
 	 			if(category2.getParentId()==62) {
-	 				
 	 				categoryName=categoryName.replace(" & ", "-and-");
 	 			}else {
 	 				categoryName=categoryName.replace(" & ", "--");
 	 			}
 	 			categoryName=categoryName.replace(",", "").replace(" ", "-");
-	 			getUrl(url+"/"+categoryName,category2.getId());
+	 			getUrlOfCommodityCategory(url+"/"+categoryName,category2.getId());
 			}
 		}
 		
 		 return null;
 	}
+	/**
+	 * 通过URL和分类ID抓取商品信息。并保存商品信息（非单个商品）
+	 * @param url
+	 * @param categoryId
+	 */
 	
-	public void saveCommodits(String url, Integer categoryId) {
+	private void saveCommodits(String url, Integer categoryId) {
 		System.out.println("分类URL"+url);
 		System.out.println("categoryId"+categoryId);
 		int page=1;
@@ -111,11 +121,7 @@ PaknSaveCategoryCrawler crawler = new PaknSaveCategoryCrawler();
 	}
 	
 	
- public static void main(String[] args) {
-	String url="https://www.paknsave.co.nz/shop/categoryKitchen, Dining & Household/Stationery & Entertainment/Toys & Recreation";
-	url =url.toLowerCase().replaceAll(",","-").replace(", ", "-");
-	System.out.println(url);
-}
+  
  
 
 }

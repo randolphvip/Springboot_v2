@@ -14,19 +14,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.myprice.service.CommodityService;
 
-public class PaknSaveCategoryCrawler {
-	private static final Logger log = LoggerFactory.getLogger(PaknSaveCategoryCrawler.class);
+public class PaknSaveCrawlerCommodityInformation {
+	private static final Logger log = LoggerFactory.getLogger(PaknSaveCrawlerCommodityInformation.class);
 	Map<String, String> cookies =null;
 	@Autowired
 	CommodityService commodityService; 
 	
 	
-	public  PaknSaveCategoryCrawler () {
+	public  PaknSaveCrawlerCommodityInformation () {
 		init("b83029b6-5dd5-449e-8056-26f3943a4e18|false");//lower Hutt
 	}
 	
-	public  PaknSaveCategoryCrawler (String StoreID) {
-		init(StoreID);
+	public  PaknSaveCrawlerCommodityInformation (String storeID) {
+		init(storeID);
 	}
 	
 	private void init(String StoreID) {
@@ -40,35 +40,7 @@ public class PaknSaveCategoryCrawler {
 		}
 	}
 
-	/**
-	 * 
-	 * @param URL
-	 */
-	public  void doCrawlerPaknSaveCategory(String URL) {
-		try {
-		long begin = System.currentTimeMillis();
-
-		Document doc = Jsoup.connect(URL).cookies(cookies).get();
-		
-		Elements elements = doc.select(
-				"div.fs-mega-menu__panel.fs-mega-menu__panel--one.m-one-header-nav__megamenu-panel-level1.fs-mega-menu__panel--show");
-		System.out.println(elements.size());
- 
-			for (Element element : elements) {
-				System.out.println("------------------------------------------------------------------------------");
-				System.out.println(element.html());
-				System.out.println("------------------------------------------------------------------------------");
-
-			}
-
-		System.out.println("duration :" + (System.currentTimeMillis() - begin));
-		
-		
-		}catch (Exception e) {
-			log.error("Getting session from Pakn Save fail");
-			e.printStackTrace();
-		}
-	}
+	 
 	
 	
 	
@@ -107,11 +79,7 @@ public class PaknSaveCategoryCrawler {
 				list.add(map);
 				
    		}
-
 		 
-		System.out.println(System.currentTimeMillis() - begin);
-		
-		
 		System.out.println("duration :" + (System.currentTimeMillis() - begin));
 		
 	
@@ -125,43 +93,10 @@ public class PaknSaveCategoryCrawler {
 	
 	public static void main(String[] args) {
 		String url = "https://www.paknsave.co.nz/shop/category/fresh-foods-and-bakery/fruit--vegetables/fresh-fruit?pg=1";
-		PaknSaveCategoryCrawler paknSaveCrawler =new PaknSaveCategoryCrawler();
+		PaknSaveCrawlerCommodityInformation paknSaveCrawler =new PaknSaveCrawlerCommodityInformation();
 	    paknSaveCrawler.doCrawlerPaknSavepCommodities(url);
 		
 
 	}
-
-//	public static void crawlerCategroy(String URL) {
-//		long begin = System.currentTimeMillis();
-//
-//		try {
-//
-//			// Map<String, String> cookies =new HashMap<String, String>();
-//
-//			Map<String, String> cookies = Jsoup.connect(URL).execute().cookies();
-//			cookies.put("STORE_ID_V2", "98ec3885-ac93-4fcb-807b-59c9055c52c4|false");// 设置要采购的店铺ID。
-//
-//			Document doc = Jsoup.connect(URL).cookies(cookies).get();
-//			System.out.println("4:" + (System.currentTimeMillis() - begin));
-//
-////			
-////		Map<String, String> cookies =  Jsoup.connect(URL).execute().cookies();
-////			cookies.put("STORE_ID_V2", "98ec3885-ac93-4fcb-807b-59c9055c52c4|false");
-////			Document doc= Jsoup.connect(URL).cookies(cookies).get();
-//// 
-//
-//			Elements elements = doc.select(
-//					"#pol > div > div.fs-product-detail__price > div.fs-price-lockup.fs-price-lockup--large.u-margin-bottom.u-margin-top > span:nth-child(2) > meta:nth-child(1)");
-//			System.out.println(elements.size());
-//			for (Element e : elements) {
-//
-//				System.out.println("-->  :" + e.attr("content"));
-//
-//			}
-//			System.out.println(System.currentTimeMillis() - begin);
-//		} catch (IOException e1) {
-//			e1.printStackTrace();
-//		}
-//	}
-
+ 
 }

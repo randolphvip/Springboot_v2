@@ -60,37 +60,5 @@ public class NewWorldCrawler {
 
 	}
 
-//	public static void crawlerCategroy(String URL) {
-//		long begin = System.currentTimeMillis();
-//
-//		try {
-//
-//			// Map<String, String> cookies =new HashMap<String, String>();
-//
-//			Map<String, String> cookies = Jsoup.connect(URL).execute().cookies();
-//			cookies.put("STORE_ID_V2", "98ec3885-ac93-4fcb-807b-59c9055c52c4|false");// 设置要采购的店铺ID。
-//
-//			Document doc = Jsoup.connect(URL).cookies(cookies).get();
-//			System.out.println("4:" + (System.currentTimeMillis() - begin));
-//
-////			
-////		Map<String, String> cookies =  Jsoup.connect(URL).execute().cookies();
-////			cookies.put("STORE_ID_V2", "98ec3885-ac93-4fcb-807b-59c9055c52c4|false");
-////			Document doc= Jsoup.connect(URL).cookies(cookies).get();
-//// 
-//
-//			Elements elements = doc.select(
-//					"#pol > div > div.fs-product-detail__price > div.fs-price-lockup.fs-price-lockup--large.u-margin-bottom.u-margin-top > span:nth-child(2) > meta:nth-child(1)");
-//			System.out.println(elements.size());
-//			for (Element e : elements) {
-//
-//				System.out.println("-->  :" + e.attr("content"));
-//
-//			}
-//			System.out.println(System.currentTimeMillis() - begin);
-//		} catch (IOException e1) {
-//			e1.printStackTrace();
-//		}
-//	}
-
+ 
 }

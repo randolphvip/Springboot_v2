@@ -2,7 +2,7 @@ package com.fc.v2.model.custom;
 
 /**
  * boostrap table post 参数
- * @author fc
+ * 
  *
  */
 public class Tablepar {

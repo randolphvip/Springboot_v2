@@ -79,7 +79,7 @@ spring:
      pool-prepared-statements: true #是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭。
      max-pool-prepared-statement-per-connection-size: 20
      validation-query: SELECT 1 FROM DUAL
-     validation-query-timeout: 20000
+     validation-query-timeout: 50000
      test-on-borrow: false #申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
      test-on-return: false #归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
      test-while-idle: true #建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。

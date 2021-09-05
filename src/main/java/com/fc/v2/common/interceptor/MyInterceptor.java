@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * 自定义拦截器
- * @author fc
+ * 
  *
  */
 public class MyInterceptor  implements HandlerInterceptor {

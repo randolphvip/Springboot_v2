@@ -142,6 +142,13 @@ public class MonitorPrice implements Serializable {
 				
 	}
 
+	@Override
+	public String toString() {
+		return "MonitorPrice [id=" + id + ", shopId=" + shopId + ", commodityId=" + commodityId + ", shopCommodityId="
+				+ shopCommodityId + ", date=" + date + ", price=" + price + ", branchId=" + branchId + ", shopName="
+				+ shopName + ", commodityName=" + commodityName + ", branchName=" + branchName + "]";
+	}
+
 	public MonitorPrice() {
 	    super();
 	}

@@ -10,7 +10,7 @@ import org.apache.commons.lang.text.StrBuilder;
 /**
  * 字符串工具类
  * 
- * @author fc
+ * 
  */
 public class StringUtils extends org.apache.commons.lang3.StringUtils
 {

@@ -26,7 +26,7 @@ public class CountdownCrawler {
 		try {
 			String url = "https://shop.countdown.co.nz/shop/productdetails?stockcode=914140";
 			System.out.println("--------------------------------------------------------------------------------------------");
-		//	 this.cookies = Jsoup.connect(url).execute().cookies();
+			 this.cookies = Jsoup.connect(url).execute().cookies();
 			 
 		 
 			 this.cookies.put("ARRAffinity", "c2dba6f1a343c8b908c4c09af49d7b98f09d8a609f95e791c930db34ec6d2ef1");// 设置要采购的店铺ID。
@@ -37,32 +37,7 @@ public class CountdownCrawler {
 		}
 	}
 
-//	/**
-//	 * 
-//	 * @param URL
-//	 */
-//	public  void doCrawlerPaknSave(String URL) {
-//		try {
-//		long begin = System.currentTimeMillis();
-//		Document doc = Jsoup.connect(URL).get();
-////		Document doc = Jsoup.connect(URL).cookies(cookies).get();
-//		
-//		Element element = doc.selectFirst(":nth-child(1)");
-// 
-//			System.out.println("-->  :" + element.attr("content"));
-//
-//		 
-//		System.out.println(System.currentTimeMillis() - begin);
-//		
-//		
-//		System.out.println("duration :" + (System.currentTimeMillis() - begin));
-//		
-//		
-//		}catch (Exception e) {
-//			log.error("Getting session from Pakn Save fail");
-//			e.printStackTrace();
-//		}
-//	}
+ 
 //	
 	
 	public static void main(String[] args) {

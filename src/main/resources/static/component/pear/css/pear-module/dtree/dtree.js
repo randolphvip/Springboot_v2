@@ -707,7 +707,7 @@ layui.define(['jquery','layer','form'], function(exports) {
         this.selectCardDiv = this.obj[0].id + "_select_card_div";	// 上级layui卡片节点
         this.selectDiv = this.obj[0].id + "_select_div";		// 模拟的select节点
         this.selectTipsName = this.obj[0].id + "_select_input"; // select的提示输入框名称
-        this.selectTips = this.options.selectTips || "请选择";			// 输入框的提示语
+        this.selectTips = this.options.selectTips || "Select One";			// 输入框的提示语
         this.selectInputName = this.options.selectInputName || {nodeId: this.obj[0].id + "_select_nodeId"};  // select表单中的元素
         
         // 调取下拉树的特殊处理页面元素标识

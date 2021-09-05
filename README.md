@@ -10,7 +10,7 @@
 - eclipse
 
 ### Resource download
-- minio http://www.minio.org.cn/ (file storage)
+- 
 
 
 ### STEP 

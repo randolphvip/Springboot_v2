@@ -58,6 +58,15 @@ public class ShopCommodityService implements BaseService<ShopCommodity, ShopComm
 	        PageInfo<ShopCommodity> pageInfo = new PageInfo<ShopCommodity>(list);
 	        return  pageInfo;
 	 }
+	 
+	 public List <ShopCommodity> list(ShopCommodity shopCommodity){
+	        ShopCommodityExample testExample=new ShopCommodityExample();
+			 
+	        	testExample.createCriteria().andLikeQuery(shopCommodity);
+	        List<ShopCommodity> list= shopCommodityMapper.selectByExample(testExample);
+	        return  list;
+	 }
+	 
 
 	 
 	 public PageInfo<ShopCommodity> list(Tablepar tablepar,String searchText,Integer commodityId){
