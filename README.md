@@ -12,6 +12,7 @@
 - Docker version: 20.10.1
 - Maven: 3.6.2
 - Testing Operation System: Red Hat Enterprise Linux 7.6
+- Version Control : GIT 
 - RabbitMQ: 3
 - Thymeleaf: 3
 - Jenkins: 2.263.1
@@ -57,11 +58,11 @@ Power BI
 
 ###  Preview:
 
-### ![Category](src\main\resources\doc\Category.png)
+### ![Category](src/main/resources/doc/Category.png)
 
 
 
-![Commodity](src\main\resources\doc\productList.png)
+![Commodity](src/main/resources/doc/productList.png)
 
  
 
@@ -69,4 +70,4 @@ Power BI
 
 ## Database Model
 
-![Commodity](src\main\resources\doc\ER_v1.png)
+![Commodity](src/main/resources/doc/ER_v1.png)
