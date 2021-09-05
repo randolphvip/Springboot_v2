@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
  * 如果有前台这儿写前台访问方法
  * @ClassName: IndexController
  * 
- * @date 2019-10-21 00:15
  */
 @Api(tags = "MainPage")
 @Controller
